@@ -1,12 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html lang="en">
+<html >
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Paincare</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <!-- Template Stylesheet -->
-    <link href="css/style1.css" rel="stylesheet">
     <style>
         body {
             margin: 0;
@@ -19,7 +13,7 @@
 
         body::before {
             content: "";
-            background: url("img/po5.jpeg") center center fixed; /* Ajouter le chemin correct à votre image */
+            background: url("") center center fixed; /* Ajouter le chemin correct à votre image */
             background-size: cover;
             position: absolute;
             top: 0;
@@ -42,17 +36,25 @@
             max-width: 100%;
         }
     </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Paincare</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="flex items-center justify-center h-screen" >
 
 <div class="bg-white p-8 rounded-lg shadow-md w-96 flex flex-col items-center">
-    <img src="images/Paincare.jpeg" alt="Logo" class="mx-auto my-4 w-24">
-    <h1 class="text-3xl font-extrabold text-gray-800 mb-6">Se Connecter</h1>
 
-    <form action="User_servlet" method="post" class="space-y-4">
-        <input type="hidden" name="action" value="login">
+    <h1 class="text-3xl font-extrabold text-gray-800 mb-6">Créer votre compte</h1>
+
+    <form action="User_Servlet" method="post" class="space-y-4">
+        <input type="hidden" name="action" value="insert">
         <div>
-            <label for="mail" class="text-sm font-medium text-gray-600">Email</label>
+            <label for="name" class="text-sm font-medium text-gray-600">Nom</label>
+            <input type="text" id="" name="name" class="mt-1 p-2 w-full border-2 border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" required>
+        </div>
+        <div>
+            <label for="Email" class="text-sm font-medium text-gray-600">Email</label>
             <input type="text" id="" name="email" class="mt-1 p-2 w-full border-2 border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" required>
         </div>
 
@@ -61,10 +63,11 @@
             <input type="password" id="" name="password" class="mt-1 p-2 w-full border-2 border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" required>
         </div>
 
-        <button type="submit" class="mx-auto block w-48 h-12 bg-gradient-to-r from-blue-200 to-blue-200 text-black p-4 rounded-md hover:opacity-90 focus:outline-none focus:ring focus:border-indigo-500">login</button>
+        <button type="submit" class="mx-auto block w-48 h-12 bg-gradient-to-r from-blue-200 to-blue-200 text-black p-4 rounded-md hover:opacity-90 focus:outline-none focus:ring focus:border-indigo-500">s'enregistrer</button>
 
-        <p class="text-sm text-gray-600 mt-4">Vous n'avez pas de compte? <a href="register.jsp" class="text-blue-500">Créer-en un ici</a>.</p>
+        <p class="text-sm text-gray-600 mt-4">Vous avez un compte? <a href="login.jsp" class="text-blue-500">login</a>.</p>
     </form>
 </div>
+
 </body>
 </html>
