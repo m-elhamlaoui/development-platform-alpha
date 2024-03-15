@@ -15,7 +15,7 @@ public class UtilisationDAOImpl implements UtilisationDAO {
     private static final String LOGIN_USER = "SELECT * FROM users WHERE u_email=? AND u_pwd=?";
 
 
-    private Connection connection;
+    public Connection connection;
 
     public UtilisationDAOImpl(Connection connection) {
         this.connection = connection;
@@ -73,6 +73,7 @@ public class UtilisationDAOImpl implements UtilisationDAO {
             System.out.println(connection.prepareStatement(LOGIN_USER));
             System.out.println("dao...");
             ResultSet resultSet = preparedStatement.executeQuery();
+            System.out.println(preparedStatement);
             System.out.println("dao2..");
             System.out.println(resultSet);
 
@@ -132,7 +133,7 @@ public class UtilisationDAOImpl implements UtilisationDAO {
         int id = resultSet.getInt("id");
         String name = resultSet.getString("u_name");
         String email = resultSet.getString("u_email");
-        String password = resultSet.getString("password");
+        String password = resultSet.getString("u_pwd");
 
         return new Utilisateur(id, name, email, password);
     }

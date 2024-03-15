@@ -68,12 +68,13 @@ public class User_servlet extends HttpServlet {
         try {
             // Authentifier l'utilisateur
             Utilisateur user = utilisateurDAO.login(email, password);
+            System.out.println("loginuser ..."+ user);
 
             if (user != null) {
 
                 // L'utilisateur est authentifi�
                 HttpSession session = request.getSession();
-
+                System.out.println("loginuser ..."+session);
                 session.setAttribute("utilisateur", user);
 
                 // Rediriger vers une page apr�s la connexion r�ussie
