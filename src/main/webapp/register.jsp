@@ -47,7 +47,7 @@
 
     <h1 class="text-3xl font-extrabold text-gray-800 mb-6">Créer votre compte</h1>
 
-    <form action="User_Servlet" method="post" class="space-y-4">
+    <form action="User_servlet" method="post" class="space-y-4">
         <input type="hidden" name="action" value="insert">
         <div>
             <label for="name" class="text-sm font-medium text-gray-600">Nom</label>
