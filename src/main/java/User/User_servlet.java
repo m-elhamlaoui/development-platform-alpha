@@ -23,7 +23,7 @@ public class User_servlet extends HttpServlet {
         }
 
         try (Connection connection = Syndic_con.getConnection()) {
-            UtilisationDAO utilisateurDAO = new UtilisationDAOImpl(connection);
+            UtilisationDAO utilisateurDAO = new UtilisationDAOImpl();
 
             switch (action) {
 
@@ -47,7 +47,7 @@ public class User_servlet extends HttpServlet {
                     break;
 
             }
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch ( SQLException e) {
             e.printStackTrace();
             // G�rer les erreurs de connexion
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erreur de connexion � la base de donn�es");

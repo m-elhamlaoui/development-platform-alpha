@@ -4,18 +4,29 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 public class Syndic_con {
-    private static Connection conn;
+    String db = "syndic_db";
+    String user = "root";
+    String pwd = "Asmae2003KARMOUCHI";
+    String url = "jdbc:mysql://localhost:3306/" + db + "?useSSL=false";
 
-    public static Connection getConnection() throws ClassNotFoundException, SQLException {
-        Connection conn = null;
+    private static Connection connection = null;
+
+    private Syndic_con() {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/syndic_db?useSSL=false", "root", "Asmae2003KARMOUCHI");
-            System.out.println("Connection successfully...");
-            return conn;
-        } catch (ClassNotFoundException | SQLException e) {
-            // Handle exceptions
-            throw e;
+
+            connection = DriverManager.getConnection(url, user, pwd);
+            System.out.println("instance cree!!"+connection);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+
     }
+    public static Connection getConnection() {
+        if (connection == null)
+            new Syndic_con();
+        return connection;
+
+    }
+
+
 }

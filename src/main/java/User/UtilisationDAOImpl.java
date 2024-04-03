@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UtilisationDAOImpl implements UtilisationDAO {
+public class UtilisationDAOImpl extends AbstractDAOA implements UtilisationDAO {
 
     private static final String SELECT_USER_BY_ID = "SELECT * FROM users WHERE id=?";
     private static final String SELECT_USER_BY_EMAIL = "SELECT * FROM users WHERE u_email=?";
@@ -15,11 +15,6 @@ public class UtilisationDAOImpl implements UtilisationDAO {
     private static final String LOGIN_USER = "SELECT * FROM users WHERE u_email=? AND u_pwd=?";
 
 
-    public Connection connection;
-
-    public UtilisationDAOImpl(Connection connection) {
-        this.connection = connection;
-    }
 
     @Override
     public Utilisateur getUserById(int userId) {
@@ -43,9 +38,10 @@ public class UtilisationDAOImpl implements UtilisationDAO {
     @Override
     public Utilisateur getUserByEmail(String email) {
         Utilisateur utilisateur = null;
-
+        System.out.println("DOAIMPL!!"+connection);
         try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_EMAIL)) {
             preparedStatement.setString(1, email);
+            System.out.println("DOAIMPL!!"+email+"..");
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
@@ -64,10 +60,9 @@ public class UtilisationDAOImpl implements UtilisationDAO {
     @Override
     public Utilisateur login(String email, String password) {
         Utilisateur utilisateur = null;
-
+        System.out.println("DOAIMPLlogin!!"+connection);
         try (PreparedStatement preparedStatement = connection.prepareStatement(LOGIN_USER)) {
             System.out.println(connection);
-
             preparedStatement.setString(1, email);
             preparedStatement.setString(2, password);
             System.out.println(connection.prepareStatement(LOGIN_USER));
