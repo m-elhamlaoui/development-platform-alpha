@@ -1,4 +1,4 @@
-package User;
+package Connection;
 
 import java.sql.Connection;
 

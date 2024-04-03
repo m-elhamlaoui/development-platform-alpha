@@ -1,6 +1,7 @@
 package User;
 
-import java.sql.Connection;
+import Connection.AbstractDAOA;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
