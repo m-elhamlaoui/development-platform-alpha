@@ -1,4 +1,4 @@
-package Connection;
+package com.syndic.connection;
 
 import java.sql.Connection;
 

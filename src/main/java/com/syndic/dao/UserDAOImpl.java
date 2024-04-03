@@ -1,12 +1,14 @@
-package User;
+package com.syndic.dao;
 
+import User.Utilisateur;
+import User.UtilisationDAO;
 import com.syndic.connection.AbstractDAOA;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UtilisationDAOImpl extends AbstractDAOA implements UtilisationDAO {
+public class UserDAOImpl extends AbstractDAOA implements UtilisationDAO {
 
     private static final String SELECT_USER_BY_ID = "SELECT * FROM users WHERE id=?";
     private static final String SELECT_USER_BY_EMAIL = "SELECT * FROM users WHERE u_email=?";
