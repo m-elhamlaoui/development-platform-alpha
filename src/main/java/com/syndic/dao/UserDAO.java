@@ -1,12 +1,13 @@
 package com.syndic.dao;
 
-import User.Utilisateur;
+
+import com.syndic.beans.User;
 
 public interface UserDAO {
-    Utilisateur getUserById(int userId);
-    Utilisateur getUserByEmail(String email);
-    Utilisateur login(String email, String password);
-    void createUser(Utilisateur utilisateur);
-    void updateUser(Utilisateur utilisateur);
+    User getUserById(int userId);
+    User getUserByEmail(String email);
+    User login(String email, String password);
+    void createUser(User user);
+    void updateUser(User user);
     void deleteUser(int userId);
 }

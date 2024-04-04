@@ -16,43 +16,43 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 
-public class LoginServlet extends HttpServlet {
+public class RegisterServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private UserDAO userDAO;
 
-    public LoginServlet() {
+
+    public RegisterServlet() {
         super();
-         // Instanciation de votre DAO
+        // TODO Auto-generated constructor stub
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Rediriger vers la page login.jsp
-        RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+        // TODO Auto-generated method stub
+        RequestDispatcher dispatcher = request.getRequestDispatcher("register.jsp");
         dispatcher.forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        UserDAO userDAO;
+        try (Connection connection = Syndic_con.getConnection()) {
+            userDAO = new UserDAOImpl(connection);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        String name = request.getParameter("name");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        try (Connection connection = Syndic_con.getConnection()) {
-            userDAO = new UserDAOImpl(connection);
-            User user = userDAO.login(email, password);
+        // Cr�er un nouvel utilisateur
+        User newUser = new User(0, name, email, password);
 
-            if (user != null) {
-                HttpSession session = request.getSession();
-                session.setAttribute("user", user);
-                response.sendRedirect("test.jsp");
-            } else {
-                response.sendRedirect("login.jsp?error=1");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            response.sendRedirect("error.jsp");
-        } catch (IOException e) {
-            e.printStackTrace();
-            response.sendRedirect("error.jsp");
-        }
+        // Appeler la m�thode pour ajouter l'utilisateur � la base de donn�es
+        userDAO.createUser(newUser);
+
+        // Rediriger vers la liste des utilisateurs apr�s l'ajout
+        response.sendRedirect("login.jsp");
     }
+
 }

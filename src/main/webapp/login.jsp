@@ -49,7 +49,7 @@
     <img src="images/Paincare.jpeg" alt="Logo" class="mx-auto my-4 w-24">
     <h1 class="text-3xl font-extrabold text-gray-800 mb-6">Se Connecter</h1>
 
-    <form action="User_servlet" method="post" class="space-y-4">
+    <form action="login" method="post" class="space-y-4">
         <input type="hidden" name="action" value="login">
         <div>
             <label for="mail" class="text-sm font-medium text-gray-600">Email</label>
@@ -63,7 +63,7 @@
 
         <button type="submit" class="mx-auto block w-48 h-12 bg-gradient-to-r from-blue-200 to-blue-200 text-black p-4 rounded-md hover:opacity-90 focus:outline-none focus:ring focus:border-indigo-500">login</button>
 
-        <p class="text-sm text-gray-600 mt-4">Vous n'avez pas de compte? <a href="register.jsp" class="text-blue-500">Créer-en un ici</a>.</p>
+        <p class="text-sm text-gray-600 mt-4">Vous n'avez pas de compte? <a href="register" class="text-blue-500">Créer-en un ici</a>.</p>
     </form>
 </div>
 </body>
