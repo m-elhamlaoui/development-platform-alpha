@@ -19,7 +19,7 @@ import java.sql.SQLException;
 public class RegisterServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-
+    private UserDAO userDAO;
     public RegisterServlet() {
         super();
         // TODO Auto-generated constructor stub
@@ -33,26 +33,30 @@ public class RegisterServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        UserDAO userDAO;
-        try (Connection connection = Syndic_con.getConnection()) {
-            userDAO = new UserDAOImpl(connection);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        Connection connection = null;
 
-        // Cr�er un nouvel utilisateur
-        User newUser = new User(0, name, email, password,false);
+        do {
+            try {
+                connection = Syndic_con.getConnection();
+                if (connection != null) {
+                    userDAO = new UserDAOImpl(connection);
+                    // Cr�er un nouvel utilisateur
 
-        // Appeler la m�thode pour ajouter l'utilisateur � la base de donn�es
-        userDAO.createUser(newUser);
+                    User newUser = new User(0, name, email, password , false);
+                    // Appeler la m�thode pour ajouter l'utilisateur � la base de donn�es
+                    userDAO.createUser(newUser);
 
-        // Rediriger vers la liste des utilisateurs apr�s l'ajout
-        response.sendRedirect("login.jsp");
+                    // Rediriger vers la liste des utilisateurs apr�s l'ajout
+                    response.sendRedirect("login");
+                    return;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        } while (true);
     }
-
 }
