@@ -63,7 +63,7 @@
 
         <button type="submit" class="mx-auto block w-48 h-12 bg-gradient-to-r from-blue-200 to-blue-200 text-black p-4 rounded-md hover:opacity-90 focus:outline-none focus:ring focus:border-indigo-500">login</button>
 
-        <p class="text-sm text-gray-600 mt-4">Vous n'avez pas de compte? <a href="register" class="text-blue-500">Créer-en un ici</a>.</p>
+        <p class="text-sm text-gray-600 mt-4">Vous n'avez pas de compte? <a href="register.jsp" class="text-blue-500">Créer-en un ici</a>.</p>
     </form>
 </div>
 </body>

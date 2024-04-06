@@ -6,10 +6,11 @@ import java.sql.SQLException;
 public class Syndic_con {
     String db = "syndic_db";
     String user = "root";
-    String pwd = "1999";
+    String pwd = "Asmae2003KARMOUCHI";
     String url = "jdbc:mysql://localhost:3306/" + db + "?useSSL=false";
 
     private static Connection connection = null;
+
 
     private Syndic_con() {
         try {
@@ -21,12 +22,13 @@ public class Syndic_con {
         }
 
     }
+
     public static Connection getConnection() {
         if (connection == null)
             new Syndic_con();
+        System.out.println("syndic_con"+connection);
         return connection;
 
     }
-
 
 }
