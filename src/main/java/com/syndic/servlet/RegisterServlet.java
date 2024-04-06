@@ -45,7 +45,7 @@ public class RegisterServlet extends HttpServlet {
                     userDAO = new UserDAOImpl(connection);
                     // Cr�er un nouvel utilisateur
 
-                    User newUser = new User(0, name, email, password , false);
+                    User newUser = new User(0, name, email, password);
                     // Appeler la m�thode pour ajouter l'utilisateur � la base de donn�es
                     userDAO.createUser(newUser);
 

@@ -28,11 +28,22 @@ aside {
     background-color: rgb(36, 34, 34);
     overflow-x: hidden;
     transition: all 0.3s linear;
-
+    transform: translate(-100%);
 }
 aside .aside-container {
     height: 100vh;
 }
+
+aside .aside-container a,
+aside .aside-container a:visited {
+    color: white;
+    text-decoration: none;
+}
+aside .aside-container a:hover {
+    color: lightgray;
+}
+
+
 aside .aside-container .logo {
     display: flex;
     justify-content: center;
@@ -195,4 +206,4 @@ main header .logo h1 {
 main header .toggle-nav {
     font-size: 1.3rem;
     cursor: pointer;
-}/*# sourceMappingURL=style.css.map */
+}

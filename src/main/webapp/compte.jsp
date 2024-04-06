@@ -11,6 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-
+<jsp:include page="templates/side_nav.jsp" />
+<h2>Account</h2>
 </body>
 </html>

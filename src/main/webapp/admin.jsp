@@ -11,6 +11,7 @@
     <title>Title</title>
 </head>
 <body>
+<jsp:include page="templates/admin_sidenav.jsp" />
 <h1>ADMIN</h1>
 </body>
 </html>

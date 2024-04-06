@@ -27,31 +27,43 @@
         </div>
         <div class="dashboard">
             <span class="material-symbols-outlined">grid_view</span>
-            <h3>dashboard</h3>
+
+            <h3> <a href="register" > dashboard </a></h3>
         </div>
         <div class="user">
             <span class="material-symbols-outlined">person</span>
-            <h3>user</h3>
+            <h3>  <a href="" > user </a> </h3>
         </div>
         <div class="message">
             <span class="material-symbols-outlined">chat</span>
-            <h3>message</h3>
+            <h3> <a href="" > message </a></h3>
         </div>
         <div class="bookmark">
             <span class="material-symbols-outlined">bookmark</span>
-            <h3>bookmark</h3>
+            <h3> <a href="" > bookmark </a> </h3>
         </div>
         <div class="files">
             <span class="material-symbols-outlined">folder</span>
-            <h3>files</h3>
+            <h3> <a href="" > files </a> </h3>
         </div>
         <div class="stats">
             <span class="material-symbols-outlined">trending_up</span>
-            <h3>stats</h3>
+            <h3> <a href="" > stats </a> </h3>
         </div>
     </div>
 </aside>
+<main>
+    <header class="container">
+        <div class="logo">
+            <i class="fas fa-building"></i>
+            <h1>Syndic</h1>
+        </div>
+        <div class="toggle-nav">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </header>
+</main>
 
-
+<script src="./javascript/sidebar.js"></script>
 </body>
 </html>
