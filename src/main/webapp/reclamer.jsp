@@ -50,6 +50,7 @@
     </style>
 </head>
 <body>
+<jsp:include page="templates/side_nav.jsp" />
 <h1>Soumettre Réclamation</h1>
 <form action="reclamer" method="post">
     <input class="input" type="hidden" name="action" value="insert" >
