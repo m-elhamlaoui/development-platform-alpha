@@ -14,6 +14,7 @@ import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.concurrent.TimeUnit;
 
 
 public class LoginServlet extends HttpServlet {
@@ -22,7 +23,7 @@ public class LoginServlet extends HttpServlet {
 
     public LoginServlet() {
         super();
-         // Instanciation de votre DAO
+        // Instanciation de votre DAO
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,27 +33,41 @@ public class LoginServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        try (Connection connection = Syndic_con.getConnection()) {
-            userDAO = new UserDAOImpl(connection);
-            User user = userDAO.login(email, password);
+        Connection connection = null;
 
-            if (user != null) {
-                HttpSession session = request.getSession();
-                session.setAttribute("user", user);
-                response.sendRedirect("test.jsp");
-            } else {
-                response.sendRedirect("login.jsp?error=1");
+        do {
+            try {
+                connection = Syndic_con.getConnection();
+                if (connection != null) {
+                    userDAO = new UserDAOImpl(connection);
+                    User user = userDAO.login(email, password);
+
+                    if (user != null) {
+                        HttpSession session = request.getSession();
+                        session.setAttribute("user", user);
+                        System.out.println("0ou un"+user.getAdmin());
+                        if (user.getAdmin()  ) {
+                            response.sendRedirect("admin.jsp");
+                            return;
+                        } else {
+                            response.sendRedirect("test.jsp");
+                            return;
+                        }
+                    } else {
+                        response.sendRedirect("login.jsp?error=1");
+                        return;
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                return;
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            response.sendRedirect("error.jsp");
-        } catch (IOException e) {
-            e.printStackTrace();
-            response.sendRedirect("error.jsp");
-        }
+
+        } while (true); // Continue indefinitely until connection is obtained
+
+
     }
 }

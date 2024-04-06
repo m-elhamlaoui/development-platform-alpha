@@ -79,6 +79,7 @@ public class UserDAOImpl extends AbstractDAOA implements UserDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
             System.out.println(preparedStatement);
             System.out.println("dao2..");
+
             System.out.println(resultSet);
 
             if (resultSet.next()) {
@@ -138,7 +139,8 @@ public class UserDAOImpl extends AbstractDAOA implements UserDAO {
         String name = resultSet.getString("u_name");
         String email = resultSet.getString("u_email");
         String password = resultSet.getString("u_pwd");
+        Boolean isAdmin = resultSet.getBoolean("checkadmin");
 
-        return new User(id, name, email, password);
+        return new User(id, name, email, password,isAdmin);
     }
 }

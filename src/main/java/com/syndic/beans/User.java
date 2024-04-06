@@ -1,13 +1,11 @@
 package com.syndic.beans;
 
-
-
-
 public class User {
     private int id_user;
     private String name;
     private String email;
     private String password;
+    private boolean isAdmin;
 
     // Constructeur par d�faut
     public User() {
@@ -23,11 +21,12 @@ public class User {
 
     }
     // Constructeur avec tous les champs
-    public User(int idUser, String name, String email, String password) {
+    public User(int idUser, String name, String email, String password , Boolean isAdmin) {
         this.id_user = idUser;
         this.name = name;
         this.email = email;
         this.password = password;
+        this.isAdmin = isAdmin;
     }
 
     // Getters et setters
@@ -71,5 +70,13 @@ public class User {
         this.id_user = id_user;
     }
 
-    // Autres m�thodes au besoin
+    public boolean getAdmin() {
+        return isAdmin;
+    }
+    public void setAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
+
+
+    // Autres m�thodes
 }
