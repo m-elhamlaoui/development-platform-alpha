@@ -1,17 +1,28 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: user
-  Date: 11/03/2024
-  Time: 13:24
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Title</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar Navigation</title>
+    <!-- Vos liens vers les feuilles de style et les polices -->
 </head>
 <body>
-<h2>Hello World!</h2>
+<%@ include file="side_nav.jsp" %>
 
+<main>
+    <header class="container">
+        <div class="logo">
+            <i class="fas fa-building"></i>
+            <h1>Syndic</h1>
+        </div>
+        <div class="toggle-nav">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+    <!-- Le reste du contenu de votre page -->
+    <h2>Hello World!</h2>
+</main>
+<!-- Vos scripts ou autres éléments à inclure -->
 </body>
 </html>

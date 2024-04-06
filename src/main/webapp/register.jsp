@@ -65,7 +65,7 @@
 
         <button type="submit" class="mx-auto block w-48 h-12 bg-gradient-to-r from-blue-200 to-blue-200 text-black p-4 rounded-md hover:opacity-90 focus:outline-none focus:ring focus:border-indigo-500">s'enregistrer</button>
 
-        <p class="text-sm text-gray-600 mt-4">Vous avez un compte? <a href="login.jsp" class="text-blue-500">login</a>.</p>
+        <p class="text-sm text-gray-600 mt-4">Vous avez un compte? <a href="login" class="text-blue-500">login</a>.</p>
     </form>
 </div>
 

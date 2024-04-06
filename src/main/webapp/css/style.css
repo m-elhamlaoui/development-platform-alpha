@@ -1,0 +1,198 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background-color: rgb(58, 53, 53);
+    color: rgb(241, 235, 235);
+}
+
+.container {
+    max-width: 1800px;
+    margin: 0 auto;
+    width: 90%;
+}
+
+aside {
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgb(36, 34, 34);
+    overflow-x: hidden;
+    transition: all 0.3s linear;
+
+}
+aside .aside-container {
+    height: 100vh;
+}
+aside .aside-container .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    cursor: pointer;
+}
+aside .aside-container .logo .fa-brands {
+    font-size: 2rem;
+}
+aside .aside-container .logo h1 {
+    font-size: 1.3rem;
+    padding: 0 1rem;
+}
+aside .aside-container .dashboard {
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    margin: 3em 0.5em 0 0.5em;
+    border-radius: 10px;
+    cursor: pointer;
+}
+aside .aside-container .dashboard h3 {
+    font-size: 1rem;
+    font-weight: 400;
+    text-transform: capitalize;
+    padding: 0 1.5em;
+}
+aside .aside-container .dashboard:hover {
+    background-color: grey;
+}
+aside .aside-container .user {
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    margin: 0 0.5em 0 0.5em;
+    border-radius: 10px;
+    cursor: pointer;
+}
+aside .aside-container .user h3 {
+    font-size: 1rem;
+    font-weight: 400;
+    text-transform: capitalize;
+    padding: 0 1.5em;
+}
+aside .aside-container .user:hover {
+    background-color: grey;
+}
+aside .aside-container .message {
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    margin: 0 0.5em 0 0.5em;
+    border-radius: 10px;
+    cursor: pointer;
+}
+aside .aside-container .message h3 {
+    font-size: 1rem;
+    font-weight: 400;
+    text-transform: capitalize;
+    padding: 0 1.5em;
+}
+aside .aside-container .message:hover {
+    background-color: grey;
+}
+aside .aside-container .bookmark {
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    margin: 0 0.5em 0 0.5em;
+    border-radius: 10px;
+    cursor: pointer;
+}
+aside .aside-container .bookmark h3 {
+    font-size: 1rem;
+    font-weight: 400;
+    text-transform: capitalize;
+    padding: 0 1.5em;
+}
+aside .aside-container .bookmark:hover {
+    background-color: grey;
+}
+aside .aside-container .files {
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    margin: 0 0.5em 0 0.5em;
+    border-radius: 10px;
+    cursor: pointer;
+}
+aside .aside-container .files h3 {
+    font-size: 1rem;
+    font-weight: 400;
+    text-transform: capitalize;
+    padding: 0 1.5em;
+}
+aside .aside-container .files:hover {
+    background-color: grey;
+}
+aside .aside-container .stats {
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    margin: 0 0.5em 25em 0.5em;
+    border-radius: 10px;
+    cursor: pointer;
+}
+aside .aside-container .stats h3 {
+    font-size: 1rem;
+    font-weight: 400;
+    text-transform: capitalize;
+    padding: 0 1.5em;
+}
+aside .aside-container .stats:hover {
+    background-color: grey;
+}
+aside .aside-container .material-symbols-outlined {
+    cursor: pointer;
+    font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 48;
+}
+aside::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: rgb(230, 218, 218);
+}
+aside::-webkit-scrollbar {
+    width: 3px;
+    background-color: rgb(230, 218, 218);
+}
+aside::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #555;
+}
+
+.show-sidebar {
+    transform: translate(0%);
+}
+
+main {
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+main header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+main header .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+}
+main header .logo .fa-brands {
+    font-size: 2rem;
+}
+main header .logo h1 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 0 1rem;
+}
+main header .toggle-nav {
+    font-size: 1.3rem;
+    cursor: pointer;
+}/*# sourceMappingURL=style.css.map */
