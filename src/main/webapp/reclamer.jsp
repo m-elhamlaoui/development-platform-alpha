@@ -7,6 +7,7 @@
 
 </head>
 <body>
+<jsp:include page="templates/side_nav.jsp" />
 <div class="container">
 <h1>Soumettre Réclamation</h1>
 <form action="reclamer" method="post">

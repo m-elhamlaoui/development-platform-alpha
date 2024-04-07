@@ -19,3 +19,11 @@ CREATE TABLE reclamations (
     FOREIGN KEY (id_user) REFERENCES users(id)
 );
 
+CREATE TABLE paiement (
+    id_paiement INT AUTO_INCREMENT PRIMARY KEY,
+    mois VARCHAR(20) NOT NULL,
+    paye BOOLEAN NOT NULL,
+    id_user INT,
+    FOREIGN KEY (id_user) REFERENCES users(id)
+);
+

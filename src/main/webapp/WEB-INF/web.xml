@@ -16,6 +16,8 @@
     <welcome-file>test.jsp</welcome-file>
     <welcome-file>admin.jsp</welcome-file>
     <welcome-file>reclamer.jsp</welcome-file>
+    <welcome-file>paiement.jsp</welcome-file>
+
   </welcome-file-list>
 
   <servlet>
@@ -45,4 +47,15 @@
     <servlet-name>ReclamerServlet</servlet-name>
     <url-pattern>/reclamer</url-pattern>
   </servlet-mapping>
+
+  <!-- Servlet pour la gestion des paiements -->
+  <servlet>
+    <servlet-name>PaiementServlet</servlet-name>
+    <servlet-class>com.syndic.servlet.PaiementServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PaiementServlet</servlet-name>
+    <url-pattern>/paiement</url-pattern>
+  </servlet-mapping>
+
 </web-app>

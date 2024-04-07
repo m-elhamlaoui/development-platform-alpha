@@ -35,12 +35,12 @@
             <h3>  <a href="" > user </a> </h3>
         </div>
         <div class="message">
-            <span class="material-symbols-outlined">chat</span>
-            <h3> <a href="" > message </a></h3>
+            <span class="material-symbols-outlined" >chat</span>
+            <h3> <a href="reclamer" > reclamer </a></h3>
         </div>
         <div class="bookmark">
             <span class="material-symbols-outlined">bookmark</span>
-            <h3> <a href="" > bookmark </a> </h3>
+            <h3> <a href="paiement" > paiement </a> </h3>
         </div>
         <div class="files">
             <span class="material-symbols-outlined">folder</span>
