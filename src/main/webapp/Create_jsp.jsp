@@ -26,7 +26,7 @@
 
         <!---------INSIGHTS------->
         <div class="insights">
-            <h1>Account</h1>
+            <h1>ADMIN</h1>
 
         </div>
 

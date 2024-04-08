@@ -8,6 +8,7 @@
   <title>Statut des paiements</title>
 </head>
 <body>
+<jsp:include page="templates/side_nav.jsp" />
 <h1>Statut des paiements</h1>
 <table border="1">
   <thead>

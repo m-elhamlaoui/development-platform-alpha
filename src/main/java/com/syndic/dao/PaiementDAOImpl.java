@@ -1,7 +1,6 @@
 package com.syndic.dao;
 
 import com.syndic.beans.Paiement;
-import com.syndic.connection.Syndic_con;
 
 import java.sql.*;
 import java.util.ArrayList;

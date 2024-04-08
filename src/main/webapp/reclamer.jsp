@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Soumettre Réclamation</title>
-    <link href="css/reclamerstyle.css" rel="stylesheet">
 
 </head>
 <body>
@@ -24,7 +23,7 @@
     <textarea id="description" name="description"></textarea><br>
     <input class="input" type="submit" value="Soumettre">
 </form>
-<a href="test.jsp">Retourner</a>
+<a href="home.jsp">Retourner</a>
 </div>
 </body>
 
