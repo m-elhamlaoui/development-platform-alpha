@@ -48,7 +48,6 @@ public class LoginServlet extends HttpServlet {
                     if (user != null) {
                         HttpSession session = request.getSession();
                         session.setAttribute("user", user);
-                        System.out.println("0ou un"+user.getAdmin());
                         if (user.getAdmin()  ) {
                             response.sendRedirect("admin.jsp");
                             return;

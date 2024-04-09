@@ -27,3 +27,14 @@ CREATE TABLE paiement (
     FOREIGN KEY (id_user) REFERENCES users(id)
 );
 
+
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+    id INT NOT NULL AUTO_INCREMENT,
+    u_name VARCHAR(50),
+    u_pwd VARCHAR(255),
+    u_email VARCHAR(50),
+    u_mobile VARCHAR(20),
+    checkadmin TINYINT(1) NOT NULL,
+    PRIMARY KEY (id)
+);

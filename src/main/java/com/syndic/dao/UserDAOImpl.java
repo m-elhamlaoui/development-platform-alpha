@@ -8,14 +8,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 public class UserDAOImpl extends AbstractDAOA implements UserDAO {
 
     private static final String SELECT_USER_BY_ID = "SELECT * FROM users WHERE id=?";
     private static final String SELECT_USER_BY_EMAIL = "SELECT * FROM users WHERE u_email=?";
-    private static final String INSERT_USER = "INSERT INTO users (u_name, u_email, u_pwd) VALUES (?, ?, ?)";
+    private static final String INSERT_USER = "INSERT INTO users (u_name, u_email, u_pwd,checkadmin) VALUES (?, ?, ?,0)";
     private static final String UPDATE_USER = "UPDATE users SET u_name=?, u_email=?, u_pwd=? WHERE id=?";
     private static final String DELETE_USER = "DELETE FROM users WHERE id=?";
-    private static final String LOGIN_USER = "SELECT * FROM users WHERE u_email=? AND u_pwd=?";
+    private static final String LOGIN_USER = "SELECT * FROM users WHERE u_email=? ";
 
     private Connection connection;
 
@@ -71,19 +73,14 @@ public class UserDAOImpl extends AbstractDAOA implements UserDAO {
         User user = null;
         System.out.println("DOAIMPLlogin!!"+connection);
         try (PreparedStatement preparedStatement = connection.prepareStatement(LOGIN_USER)) {
-            System.out.println(connection);
             preparedStatement.setString(1, email);
-            preparedStatement.setString(2, password);
-            System.out.println(connection.prepareStatement(LOGIN_USER));
-            System.out.println("dao...");
             ResultSet resultSet = preparedStatement.executeQuery();
-            System.out.println(preparedStatement);
-            System.out.println("dao2..");
-
-            System.out.println(resultSet);
 
             if (resultSet.next()) {
-                user = extractUserFromResultSet(resultSet);
+                String hashedPasswordFromDB = resultSet.getString("u_pwd");
+                if (BCrypt.checkpw(password, hashedPasswordFromDB)) {
+                    user = extractUserFromResultSet(resultSet);
+                }
             }
 
         } catch (SQLException e) {

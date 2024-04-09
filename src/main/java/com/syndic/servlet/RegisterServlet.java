@@ -14,6 +14,7 @@ import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import org.mindrot.jbcrypt.BCrypt;
 
 
 public class RegisterServlet extends HttpServlet {
@@ -37,6 +38,8 @@ public class RegisterServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         Connection connection = null;
+        // Crypter le mot de passe avant de l'ajouter à la base de données
+        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
 
         do {
             try {
@@ -44,8 +47,8 @@ public class RegisterServlet extends HttpServlet {
                 if (connection != null) {
                     userDAO = new UserDAOImpl(connection);
                     // Cr�er un nouvel utilisateur
+                    User newUser = new User(0, name, email, hashedPassword,false);
 
-                    User newUser = new User(0, name, email, password,false);
                     // Appeler la m�thode pour ajouter l'utilisateur � la base de donn�es
                     userDAO.createUser(newUser);
 
