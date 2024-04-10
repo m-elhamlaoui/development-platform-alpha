@@ -38,18 +38,6 @@ public class ReclamerServlet extends HttpServlet {
         String sujet = request.getParameter("sujet");
         String description = request.getParameter("description");
         Syndic_con.getConnection();
-        // Récupérer l'utilisateur connecté
-        //HttpSession session = request.getSession();
-        //User user = (User) session.getAttribute("user");
-
-        // Créer une nouvelle réclamation
-        //  Reclamation reclamation = new Reclamation();
-        //  reclamation.setSujet(sujet);
-        //  reclamation.setDescription(description);
-        // reclamation.setDateSoumission(new Date()); // Date actuelle
-        //  reclamation.setIdUser(user.getIdUser()); // Récupérer l'ID de l'utilisateur
-
-
         // Enregistrer la réclamation dans la base de données
         try (Connection connection = Syndic_con.getConnection()) {
             HttpSession session = request.getSession();

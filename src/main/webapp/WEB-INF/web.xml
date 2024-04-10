@@ -17,7 +17,7 @@
     <welcome-file>admin.jsp</welcome-file>
     <welcome-file>reclamer.jsp</welcome-file>
     <welcome-file>paiement.jsp</welcome-file>
-
+    <welcome-file>profile.jsp</welcome-file>
   </welcome-file-list>
 
   <servlet>
@@ -58,4 +58,12 @@
     <url-pattern>/paiement</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>ProfileServlet</servlet-name>
+    <servlet-class>com.syndic.servlet.ProfileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProfileServlet</servlet-name>
+    <url-pattern>/profile</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -1,5 +1,6 @@
+
 <!-----------ASIDE------------->
-<aside>
+<aside >
     <div class="top">
 
         <div class="logo">
@@ -17,19 +18,19 @@
             <h3>Dashboard</h3>
         </a>
 
-        <a href="#">
+        <a href="profile">
             <i class='bx bx-user' ></i>
-            <h3>Customers</h3>
+            <h3>Profile</h3>
         </a>
 
-        <a href="#">
+        <a href="reclamer">
             <i class='bx bx-file'></i>
-            <h3>Orders</h3>
+            <h3>Réclamations et Status</h3>
         </a>
 
-        <a href="#">
+        <a href="paiement">
             <i class='bx bx-line-chart-down'></i>
-            <h3>Analytics</h3>
+            <h3>Status de Paiement</h3>
         </a>
 
         <a href="#">

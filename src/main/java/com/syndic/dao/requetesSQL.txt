@@ -38,3 +38,8 @@ CREATE TABLE users (
     checkadmin TINYINT(1) NOT NULL,
     PRIMARY KEY (id)
 );
+
+ALTER TABLE users
+ADD COLUMN u_apartment_number VARCHAR(20),
+ADD COLUMN u_building_number VARCHAR(20),
+ADD COLUMN u_phone_number VARCHAR(20);

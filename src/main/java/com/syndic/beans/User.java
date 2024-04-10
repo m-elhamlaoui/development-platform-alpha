@@ -7,6 +7,10 @@ public class User {
     private String password;
     private boolean isAdmin;
 
+    private String apartmentNumber;
+    private String buildingNumber;
+    private String phoneNumber;
+
     // Constructeur par d�faut
     public User() {
     }
@@ -27,6 +31,16 @@ public class User {
         this.email = email;
         this.password = password;
         this.isAdmin = isAdmin;
+    }
+
+    public User(int idUser, String name, String email, String password , Boolean isAdmin , String apartmentNumber , String buildingNumber,String phoneNumber ) {
+        this.id_user = idUser;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.isAdmin = isAdmin;
+        this.apartmentNumber = apartmentNumber;
+        this.phoneNumber = phoneNumber;
     }
 
     // Getters et setters
@@ -79,4 +93,28 @@ public class User {
 
 
     // Autres m�thodes
+    // Getters and setters
+    public String getApartmentNumber() {
+        return apartmentNumber;
+    }
+
+    public void setApartmentNumber(String apartmentNumber) {
+        this.apartmentNumber = apartmentNumber;
+    }
+
+    public String getBuildingNumber() {
+        return buildingNumber;
+    }
+
+    public void setBuildingNumber(String buildingNumber) {
+        this.buildingNumber = buildingNumber;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 }
