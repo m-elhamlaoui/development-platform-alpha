@@ -15,6 +15,8 @@ public class UserDAOImpl extends AbstractDAOA implements UserDAO {
     private static final String SELECT_USER_BY_ID = "SELECT * FROM users WHERE id=?";
     private static final String SELECT_USER_BY_EMAIL = "SELECT * FROM users WHERE u_email=?";
     private static final String INSERT_USER = "INSERT INTO users (u_name, u_email, u_pwd,checkadmin) VALUES (?, ?, ?,0)";
+    private static final String INSERT_SYNDIC = "INSERT INTO users (u_name, u_email, u_pwd,checkadmin) VALUES (?, ?, ?,2)";
+
     private static final String UPDATE_USER = "UPDATE users SET u_name=?, u_email=?, u_pwd=? WHERE id=?";
     private static final String DELETE_USER = "DELETE FROM users WHERE id=?";
     private static final String LOGIN_USER = "SELECT * FROM users WHERE u_email=? ";
@@ -105,6 +107,19 @@ public class UserDAOImpl extends AbstractDAOA implements UserDAO {
     }
 
     @Override
+    public void createSyndic(User user) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_SYNDIC)) {
+            preparedStatement.setString(1, user.getName());
+            preparedStatement.setString(2, user.getEmail());
+            preparedStatement.setString(3, user.getPassword());
+
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    @Override
     public void updateUser(User utilisateur) {
         try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_USER)) {
             preparedStatement.setString(1, utilisateur.getName());
@@ -136,7 +151,7 @@ public class UserDAOImpl extends AbstractDAOA implements UserDAO {
         String name = resultSet.getString("u_name");
         String email = resultSet.getString("u_email");
         String password = resultSet.getString("u_pwd");
-        Boolean isAdmin = resultSet.getBoolean("checkadmin");
+        int isAdmin = resultSet.getInt("checkadmin");
 
         return new User(id, name, email, password,isAdmin);
     }

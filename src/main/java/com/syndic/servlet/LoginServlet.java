@@ -33,6 +33,7 @@ public class LoginServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String residence = request.getParameter("residence");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
@@ -48,10 +49,13 @@ public class LoginServlet extends HttpServlet {
                     if (user != null) {
                         HttpSession session = request.getSession();
                         session.setAttribute("user", user);
-                        if (user.getAdmin()  ) {
+                        if (user.getAdmin() == 1  ) {
                             response.sendRedirect("admin.jsp");
                             return;
-                        } else {
+                        } else if (user.getAdmin() == 2){
+                            response.sendRedirect("syndic.jsp");
+                            return;
+                        }  else  {
                             response.sendRedirect("home.jsp");
                             return;
                         }

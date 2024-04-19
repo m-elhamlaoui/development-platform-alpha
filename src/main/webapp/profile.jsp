@@ -43,7 +43,7 @@
 </head>
 <body>
 <div class="container">
-  <jsp:include page="templates/side_nav.jsp" />
+  <jsp:include page="templates/user_sidenav.jsp" />
 
     <div class="formulaire" >
       <h1>Welcome <%= ((User) session.getAttribute("user")).getName() %> to your Profile!</h1>

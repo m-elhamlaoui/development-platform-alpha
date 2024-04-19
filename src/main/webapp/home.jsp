@@ -16,7 +16,7 @@
 
 <body>
 <div class="container">
-  <jsp:include page="templates/side_nav.jsp" />
+  <jsp:include page="templates/user_sidenav.jsp" />
 
   <!------------MIDDLE ------------>
   <main>

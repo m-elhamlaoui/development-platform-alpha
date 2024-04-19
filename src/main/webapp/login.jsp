@@ -51,6 +51,12 @@
 
     <form action="login" method="post" class="space-y-4">
         <input type="hidden" name="action" value="login">
+
+        <div>
+            <label for="residence" class="text-sm font-medium text-gray-600">Residence</label>
+            <input type="text" id="" name="Residence" class="mt-1 p-2 w-full border-2 border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" required>
+        </div>
+
         <div>
             <label for="mail" class="text-sm font-medium text-gray-600">Email</label>
             <input type="text" id="" name="email" class="mt-1 p-2 w-full border-2 border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" required>

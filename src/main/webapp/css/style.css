@@ -685,3 +685,49 @@ main .recent-order a{
 }
 
 /*---------------formulaire style--------*/
+
+.user-form {
+    background: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    margin-top: 1.5rem;
+    box-shadow: var(--box-shadow);
+}
+
+/* Styles pour les étiquettes */
+.user-form label {
+    display: block;
+    margin-bottom: 0.8rem;
+    color: var(--color-dark);
+    font-weight: 500;
+}
+
+/* Styles pour les champs de saisie */
+.user-form input[type="text"],
+.user-form input[type="email"],
+.user-form input[type="password"] {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1.2rem;
+    border: 1px solid var(--color-light);
+    border-radius: var(--border-radius-1);
+    font-size: 1rem;
+}
+
+/* Style pour le bouton Ajouter */
+.user-form input[type="submit"] {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: var(--border-radius-1);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Style pour le bouton Ajouter au survol */
+.user-form input[type="submit"]:hover {
+    background-color: var(--color-primary-variant);
+}

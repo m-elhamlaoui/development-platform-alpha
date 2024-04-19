@@ -39,6 +39,15 @@
   </servlet-mapping>
 
   <servlet>
+    <servlet-name>UserRegisterServlet</servlet-name>
+    <servlet-class>com.syndic.servlet.UserRegisterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserRegisterServlet</servlet-name>
+    <url-pattern>/adduser</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
     <servlet-name>ReclamerServlet</servlet-name>
     <servlet-class>com.syndic.servlet.ReclamerServlet</servlet-class>
   </servlet>

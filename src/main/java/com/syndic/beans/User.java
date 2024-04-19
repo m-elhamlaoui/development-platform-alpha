@@ -5,7 +5,7 @@ public class User {
     private String name;
     private String email;
     private String password;
-    private boolean isAdmin;
+    private int isAdmin;
 
     private String apartmentNumber;
     private String buildingNumber;
@@ -25,7 +25,7 @@ public class User {
 
     }
     // Constructeur avec tous les champs
-    public User(int idUser, String name, String email, String password , Boolean isAdmin) {
+    public User(int idUser, String name, String email, String password , int isAdmin) {
         this.id_user = idUser;
         this.name = name;
         this.email = email;
@@ -33,7 +33,7 @@ public class User {
         this.isAdmin = isAdmin;
     }
 
-    public User(int idUser, String name, String email, String password , Boolean isAdmin , String apartmentNumber , String buildingNumber,String phoneNumber ) {
+    public User(int idUser, String name, String email, String password , int isAdmin , String apartmentNumber , String buildingNumber,String phoneNumber ) {
         this.id_user = idUser;
         this.name = name;
         this.email = email;
@@ -84,10 +84,10 @@ public class User {
         this.id_user = id_user;
     }
 
-    public boolean getAdmin() {
+    public int getAdmin() {
         return isAdmin;
     }
-    public void setAdmin(boolean isAdmin) {
+    public void setAdmin(int isAdmin) {
         this.isAdmin = isAdmin;
     }
 

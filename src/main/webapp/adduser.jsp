@@ -14,7 +14,7 @@
 
 <body>
 <div class="container">
-    <jsp:include page="templates/user_sidenav.jsp" />
+    <jsp:include page="templates/admin_sidenav.jsp" />
 
     <!------------MIDDLE ------------>
     <main>
@@ -23,12 +23,34 @@
         <div class="date">
             <input type="date">
         </div>
+        <div class="recent-updates">
+            <form action="adduser" method="post" class="user-form">
+                <label for="name">Nom:</label>
+                <input type="text" id="name" name="name" required><br>
 
-        <!---------INSIGHTS------->
-        <div class="insights">
-            <h1>ASSEMBLE</h1>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br>
 
+                <label for="password">Mot de passe:</label>
+                <input type="password" id="password" name="password" required><br>
+
+                <label for="residence">Residence:</label>
+                <input type="text" id="residence" name="residence" required><br>
+
+                <input type="submit" value="Ajouter">
+            </form>
         </div>
+
+        <% String successMessage = (String) request.getSession().getAttribute("successMessage"); %>
+        <% if (successMessage != null) {  %>
+        <script> alert('<%= successMessage %>');</script>
+        <% request.getSession().removeAttribute("successMessage");} %>
+
+        <% String errorMessage = (String) request.getSession().getAttribute("errorMessage"); %>
+        <% if (errorMessage != null) { %>
+        <script>alert('<%= errorMessage %>');</script>
+        <% request.getSession().removeAttribute("errorMessage");} %>
+
 
     </main>
     <!-------------END OF MIDDLE --------->
@@ -72,6 +94,9 @@
     <!---------END OF RIGHT------->
 
 </div>
+<script>
+    document.getElementById("adduser").classList.add("active");
+</script>
 </body>
 
 <script src="javascript/main.js"></script>

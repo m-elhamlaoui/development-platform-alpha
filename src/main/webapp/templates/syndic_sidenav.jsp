@@ -1,6 +1,5 @@
-
 <!-----------ASIDE------------->
-<aside >
+<aside>
     <div class="top">
 
         <div class="logo">
@@ -23,14 +22,19 @@
             <h3>Profile</h3>
         </a>
 
-        <a href="reclamer">
-            <i class='bx bx-file'></i>
-            <h3>Réclamations et Status</h3>
+        <a href="#">
+            <i class='bx bx-user' ></i>
+            <h3>Property</h3>
         </a>
 
-        <a href="paiement">
+        <a href="#">
+            <i class='bx bx-file'></i>
+            <h3>Members</h3>
+        </a>
+
+        <a href="#">
             <i class='bx bx-line-chart-down'></i>
-            <h3>Status de Paiement</h3>
+            <h3>Acounting</h3>
         </a>
 
         <a href="#">
@@ -40,23 +44,30 @@
 
         <a href="#">
             <i class='bx bxs-crown'></i>
-            <h3>Products</h3>
+            <h3>Documents</h3>
         </a>
 
         <a href="#">
             <i class='bx bxs-crown'></i>
-            <h3>Reports</h3>
+            <h3>Incidents</h3>
         </a>
+
+        <a href="#">
+            <i class='bx bx-add-to-queue'></i>
+            <h3>Tasks</h3>
+        </a>
+
+        <a href="#">
+            <i class='bx bx-cog bx-flashing' ></i>
+            <h3>Meetings</h3>
+        </a>
+
 
         <a href="#">
             <i class='bx bx-cog bx-flashing' ></i>
             <h3>Settings</h3>
         </a>
 
-        <a href="#">
-            <i class='bx bx-add-to-queue'></i>
-            <h3>Add Product</h3>
-        </a>
 
         <a href="#">
             <i class='bx bx-log-out-circle'></i>
@@ -66,3 +77,4 @@
     </div>
 </aside>
 <!---------END OF ASIDE--------->
+

@@ -14,7 +14,7 @@
 
 <body>
 <div class="container">
-    <jsp:include page="templates/user_sidenav.jsp" />
+    <jsp:include page="templates/syndic_sidenav.jsp" />
 
     <!------------MIDDLE ------------>
     <main>
@@ -26,7 +26,7 @@
 
         <!---------INSIGHTS------->
         <div class="insights">
-            <h1>ASSEMBLE</h1>
+            <h1>ADMIN</h1>
 
         </div>
 

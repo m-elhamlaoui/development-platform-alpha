@@ -1,5 +1,6 @@
+
 <!-----------ASIDE------------->
-<aside>
+<aside >
     <div class="top">
 
         <div class="logo">
@@ -12,44 +13,49 @@
 
     <!----------SIDEBAR---------->
     <div class="sidebar">
-        <a href="#" id="">
+        <a href="#" class="active">
             <i class='bx bxs-dashboard' ></i>
             <h3>Dashboard</h3>
         </a>
 
-        <a href="#">
+        <a href="profile">
             <i class='bx bx-user' ></i>
-            <h3>Add Syndic</h3>
+            <h3>Profile</h3>
         </a>
 
-        <a href="adduser" id="adduser">
+        <a href="reclamer">
             <i class='bx bx-file'></i>
-            <h3>Add Members</h3>
+            <h3>My bills</h3>
         </a>
 
-        <a href="#" id="analytics">
+        <a href="paiement">
             <i class='bx bx-line-chart-down'></i>
-            <h3>Analytics</h3>
+            <h3>My documents</h3>
         </a>
 
-        <a href="#" id="messages">
+        <a href="#">
             <i class='bx bx-paper-plane bx-tada' ></i>
             <h3>Messages</h3><span class="message-count">24</span>
         </a>
 
-        <a href="#" id="acounting">
+        <a href="#">
             <i class='bx bxs-crown'></i>
-            <h3>Acounting</h3>
+            <h3>Meetings</h3>
         </a>
 
-        <a href="#" id="reports">
+        <a href="#">
             <i class='bx bxs-crown'></i>
-            <h3>Reports</h3>
+            <h3>Reports Incident</h3>
         </a>
 
-        <a href="#" id="settings">
+        <a href="#">
             <i class='bx bx-cog bx-flashing' ></i>
             <h3>Settings</h3>
+        </a>
+
+        <a href="#">
+            <i class='bx bx-add-to-queue'></i>
+            <h3>Add Product</h3>
         </a>
 
         <a href="#">
@@ -60,4 +66,3 @@
     </div>
 </aside>
 <!---------END OF ASIDE--------->
-

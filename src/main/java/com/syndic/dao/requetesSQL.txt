@@ -5,6 +5,8 @@ USE syndic_db;
 ALTER TABLE users
 ADD COLUMN checkadmin TINYINT(1) NOT NULL;
 
+ALTER TABLE syndic_db.users
+MODIFY COLUMN checkadmin int;
 
 UPDATE users
 SET checkadmin = 1
@@ -43,3 +45,4 @@ ALTER TABLE users
 ADD COLUMN u_apartment_number VARCHAR(20),
 ADD COLUMN u_building_number VARCHAR(20),
 ADD COLUMN u_phone_number VARCHAR(20);
+

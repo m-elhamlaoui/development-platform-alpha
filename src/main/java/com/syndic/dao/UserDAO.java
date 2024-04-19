@@ -8,6 +8,7 @@ public interface UserDAO {
     User getUserByEmail(String email);
     User login(String email, String password);
     void createUser(User user);
+    void createSyndic(User user);
     void updateUser(User user);
     void deleteUser(int userId);
 }

@@ -12,23 +12,24 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.RequestDispatcher;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
 import org.mindrot.jbcrypt.BCrypt;
 
 
-public class RegisterServlet extends HttpServlet {
+public class UserRegisterServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     private UserDAO userDAO;
-    public RegisterServlet() {
+    public UserRegisterServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
-        RequestDispatcher dispatcher = request.getRequestDispatcher("register.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("adduser.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -47,17 +48,24 @@ public class RegisterServlet extends HttpServlet {
                 if (connection != null) {
                     userDAO = new UserDAOImpl(connection);
                     // Cr�er un nouvel utilisateur
-                    User newUser = new User(0, name, email, hashedPassword,2);
+                    User newUser = new User(0, name, email, hashedPassword,0);
 
                     // Appeler la m�thode pour ajouter l'utilisateur � la base de donn�es
-                    userDAO.createSyndic(newUser);
+                    userDAO.createUser(newUser);
 
-                    // Rediriger vers la liste des utilisateurs apr�s l'ajout
-                    response.sendRedirect("login");
+                    // Définir un attribut de session pour le message
+                    HttpSession session = request.getSession();
+                    session.setAttribute("successMessage", "Le membre a été ajouté avec succès !");
+                    // Rediriger vers la même page
+                    response.sendRedirect(request.getRequestURI());
+
                     return;
                 }
             } catch (IOException e) {
                 e.printStackTrace();
+                // Définir un attribut de session pour le message d'échec
+                HttpSession session = request.getSession();
+                session.setAttribute("errorMessage", "Une erreur s'est produite lors de l'ajout du membre.");
             }
 
         } while (true);
