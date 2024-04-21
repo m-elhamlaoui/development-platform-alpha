@@ -18,14 +18,14 @@
             <h3>Dashboard</h3>
         </a>
 
-        <a href="profile">
+        <a href="memberprofile" id="memberprofile">
             <i class='bx bx-user' ></i>
             <h3>Profile</h3>
         </a>
 
         <a href="reclamer">
             <i class='bx bx-file'></i>
-            <h3>My bills</h3>
+            <h3>Proprety</h3>
         </a>
 
         <a href="paiement">
@@ -33,7 +33,7 @@
             <h3>My documents</h3>
         </a>
 
-        <a href="#">
+        <a href="reclamer">
             <i class='bx bx-paper-plane bx-tada' ></i>
             <h3>Messages</h3><span class="message-count">24</span>
         </a>

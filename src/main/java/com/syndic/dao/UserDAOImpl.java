@@ -21,7 +21,7 @@ public class UserDAOImpl extends AbstractDAOA implements UserDAO {
     private static final String DELETE_USER = "DELETE FROM users WHERE id=?";
     private static final String LOGIN_USER = "SELECT * FROM users WHERE u_email=? ";
 
-    private Connection connection;
+    private final Connection connection;
 
     public UserDAOImpl(Connection connection) {
         this.connection = connection;
@@ -154,5 +154,20 @@ public class UserDAOImpl extends AbstractDAOA implements UserDAO {
         int isAdmin = resultSet.getInt("checkadmin");
 
         return new User(id, name, email, password,isAdmin);
+    }
+
+
+    public int getUserIdByEmail(String email) throws SQLException {
+        int userId = 0;
+        String query = "SELECT id FROM users WHERE u_email = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, email);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    userId = resultSet.getInt("id");
+                }
+            }
+        }
+        return userId;
     }
 }

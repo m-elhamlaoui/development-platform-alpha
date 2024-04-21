@@ -17,7 +17,7 @@
             <h3>Dashboard</h3>
         </a>
 
-        <a href="#">
+        <a href="addmember">
             <i class='bx bx-user' ></i>
             <h3>Add Syndic</h3>
         </a>

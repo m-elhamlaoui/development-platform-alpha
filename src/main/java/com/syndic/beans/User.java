@@ -43,6 +43,12 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
+    public User(String email, String hashedPassword, int isAdmin) {
+        this.email = email;
+        this.password = hashedPassword;
+        this.isAdmin = isAdmin;
+    }
+
     // Getters et setters
     public int getIdUser() {
         return id_user;

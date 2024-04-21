@@ -7,7 +7,8 @@
   <title>Profil Utilisateur</title>
   <link rel="stylesheet" href="css/style.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <style>/* FORMULAIRE */
+
+    <style>/* FORMULAIRE */
     form {
     margin-top: 2rem;
     }
@@ -43,12 +44,12 @@
 </head>
 <body>
 <div class="container">
-  <jsp:include page="templates/user_sidenav.jsp" />
+  <jsp:include page="templates/member_sidenav.jsp" />
 
     <div class="formulaire" >
       <h1>Welcome <%= ((User) session.getAttribute("user")).getName() %> to your Profile!</h1>
   <h2>completer et éditer votre Profile </h2>
-<form action="profile" method="post">
+<form action="memberprofile" method="post">
   <input type="hidden" name="action" value="update">
   <label for="name">Nom :</label><br>
   <input type="text" id="name" name="name" value="${user.name}" readonly><br>
@@ -79,4 +80,7 @@
 </div>
 </div>
 </body>
+<script>
+    document.getElementById("memberprofile").classList.add("active");
+</script>
 </html>
