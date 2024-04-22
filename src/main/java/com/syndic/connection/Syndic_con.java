@@ -6,7 +6,7 @@ import java.sql.SQLException;
 public class Syndic_con {
     String db = "syndic_db";
     String user = "root";
-    String pwd = "Asmae2003KARMOUCHI";
+    String pwd = "emmanuel2000";
     String url = "jdbc:mysql://localhost:3306/" + db + "?useSSL=false";
 
     private static Connection connection = null;

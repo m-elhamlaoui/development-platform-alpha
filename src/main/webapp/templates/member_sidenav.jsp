@@ -49,7 +49,7 @@
         </a>
 
         <a href="#">
-            <i class='bx bx-cog bx-flashing' ></i>
+            <i class='bx bx-cog bx-flashing'></i>
             <h3>Settings</h3>
         </a>
 
@@ -58,7 +58,7 @@
             <h3>Add Product</h3>
         </a>
 
-        <a href="#">
+        <a href="login">
             <i class='bx bx-log-out-circle'></i>
             <h3>Log Out</h3>
         </a>

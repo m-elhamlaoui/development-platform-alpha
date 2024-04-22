@@ -2,6 +2,7 @@ package com.syndic.dao;
 
 import com.syndic.beans.Member;
 import com.syndic.beans.User;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -39,8 +40,7 @@ public class MemberProfileDAOImpl implements MemberProfileDAO {
         }
     }
 
-    //a redefinir
-    @Override
+
     public User getProfileUserById(int userId) throws SQLException {
         User profileUser = null;
         String query = "SELECT * FROM users WHERE id = ?";

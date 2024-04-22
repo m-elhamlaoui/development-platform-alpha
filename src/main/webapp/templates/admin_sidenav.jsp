@@ -13,12 +13,12 @@
     <!----------SIDEBAR---------->
     <div class="sidebar">
         <a href="#" id="">
-            <i class='bx bxs-dashboard' ></i>
+            <i class='bx bxs-dashboard'></i>
             <h3>Dashboard</h3>
         </a>
 
-        <a href="addmember">
-            <i class='bx bx-user' ></i>
+        <a href="add member">
+            <i class='bx bx-user'></i>
             <h3>Add Syndic</h3>
         </a>
 
@@ -48,11 +48,11 @@
         </a>
 
         <a href="#" id="settings">
-            <i class='bx bx-cog bx-flashing' ></i>
+            <i class='bx bx-cog bx-flashing'></i>
             <h3>Settings</h3>
         </a>
 
-        <a href="#">
+        <a href="login">
             <i class='bx bx-log-out-circle'></i>
             <h3>Log Out</h3>
         </a>

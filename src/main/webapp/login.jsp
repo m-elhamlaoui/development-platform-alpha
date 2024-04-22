@@ -19,7 +19,7 @@
 
         body::before {
             content: "";
-            background: url("img/po5.jpeg") center center fixed; /* Ajouter le chemin correct à votre image */
+            /* background: url("img/po5.jpeg") center center fixed;  Ajouter le chemin correct à votre image */
             background-size: cover;
             position: absolute;
             top: 0;
@@ -43,7 +43,7 @@
         }
     </style>
 </head>
-<body class="flex items-center justify-center h-screen" >
+<body class="flex items-center justify-center h-screen">
 
 <div class="bg-white p-8 rounded-lg shadow-md w-96 flex flex-col items-center">
     <img src="images/Paincare.jpeg" alt="Logo" class="mx-auto my-4 w-24">
@@ -52,24 +52,33 @@
     <form action="login" method="post" class="space-y-4">
         <input type="hidden" name="action" value="login">
 
-        <div>
-            <label for="residence" class="text-sm font-medium text-gray-600">Residence</label>
-            <input type="text" id="" name="Residence" class="mt-1 p-2 w-full border-2 border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" required>
-        </div>
+        <!--   <div>
+               <label for="residence" class="text-sm font-medium text-gray-600">Residence</label>
+               <input type="text" id="residence" name="Residence" class="mt-1 p-2 w-full border-2 border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" required>
+           </div>
 
+   -->
         <div>
-            <label for="mail" class="text-sm font-medium text-gray-600">Email</label>
-            <input type="text" id="" name="email" class="mt-1 p-2 w-full border-2 border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" required>
+            <label for="email" class="text-sm font-medium text-gray-600">Email</label>
+            <input type="text" id="email" name="email"
+                   class="mt-1 p-2 w-full border-2 border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+                   required>
         </div>
 
         <div>
             <label for="password" class="text-sm font-medium text-gray-600">Password</label>
-            <input type="password" id="" name="password" class="mt-1 p-2 w-full border-2 border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" required>
+            <input type="password" id="password" name="password"
+                   class="mt-1 p-2 w-full border-2 border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+                   required>
         </div>
 
-        <button type="submit" class="mx-auto block w-48 h-12 bg-gradient-to-r from-blue-200 to-blue-200 text-black p-4 rounded-md hover:opacity-90 focus:outline-none focus:ring focus:border-indigo-500">login</button>
+        <button type="submit"
+                class="mx-auto block w-48 h-12 bg-gradient-to-r from-blue-200 to-blue-200 text-black p-4 rounded-md hover:opacity-90 focus:outline-none focus:ring focus:border-indigo-500">
+            login
+        </button>
 
-        <p class="text-sm text-gray-600 mt-4">Vous n'avez pas de compte? <a href="register" class="text-blue-500">Créer-en un ici</a>.</p>
+        <p class="text-sm text-gray-600 mt-4">Vous n'avez pas de compte? <a href="register" class="text-blue-500">Créer-en
+            un ici</a>.</p>
     </form>
 </div>
 </body>
