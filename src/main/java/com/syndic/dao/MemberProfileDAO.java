@@ -12,7 +12,8 @@ public interface MemberProfileDAO {
    // void updatememberProfile(User user) throws SQLException;
 
     void addMember(Member member) throws SQLException ;
-    void createUser(User user) throws SQLException ;
 
 
+    //a redefinir
+    User getProfileUserById(int userId) throws SQLException;
 }

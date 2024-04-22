@@ -17,12 +17,12 @@
             <h3>Dashboard</h3>
         </a>
 
-        <a href="addmember">
+        <a href="addsyndic"id="addsyndic">
             <i class='bx bx-user' ></i>
             <h3>Add Syndic</h3>
         </a>
 
-        <a href="adduser" id="adduser">
+        <a href="addmember" id="addmember">
             <i class='bx bx-file'></i>
             <h3>Add Members</h3>
         </a>

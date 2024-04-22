@@ -40,12 +40,12 @@
   </servlet-mapping>
 
   <servlet>
-    <servlet-name>UserRegisterServlet</servlet-name>
-    <servlet-class>com.syndic.servlet.UserRegisterServlet</servlet-class>
+    <servlet-name>AddSyndicServlet</servlet-name>
+    <servlet-class>com.syndic.servlet.AddSyndicServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>UserRegisterServlet</servlet-name>
-    <url-pattern>/adduser</url-pattern>
+    <servlet-name>AddSyndicServlet</servlet-name>
+    <url-pattern>/addsyndic</url-pattern>
   </servlet-mapping>
 
   <servlet>
@@ -69,11 +69,11 @@
   </servlet-mapping>
 
   <servlet>
-    <servlet-name>AdminAddMemberServlet</servlet-name>
-    <servlet-class>com.syndic.servlet.AdminAddMemberServlet</servlet-class>
+    <servlet-name>AddMemberServlet</servlet-name>
+    <servlet-class>com.syndic.servlet.AddMemberServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>AdminAddMemberServlet</servlet-name>
+    <servlet-name>AddMemberServlet</servlet-name>
     <url-pattern>/addmember</url-pattern>
   </servlet-mapping>
 </web-app>

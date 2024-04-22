@@ -72,6 +72,9 @@
     <!---------END OF RIGHT------->
 
 </div>
+<script>
+    document.getElementById("").classList.add("active");
+</script>
 </body>
 
 <script src="javascript/main.js"></script>

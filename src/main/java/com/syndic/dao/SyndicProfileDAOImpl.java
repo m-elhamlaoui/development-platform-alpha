@@ -1,26 +1,28 @@
 package com.syndic.dao;
 
-import com.syndic.beans.Member;
+
+import com.syndic.beans.Syndic;
 import com.syndic.beans.User;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class MemberProfileDAOImpl implements MemberProfileDAO {
+public class SyndicProfileDAOImpl implements SyndicProfileDAO {
     private final Connection connection;
 
-    public MemberProfileDAOImpl(Connection connection) {
+    public SyndicProfileDAOImpl(Connection connection) {
         this.connection = connection;
     }
 
     @Override
-    public void addMember(Member member) throws SQLException {
+    public void addSyndic(Syndic syndic) throws SQLException {
 
-        String query = "INSERT INTO members (m_fulladdress, m_iduser) VALUES (?, ?)";
+        String query = "INSERT INTO syndics (s_fulladdress, s_iduser) VALUES (?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setString(1, member.getFulladdress());
-            preparedStatement.setInt(2, member.getUserId());
+            preparedStatement.setString(1, syndic.getFulladdress());
+            preparedStatement.setInt(2, syndic.getUserId());
             preparedStatement.executeUpdate();
         }
     }

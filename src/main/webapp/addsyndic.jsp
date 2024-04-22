@@ -24,7 +24,7 @@
             <input type="date">
         </div>
         <div class="recent-updates">
-            <form action="adduser" method="post" class="user-form">
+            <form action="addsyndic" method="post" class="user-form">
                 <label for="name">Nom:</label>
                 <input type="text" id="name" name="name" required><br>
 
@@ -95,7 +95,7 @@
 
 </div>
 <script>
-    document.getElementById("adduser").classList.add("active");
+    document.getElementById("addsyndic").classList.add("active");
 </script>
 </body>
 

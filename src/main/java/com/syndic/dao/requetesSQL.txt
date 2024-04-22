@@ -46,14 +46,26 @@ ADD COLUMN u_apartment_number VARCHAR(20),
 ADD COLUMN u_building_number VARCHAR(20),
 ADD COLUMN u_phone_number VARCHAR(20);
 
-CREATE TABLE member (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE members (
+    m_id INT AUTO_INCREMENT PRIMARY KEY,
     m_firstname VARCHAR(50),
     m_lastname VARCHAR(50),
     m_codepostal VARCHAR(10),
     m_phonenumber VARCHAR(15),
     m_fulladdress VARCHAR(255),
-    iduser INT,
-    FOREIGN KEY (iduser) REFERENCES users(id)
+    m_mail VARCHAR(255),
+    m_iduser INT,
+    FOREIGN KEY (m_iduser) REFERENCES users(id)
 );
 
+CREATE TABLE syndics (
+    s_id INT AUTO_INCREMENT PRIMARY KEY,
+    s_firstname VARCHAR(50),
+    s_lastname VARCHAR(50),
+    s_codepostal VARCHAR(10),
+    s_phonenumber VARCHAR(15),
+    s_fulladdress VARCHAR(255),
+    s_mail VARCHAR(255),
+    s_iduser INT,
+    FOREIGN KEY (s_iduser) REFERENCES users(id)
+);
