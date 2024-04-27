@@ -8,6 +8,7 @@
     <!---BOX ICON CDN-->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <!----STYLESHEET---->
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -27,7 +28,6 @@
         <!---------INSIGHTS------->
         <div class="insights">
                 <h1>ADMIN</h1>
-
         </div>
 
     </main>
@@ -73,6 +73,14 @@
 
 </div>
 </body>
-
 <script src="javascript/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.sub-btn').click(function () {
+            $(this).next('.sub-menu').slideToggle();
+            $(this).find('.dropdown').toggleClass('rotate');
+        });
+    });
+</script>
 </html>
