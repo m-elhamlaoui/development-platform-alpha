@@ -8,7 +8,6 @@
     <!---BOX ICON CDN-->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-    <script src="https://cdn.tailwindcss.com"></script>
     <!----STYLESHEET---->
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -20,24 +19,16 @@
     <!------------MIDDLE ------------>
     <main>
         <!----------TOP -------->
-        <div class="max-w-lg">
-            <h1 class="text-light-800 text-xl font-bold sm:text-2xl">
-                Dashboard
-            </h1>
-        </div>
-
+        <h1>Dashboard</h1>
         <div class="date">
             <input type="date">
         </div>
 
-        <div class="max-w-lg">
-            <h3 class="text-light-800 text-xl font-bold sm:text-2xl">
-                ADMIN
-            </h3>
-        </div>
-
         <!---------INSIGHTS------->
+        <div class="insights">
+            <h1>ADMIN</h1>
 
+        </div>
 
     </main>
     <!-------------END OF MIDDLE --------->
@@ -82,14 +73,6 @@
 
 </div>
 </body>
+
 <script src="javascript/main.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('.sub-btn').click(function () {
-            $(this).next('.sub-menu').slideToggle();
-            $(this).find('.dropdown').toggleClass('rotate');
-        });
-    });
-</script>
 </html>
