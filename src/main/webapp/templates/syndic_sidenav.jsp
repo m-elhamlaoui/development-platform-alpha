@@ -57,7 +57,7 @@
             <h3>Tasks</h3>
         </a>
 
-        <a href="#">
+        <a href="meeting" id="meeting">
             <i class='bx bx-cog bx-flashing' ></i>
             <h3>Meetings</h3>
         </a>

@@ -26,7 +26,7 @@
 
         <!---------INSIGHTS------->
         <div class="insights">
-            <h1>ADMIN</h1>
+            <h1>Meeting</h1>
 
         </div>
 
@@ -73,7 +73,7 @@
 
 </div>
 <script>
-    document.getElementById("").classList.add("active");
+    document.getElementById("meeting").classList.add("active");
 </script>
 </body>
 

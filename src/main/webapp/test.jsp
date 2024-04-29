@@ -14,7 +14,7 @@
 
 <body>
 <div class="container">
-    <jsp:include page="templates/user_sidenav.jsp" />
+    <jsp:include page="templates/admin_sidenav.jsp" />
 
     <!------------MIDDLE ------------>
     <main>

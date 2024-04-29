@@ -60,12 +60,12 @@
 
   <!-- Servlet pour la gestion des paiements -->
   <servlet>
-    <servlet-name>PaiementServlet</servlet-name>
-    <servlet-class>com.syndic.servlet.PaiementServlet</servlet-class>
+    <servlet-name>GeneratePDFServlet</servlet-name>
+    <servlet-class>com.syndic.servlet.GeneratePDFServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>PaiementServlet</servlet-name>
-    <url-pattern>/paiement</url-pattern>
+    <servlet-name>GeneratePDFServlet</servlet-name>
+    <url-pattern>/generatePDF</url-pattern>
   </servlet-mapping>
 
   <servlet>
@@ -75,5 +75,14 @@
   <servlet-mapping>
     <servlet-name>AddMemberServlet</servlet-name>
     <url-pattern>/addmember</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>MeetingServlet</servlet-name>
+    <servlet-class>com.syndic.servlet.MeetingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MeetingServlet</servlet-name>
+    <url-pattern>/meeting</url-pattern>
   </servlet-mapping>
 </web-app>
