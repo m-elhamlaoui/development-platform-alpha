@@ -25,17 +25,17 @@
 
                 </a>
                 <div class="sub-menu">
-                    <a href="#" class="sub-item"><i class="fas fa-chart-line"></i><h6>General Accounting</h6></a>
-                    <a href="#" class="sub-item"><i class="fas fa-chart-bar"></i><h6>Rental Dashboard</h6></a>
-                    <a href="#" class="sub-item"><i class="fas fa-money-bill-wave"></i><h6>Members Payment</h6></a>
-                    <a href="#" class="sub-item"><i class="fas fa-file-invoice-dollar"></i>
-                        <h3>Members Invoice</h3></a>
-                    <a href="#" class="sub-item"><i class="fas fa-file-invoice"></i>
-                        <h3>Property Invoice</h3></a>
-                    <a href="#" class="sub-item"><i class="fas fa-users"></i>
-                        <h3>Suppliers</h3></a>
-                    <a href="#" class="sub-item"><i class="fas fa-file-contract"></i>
-                        <h3>Contracts</h3></a>
+                    <a href="Memberspayment" id="Memberspayment" class="sub-item">
+                        <i class='bx bxs-money'></i><h6>Members Payment</h6>
+                    </a>
+                    <a href="#" class="sub-item">
+                        <i class='bx bxs-group'></i>
+                        <h3>Suppliers</h3>
+                    </a>
+                    <a href="#" class="sub-item">
+                        <i class='bx bxs-file-contract'></i>
+                        <h3>Contracts</h3>
+                    </a>
                 </div>
             </div>
             <div class="item"><a href="#" id="reports"><i class='bx bxs-crown'></i>
