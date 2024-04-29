@@ -18,7 +18,7 @@
     <welcome-file>reclamer.jsp</welcome-file>
     <welcome-file>paiement.jsp</welcome-file>
     <welcome-file>addmember.jsp</welcome-file>
-
+    <welcome-file>Memberspayment</welcome-file>
   </welcome-file-list>
 
   <servlet>
@@ -60,12 +60,12 @@
 
   <!-- Servlet pour la gestion des paiements -->
   <servlet>
-    <servlet-name>GeneratePDFServlet</servlet-name>
-    <servlet-class>com.syndic.servlet.GeneratePDFServlet</servlet-class>
+    <servlet-name>PaiementServlet</servlet-name>
+    <servlet-class>com.syndic.servlet.PaiementServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>GeneratePDFServlet</servlet-name>
-    <url-pattern>/generatePDF</url-pattern>
+    <servlet-name>PaiementServlet</servlet-name>
+    <url-pattern>/paiement</url-pattern>
   </servlet-mapping>
 
   <servlet>
@@ -76,13 +76,12 @@
     <servlet-name>AddMemberServlet</servlet-name>
     <url-pattern>/addmember</url-pattern>
   </servlet-mapping>
-
   <servlet>
-    <servlet-name>MeetingServlet</servlet-name>
-    <servlet-class>com.syndic.servlet.MeetingServlet</servlet-class>
+    <servlet-name>MembersPaymentServlet</servlet-name>
+    <servlet-class>com.syndic.servlet.MembersPaymentServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>MeetingServlet</servlet-name>
-    <url-pattern>/meeting</url-pattern>
+    <servlet-name>MembersPaymentServlet</servlet-name>
+    <url-pattern>/Memberspayment</url-pattern>
   </servlet-mapping>
 </web-app>
