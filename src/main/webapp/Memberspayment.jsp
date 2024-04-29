@@ -11,6 +11,7 @@
 
     <!----STYLESHEET---->
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
 
@@ -28,7 +29,7 @@
         <div class="max-w-screen-xl mx-auto px-4 md:px-6">
             <div class="items-start justify-between md:flex">
                 <div class="max-w-lg">
-                    <h3 class="text-light-800 text-xl font-bold sm:text-2xl">
+                    <h3 class="text-gray-800 text-xl font-bold sm:text-2xl">
                         Members Payment
                     </h3>
                 </div>
@@ -100,9 +101,10 @@
                 </table>
             </div>
 
-            <!-- Formulaire de Paiement -->
+            <!-- Formulaire d'ajout -->
             <div id="PaymentForm" class="form hidden">
-                <form id="transactionFormElement" method="post" action="">
+                <h2>Add Transaction</h2>
+                <form id="transactionFormElement">
                     <label for="code">Code:</label>
                     <input type="text" id="code" name="code" required><br><br>
 
@@ -130,12 +132,43 @@
                     <button type="submit">Save</button>
                 </form>
             </div>
+            <!-- Formulaire de modification de paiement -->
+            <div id="editPaymentForm" class="form hidden">
+                <h2>Edit Payment</h2>
+                <form>
+                    <label for="edit_code">Code:</label>
+                    <input type="text" id="edit_code" name="edit_code" required><br><br>
+
+                    <label for="edit_date">Date:</label>
+                    <input type="date" id="edit_date" name="edit_date" required><br><br>
+
+                    <label for="edit_amount">Amount:</label>
+                    <input type="number" id="edit_amount" name="edit_amount" required><br><br>
+
+                    <label for="edit_method">Method:</label>
+                    <input type="text" id="edit_method" name="edit_method" required><br><br>
+
+                    <label for="edit_type">Type:</label>
+                    <input type="text" id="edit_type" name="edit_type" required><br><br>
+
+                    <label for="edit_account_id">Account ID:</label>
+                    <input type="number" id="edit_account_id" name="edit_account_id" required><br><br>
+
+                    <label for="edit_member_id">Member ID:</label>
+                    <input type="number" id="edit_member_id" name="edit_member_id" required><br><br>
+
+                    <label for="edit_status">Status:</label>
+                    <input type="text" id="edit_status" name="edit_status" required><br><br>
+
+                    <button type="submit">Save changes</button>
+                </form>
+            </div>
+
         </div>
     </main>
     <!-------------END OF MIDDLE --------->
     <!---------RIGHT--------->
     <div class="right">
-
         <!--------TOP-->
         <div class="top">
             <!---MENU ICON-->
@@ -168,6 +201,18 @@
     <!---------END OF RIGHT------->
 
 </div>
+
+</body>
+<script src="javascript/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.sub-btn').click(function () {
+            $(this).next('.sub-menu').slideToggle();
+            $(this).find('.dropdown').toggleClass('rotate');
+        });
+    });
+</script>
 <script>
     // Récupération des éléments boutons et formulaires
     var addPaymentBtn = document.getElementById('addPaymentBtn');
@@ -194,17 +239,6 @@
         // Ajoutez votre logique de suppression ici
     });
 </script>
-</body>
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="javascript/main.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('.sub-btn').click(function () {
-            $(this).next('.sub-menu').slideToggle();
-            $(this).find('.dropdown').toggleClass('rotate');
-        });
-    });
-</script>
 
 </html>
+
