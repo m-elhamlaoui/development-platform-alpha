@@ -8,7 +8,7 @@
     <!---BOX ICON CDN-->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <!----STYLESHEET---->
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -20,15 +20,24 @@
     <!------------MIDDLE ------------>
     <main>
         <!----------TOP -------->
-        <h1>Dashboard</h1>
+        <div class="max-w-lg">
+            <h1 class="text-light-800 text-xl font-bold sm:text-2xl">
+                Dashboard
+            </h1>
+        </div>
+
         <div class="date">
             <input type="date">
         </div>
 
-        <!---------INSIGHTS------->
-        <div class="insights">
-                <h1>ADMIN</h1>
+        <div class="max-w-lg">
+            <h3 class="text-light-800 text-xl font-bold sm:text-2xl">
+                ADMIN
+            </h3>
         </div>
+
+        <!---------INSIGHTS------->
+
 
     </main>
     <!-------------END OF MIDDLE --------->
