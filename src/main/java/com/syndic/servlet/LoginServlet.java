@@ -1,6 +1,9 @@
 package com.syndic.servlet;
 
+import com.syndic.beans.Member;
 import com.syndic.beans.User;
+import com.syndic.dao.MemberProfileDAO;
+import com.syndic.dao.MemberProfileDAOImpl;
 import com.syndic.dao.UserDAO;
 import com.syndic.dao.UserDAOImpl;
 import com.syndic.connection.Syndic_con;
@@ -10,6 +13,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.RequestDispatcher;
+import com.syndic.dao.MemberProfileDAO;
+import com.syndic.dao.MemberProfileDAOImpl;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -20,6 +25,7 @@ import java.util.concurrent.TimeUnit;
 public class LoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private UserDAO userDAO;
+    private MemberProfileDAO memberDAO;
 
     public LoginServlet() {
         super();
@@ -56,7 +62,12 @@ public class LoginServlet extends HttpServlet {
                             response.sendRedirect("syndic.jsp");
                             return;
                         }  else  {
+
                             response.sendRedirect("home.jsp");
+                            int userId = user.getIdUser();
+                            memberDAO = new MemberProfileDAOImpl(connection);
+                            Member member = memberDAO.getMemberByUserId(userId);
+                            session.setAttribute("member", member);
                             return;
                         }
                     } else {
@@ -67,6 +78,8 @@ public class LoginServlet extends HttpServlet {
             } catch (IOException e) {
                 e.printStackTrace();
                 return;
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
 
         } while (true); // Continue indefinitely until connection is obtained
