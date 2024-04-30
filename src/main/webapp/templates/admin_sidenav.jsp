@@ -1,3 +1,18 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DASHBOARD</title>
+    <link rel="shortcut icon" href="/Assets/images/logo.png" type="image/x-icon">
+    <!---BOX ICON CDN-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!----STYLESHEET---->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
 <!-----------ASIDE------------->
 <aside>
     <div class="top">
@@ -39,8 +54,14 @@
 
         <a href="#" id="acounting">
             <i class='bx bxs-crown'></i>
-            <h3>Acounting</h3>
+            <h3>Accounting</h3>
+            <span id="toggleArrow" class="bx bx-caret-down"></span> <!-- Ajout de la flèche -->
         </a>
+        <div id="additionalLinks" style="display: none;"> <!-- Div pour les liens supplémentaires -->
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <!-- Ajoutez autant de liens que nécessaire -->
+        </div>
 
         <a href="#" id="reports">
             <i class='bx bxs-crown'></i>
@@ -61,3 +82,23 @@
 </aside>
 <!---------END OF ASIDE--------->
 
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var toggleArrow = document.getElementById("toggleArrow");
+        var additionalLinks = document.getElementById("additionalLinks");
+
+        toggleArrow.addEventListener("click", function() {
+            if (additionalLinks.style.display === "none") {
+                additionalLinks.style.display = "block";
+                toggleArrow.classList.remove("bx-caret-right");
+                toggleArrow.classList.add("bx-caret-down");
+            } else {
+                additionalLinks.style.display = "none";
+                toggleArrow.classList.remove("bx-caret-down");
+                toggleArrow.classList.add("bx-caret-right");
+            }
+        });
+    });
+</script>
+</body>
+</html>

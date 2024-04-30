@@ -1,4 +1,17 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DASHBOARD</title>
+    <link rel="shortcut icon" href="/Assets/images/logo.png" type="image/x-icon">
+    <!---BOX ICON CDN-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
+    <!----STYLESHEET---->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
 <!-----------ASIDE------------->
 <aside >
     <div class="top">
@@ -66,3 +79,5 @@
     </div>
 </aside>
 <!---------END OF ASIDE--------->
+</body>
+</html>

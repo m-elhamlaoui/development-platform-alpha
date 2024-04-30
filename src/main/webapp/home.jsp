@@ -1,4 +1,4 @@
-<%@ page import="com.syndic.beans.User" %>
+<%@ page import="com.syndic.beans.Member" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +28,7 @@
 
     <!---------INSIGHTS------->
     <div class="insights">
-      <h1>Welcome <%= ((User) session.getAttribute("user")).getName() %>!</h1>
+      <h1>Welcome <%= ((Member) session.getAttribute("member")).getFirstName() %>!</h1>
 
     </div>
 
