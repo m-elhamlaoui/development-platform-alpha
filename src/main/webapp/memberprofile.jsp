@@ -43,44 +43,27 @@
   </style>
 </head>
 <body>
-<div class="container">
-  <jsp:include page="templates/member_sidenav.jsp" />
-
-    <div class="formulaire" >
-      <h1>Welcome <%= ((User) session.getAttribute("user")).getName() %> to your Profile!</h1>
-  <h2>completer et éditer votre Profile </h2>
+<h1>Informations du Membre</h1>
 <form action="memberprofile" method="post">
-  <input type="hidden" name="action" value="update">
-  <label for="name">Nom :</label><br>
-  <input type="text" id="name" name="name" value="${user.name}" readonly><br>
-  <label for="email">Email :</label><br>
-  <input type="email" id="email" name="email" value="${user.email}" readonly ><br>
-  <label for="mobile">Numéro de téléphone :</label><br>
-  <input type="text" id="mobile" name="phoneNumber"  value="${profileUser.phoneNumber}" ><br>
-  <label for="apartment">Numéro d'appartement :</label><br>
-  <input type="text" id="apartment" name="apartmentNumber" value="${profileUser.apartmentNumber}" ><br>
-  <label for="building">Numéro d'immeuble :</label><br>
-  <input type="text" id="building" name="buildingNumber" value="${profileUser.buildingNumber}" ><br>
-  <input type="submit" value="Enregistrer">
+    <label for="firstname">Prénom:</label><br>
+    <input type="text" id="firstname" name="firstname" value="${member.firstName}"><br>
+
+    <label for="lastname">Nom:</label><br>
+    <input type="text" id="lastname" name="lastname" value="${member.lastName}"><br>
+
+    <label for="codepostal">Code Postal:</label><br>
+    <input type="text" id="codepostal" name="codepostal" value="${member.codepostal}"><br>
+
+    <label for="phonenumber">Numéro de Téléphone:</label><br>
+    <input type="text" id="phonenumber" name="phonenumber" value="${member.phoneNumber}"><br>
+
+    <label for="fulladdress">Adresse Complète:</label><br>
+    <input type="text" id="fulladdress" name="fulladdress" value="${member.fulladdress}"><br>
+
+    <label for="mail">E-mail:</label><br>
+    <input type="text" id="mail" name="mail" value="${member.mail}"><br>
+
+    <input type="submit" value="Enregistrer">
 </form>
-
-      <%-- Affichage du message de succès --%>
-      <% if (request.getAttribute("successMessage") != null) { %>
-      <div class="alert alert-success">
-        <%= request.getAttribute("successMessage") %>
-      </div>
-
-      <% } %>
-      <%-- Affichage du message d'erreur --%>
-      <% if (request.getAttribute("errorMessage") != null) { %>
-      <div class="alert alert-danger">
-        <%= request.getAttribute("errorMessage") %>
-      </div>
-      <% } %>
-</div>
-</div>
 </body>
-<script>
-    document.getElementById("memberprofile").classList.add("active");
-</script>
 </html>

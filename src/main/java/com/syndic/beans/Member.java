@@ -7,6 +7,7 @@ public class Member {
     private String fulladdress;
     private String codepostal;
     private String phoneNumber;
+    private String mail;
     private int userId;
 
     // Constructeurs, getters et setters
@@ -14,13 +15,7 @@ public class Member {
 
     public Member() {
     }
-    public Member(String fulladdress) {
-        this.fulladdress = fulladdress;
-    }
-    public Member(int id , int userId){
-        this.id = id;
-        this.userId = userId;
-    }
+
     // Constructeur avec tous les champs
     public Member(int id, String firstName, String lastName, String fulladdress,String codepostal, String phoneNumber, int userId) {
         this.id = id;
@@ -29,6 +24,16 @@ public class Member {
         this.fulladdress = fulladdress;
         this.codepostal = codepostal;
         this.phoneNumber = phoneNumber;
+        this.userId = userId;
+    }
+    public Member(int id, String firstName, String lastName, String fulladdress, String codepostal, String phoneNumber, String mail, int userId) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.fulladdress = fulladdress;
+        this.codepostal = codepostal;
+        this.phoneNumber = phoneNumber;
+        this.mail = mail;
         this.userId = userId;
     }
 
@@ -85,5 +90,12 @@ public class Member {
         this.userId = userId;
     }
 
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        mail = mail;
+    }
 }
 

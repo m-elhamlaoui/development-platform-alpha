@@ -58,15 +58,6 @@
     <url-pattern>/reclamer</url-pattern>
   </servlet-mapping>
 
-  <!-- Servlet pour la gestion des paiements -->
-  <servlet>
-    <servlet-name>PaiementServlet</servlet-name>
-    <servlet-class>com.syndic.servlet.PaiementServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>PaiementServlet</servlet-name>
-    <url-pattern>/paiement</url-pattern>
-  </servlet-mapping>
 
   <servlet>
     <servlet-name>AddMemberServlet</servlet-name>
@@ -83,5 +74,14 @@
   <servlet-mapping>
     <servlet-name>MembersPaymentServlet</servlet-name>
     <url-pattern>/Memberspayment</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>MemberProfileServlet</servlet-name>
+    <servlet-class>com.syndic.servlet.MemberProfileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemberProfileServlet</servlet-name>
+    <url-pattern>/memberprofile</url-pattern>
   </servlet-mapping>
 </web-app>

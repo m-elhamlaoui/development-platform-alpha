@@ -7,13 +7,10 @@ import java.util.List;
 import com.syndic.beans.Member;
 
 public interface MemberProfileDAO {
-   // User getProfileUserById(int userId) throws SQLException;
-
-   // void updatememberProfile(User user) throws SQLException;
 
     void addMember(Member member) throws SQLException ;
 
+    Member getMemberByUserId(int userId) throws SQLException;
+    void updateMember(Member member) throws SQLException;
 
-    //a redefinir
-    User getProfileUserById(int userId) throws SQLException;
 }

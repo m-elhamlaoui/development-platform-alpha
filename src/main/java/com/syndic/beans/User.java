@@ -7,9 +7,9 @@ public class User {
     private String password;
     private int isAdmin;
 
-    private String apartmentNumber;
+
     private String buildingNumber;
-    private String phoneNumber;
+
 
     // Constructeur par d�faut
     public User() {
@@ -39,8 +39,7 @@ public class User {
         this.email = email;
         this.password = password;
         this.isAdmin = isAdmin;
-        this.apartmentNumber = apartmentNumber;
-        this.phoneNumber = phoneNumber;
+
     }
 
     public User(String email, String hashedPassword, int isAdmin) {
@@ -98,15 +97,8 @@ public class User {
     }
 
 
-    // Autres m�thodes
     // Getters and setters
-    public String getApartmentNumber() {
-        return apartmentNumber;
-    }
 
-    public void setApartmentNumber(String apartmentNumber) {
-        this.apartmentNumber = apartmentNumber;
-    }
 
     public String getBuildingNumber() {
         return buildingNumber;
@@ -116,11 +108,7 @@ public class User {
         this.buildingNumber = buildingNumber;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setApartmentNumber(String uApartmentNumber) {
     }
 }

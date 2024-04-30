@@ -10,6 +10,7 @@ import java.sql.SQLException;
 public class MemberProfileDAOImpl implements MemberProfileDAO {
     private final Connection connection;
 
+
     public MemberProfileDAOImpl(Connection connection) {
         this.connection = connection;
     }
@@ -25,25 +26,43 @@ public class MemberProfileDAOImpl implements MemberProfileDAO {
         }
     }
 
-
-    //a redefinir
     @Override
-    public User getProfileUserById(int userId) throws SQLException {
-        User profileUser = null;
-        String query = "SELECT * FROM users WHERE id = ?";
+    public Member getMemberByUserId(int userId) throws SQLException {
+        String query = "SELECT * FROM members WHERE m_iduser = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, userId);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
-                    profileUser = new User();
-                    profileUser.setName(resultSet.getString("u_name"));
-                    profileUser.setEmail(resultSet.getString("u_email"));
-                    profileUser.setApartmentNumber(resultSet.getString("u_apartment_number"));
-                    profileUser.setBuildingNumber(resultSet.getString("u_building_number"));
+                    int id = resultSet.getInt("m_id");
+                    String firstName = resultSet.getString("m_firstname");
+                    String lastName = resultSet.getString("m_lastname");
+                    String fulladdress = resultSet.getString("m_fulladdress");
+                    String codepostal = resultSet.getString("m_codepostal");
+                    String phoneNumber = resultSet.getString("m_phonenumber");
+                    String mail = resultSet.getString("m_mail");
+                    return new Member(id, firstName, lastName, fulladdress, codepostal, phoneNumber, mail, userId);
                 }
             }
         }
-        return profileUser;
+        return null; // Retourne null si aucun membre n'est trouvé avec cet identifiant utilisateur.
     }
+
+
+    @Override
+    public void updateMember(Member member) throws SQLException {
+        String query = "UPDATE members SET m_firstname = ?, m_lastname = ?, m_codepostal = ?, m_phonenumber = ?, m_fulladdress = ?, m_mail = ? WHERE m_iduser = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, member.getFirstName());
+            preparedStatement.setString(2, member.getLastName());
+            preparedStatement.setString(3, member.getCodepostal());
+            preparedStatement.setString(4, member.getPhoneNumber());
+            preparedStatement.setString(5, member.getFulladdress());
+            preparedStatement.setString(6, member.getMail());
+            preparedStatement.setInt(7, member.getUserId());
+            preparedStatement.executeUpdate();
+        }
+    }
+
+
 
 }
