@@ -13,6 +13,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.RequestDispatcher;
+import com.syndic.dao.MemberProfileDAO;
+import com.syndic.dao.MemberProfileDAOImpl;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -32,7 +34,6 @@ public class LoginServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Rediriger vers la page login.jsp
-
         RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
         dispatcher.forward(request, response);
     }
@@ -61,14 +62,12 @@ public class LoginServlet extends HttpServlet {
                             response.sendRedirect("syndic.jsp");
                             return;
                         }  else  {
+
+                            response.sendRedirect("home.jsp");
                             int userId = user.getIdUser();
                             memberDAO = new MemberProfileDAOImpl(connection);
                             Member member = memberDAO.getMemberByUserId(userId);
                             session.setAttribute("member", member);
-
-                            response.sendRedirect("home.jsp");
-
-
                             return;
                         }
                     } else {

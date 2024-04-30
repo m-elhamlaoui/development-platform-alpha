@@ -1,3 +1,4 @@
+<%@ page import="com.syndic.beans.User" %>
 <%@ page import="com.syndic.beans.Member" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -5,6 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Profil Utilisateur</title>
+
   <link rel="stylesheet" href="css/style.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -44,6 +46,8 @@
 </head>
 <body>
 <h1>Informations du Membre</h1>
+
+<h1>Welcome <%= ((Member) session.getAttribute("member")).getFirstName() %>!</h1>
 <form action="memberprofile" method="post">
     <label for="firstname">Prénom:</label><br>
     <input type="text" id="firstname" name="firstname" value="${member.firstName}"><br>

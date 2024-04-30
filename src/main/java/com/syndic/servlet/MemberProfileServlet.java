@@ -52,7 +52,7 @@ public class  MemberProfileServlet extends HttpServlet {
             Member member = memberDAO.getMemberByUserId(userId);
 
             member.setFirstName(firstname);
-
+            System.out.println("upup" + firstname);
             member.setLastName(lastname);
             member.setCodepostal(codepostal);
             member.setPhoneNumber(phonenumber);

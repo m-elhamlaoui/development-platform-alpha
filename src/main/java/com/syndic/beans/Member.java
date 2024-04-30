@@ -26,6 +26,9 @@ public class Member {
         this.phoneNumber = phoneNumber;
         this.userId = userId;
     }
+    public Member( int userId) {
+        this.userId = userId;
+    }
     public Member(int id, String firstName, String lastName, String fulladdress, String codepostal, String phoneNumber, String mail, int userId) {
         this.id = id;
         this.firstName = firstName;
