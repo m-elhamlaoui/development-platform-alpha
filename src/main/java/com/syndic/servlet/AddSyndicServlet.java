@@ -1,6 +1,5 @@
 package com.syndic.servlet;
 
-import com.syndic.beans.Member;
 import com.syndic.beans.Syndic;
 import com.syndic.beans.User;
 import com.syndic.dao.*;

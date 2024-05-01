@@ -1,11 +1,9 @@
 package com.syndic.servlet;
 
 import com.syndic.beans.Member;
+import com.syndic.beans.Syndic;
 import com.syndic.beans.User;
-import com.syndic.dao.MemberProfileDAO;
-import com.syndic.dao.MemberProfileDAOImpl;
-import com.syndic.dao.UserDAO;
-import com.syndic.dao.UserDAOImpl;
+import com.syndic.dao.*;
 import com.syndic.connection.Syndic_con;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -26,6 +24,7 @@ public class LoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private UserDAO userDAO;
     private MemberProfileDAO memberDAO;
+    private SyndicProfileDAO syndicDAO;
 
     public LoginServlet() {
         super();
@@ -60,6 +59,10 @@ public class LoginServlet extends HttpServlet {
                             return;
                         } else if (user.getAdmin() == 2){
                             response.sendRedirect("syndic.jsp");
+                            int userId = user.getIdUser();
+                            syndicDAO = new SyndicProfileDAOImpl(connection);
+                            Syndic syndic = syndicDAO.getSyndicByUserId(userId);
+                            session.setAttribute("syndic", syndic);
                             return;
                         }  else  {
 

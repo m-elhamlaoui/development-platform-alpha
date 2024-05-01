@@ -40,9 +40,6 @@ public class Member {
         this.userId = userId;
     }
 
-    public Member(int id){
-
-    }
 
     public int getId() {
         return id;

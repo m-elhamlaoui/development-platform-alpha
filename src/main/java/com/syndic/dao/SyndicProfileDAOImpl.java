@@ -1,6 +1,7 @@
 package com.syndic.dao;
 
 
+import com.syndic.beans.Member;
 import com.syndic.beans.Syndic;
 import com.syndic.beans.User;
 
@@ -48,4 +49,27 @@ public class SyndicProfileDAOImpl implements SyndicProfileDAO {
         return profileUser;
     }
 
+    @Override
+    public Syndic getSyndicByUserId(int userId) throws SQLException {
+        String query = "SELECT * FROM syndics WHERE s_iduser = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, userId);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    int id = resultSet.getInt("s_id");
+                    String firstName = resultSet.getString("s_firstname");
+                    String lastName = resultSet.getString("s_lastname");
+                    String fulladdress = resultSet.getString("s_fulladdress");
+                    String codepostal = resultSet.getString("s_codepostal");
+                    String phoneNumber = resultSet.getString("s_phonenumber");
+                    String mail = resultSet.getString("s_mail");
+                    return new Syndic ( id, firstName, lastName, fulladdress, codepostal, phoneNumber, mail, userId);
+                }
+            }
+        }
+        return null; // Retourne null si aucun membre n'est trouvé avec cet identifiant utilisateur.
+    }
+
 }
+
+

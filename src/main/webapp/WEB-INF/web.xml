@@ -84,4 +84,14 @@
     <servlet-name>MemberProfileServlet</servlet-name>
     <url-pattern>/memberprofile</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>MeetingServlet</servlet-name>
+    <servlet-class>com.syndic.servlet.MeetingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MeetingServlet</servlet-name>
+    <url-pattern>/meeting</url-pattern>
+  </servlet-mapping>
+
 </web-app>

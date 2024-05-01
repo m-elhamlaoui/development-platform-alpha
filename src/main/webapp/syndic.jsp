@@ -1,3 +1,4 @@
+<%@ page import="com.syndic.beans.Syndic" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +11,7 @@
 
     <!----STYLESHEET---->
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
@@ -51,8 +53,8 @@
             </div>
             <div class="profile">
                 <div class="info">
-                    <p>Hey, <b>Ayo</b></p>
-                    <small class="text-muted">Admin</small>
+                    <p>Hey, <b><%= ((Syndic) session.getAttribute("syndic")).getFirstName() %></b></p>
+                    <small class="text-muted">Syndic</small>
                 </div>
                 <div class="profile-photo">
                     <img src="./Assets/images/profile-1.jpg" alt="Oluwadare Taye Ayo">

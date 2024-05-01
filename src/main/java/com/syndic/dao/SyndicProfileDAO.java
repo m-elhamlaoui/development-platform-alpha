@@ -1,5 +1,6 @@
 package com.syndic.dao;
 
+import com.syndic.beans.Member;
 import com.syndic.beans.Syndic;
 import com.syndic.beans.User;
 
@@ -13,4 +14,6 @@ public interface SyndicProfileDAO {
 
     //a redefinir
     User getProfileUserById(int userId) throws SQLException;
+
+    Syndic getSyndicByUserId(int userId) throws SQLException;
 }
