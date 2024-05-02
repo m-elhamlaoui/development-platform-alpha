@@ -192,7 +192,7 @@
 
 </div>
 </body>
-
+<script src="javascript/main.js"></script>
 <script>
     // Récupération des éléments boutons et formulaires
     var addPaymentBtn = document.getElementById('addPaymentBtn');
