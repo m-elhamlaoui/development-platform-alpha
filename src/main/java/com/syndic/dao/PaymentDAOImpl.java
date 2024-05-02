@@ -1,0 +1,81 @@
+package com.syndic.dao;
+
+import com.syndic.beans.Payment;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class PaymentDAOImpl implements PaymentDAO {
+    private final Connection connection;
+
+    public PaymentDAOImpl(Connection connection) {
+        this.connection = connection;
+    }
+
+
+    public List<Payment> getAllPayments() {
+        List<Payment> payments = new ArrayList<>();
+        String sql = "SELECT * FROM Payments";
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Payment payment = new Payment();
+                payment.setCode(rs.getInt("payment_code"));
+                payment.setDate(rs.getString("payment_date"));
+                payment.setAmount(rs.getDouble("payment_amount"));
+                payment.setMethod(rs.getString("payment_method"));
+                payment.setType(rs.getString("payment_type"));
+                payment.setAccount_id(rs.getInt("payment_account_id"));
+                payment.setMember_id(rs.getInt("payment_member_id"));
+                payment.setStatus(rs.getString("payment_status"));
+
+                payments.add(payment);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return payments;
+    }
+
+
+
+    @Override
+    public boolean insertPayment(Payment payment) {
+        String query = "INSERT INTO Payments (payment_code, payment_date, payment_amount, payment_method, payment_type, payment_account_id, payment_member_id, payment_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, payment.getCode());
+            statement.setString(2, payment.getDate());
+            statement.setDouble(3, payment.getAmount());
+            statement.setString(4, payment.getMethod());
+            statement.setString(5, payment.getType());
+            statement.setInt(6, payment.getAccount_id());
+            statement.setInt(7, payment.getMember_id());
+            statement.setString(8, payment.getStatus());
+
+            int rowsInserted = statement.executeUpdate();
+            return rowsInserted > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public boolean deletePayment(String code) {
+        return false;
+    }
+
+
+    @Override
+    public boolean updatePayment(Payment payment) {
+        return false;
+    }
+}
+

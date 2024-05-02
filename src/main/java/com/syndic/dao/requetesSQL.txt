@@ -83,3 +83,15 @@ CREATE TABLE syndic_db.meetings (
     meeting_s_id INT, -- Ajout de la colonne syndic_id pour la référence au syndic
     FOREIGN KEY (meeting_s_id) REFERENCES Syndics(s_id) -- Clé étrangère liée à la table des syndics
 );
+
+CREATE TABLE Payments (
+    payment_id INT AUTO_INCREMENT PRIMARY KEY,
+    payment_code VARCHAR(50),
+    payment_date DATE ,
+    payment_amount DECIMAL(10, 2),
+    payment_method VARCHAR(50),
+    payment_type VARCHAR(50),
+    payment_account_id INT,
+    payment_member_id INT,
+    payment_status VARCHAR(50)
+);

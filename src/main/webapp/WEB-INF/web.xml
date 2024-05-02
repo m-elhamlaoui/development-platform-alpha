@@ -18,7 +18,7 @@
     <welcome-file>reclamer.jsp</welcome-file>
     <welcome-file>paiement.jsp</welcome-file>
     <welcome-file>addmember.jsp</welcome-file>
-    <welcome-file>Memberspayment</welcome-file>
+    <welcome-file>addpayment.jsp</welcome-file>
   </welcome-file-list>
 
   <servlet>
@@ -68,12 +68,12 @@
     <url-pattern>/addmember</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>MembersPaymentServlet</servlet-name>
-    <servlet-class>com.syndic.servlet.MembersPaymentServlet</servlet-class>
+    <servlet-name>AddPaymentServlet</servlet-name>
+    <servlet-class>com.syndic.servlet.AddPaymentServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>MembersPaymentServlet</servlet-name>
-    <url-pattern>/Memberspayment</url-pattern>
+    <servlet-name>AddPaymentServlet</servlet-name>
+    <url-pattern>/addpayment</url-pattern>
   </servlet-mapping>
 
   <servlet>
