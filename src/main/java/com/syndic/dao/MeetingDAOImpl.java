@@ -6,6 +6,8 @@ import com.syndic.beans.Meeting;
 import com.syndic.beans.User;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MeetingDAOImpl implements MeetingDAO {
 
@@ -37,12 +39,13 @@ public class MeetingDAOImpl implements MeetingDAO {
 
     @Override
 
-    public Meeting getMeetingBySyndicId(int syndicId) throws SQLException {
-        String query = "SELECT * FROM meetings WHERE syndic_id = ?";
+    public List<Meeting> getMeetingBySyndicId(int syndicId) throws SQLException {
+        List<Meeting> meetings = new ArrayList<>();
+        String query = "SELECT * FROM meetings WHERE meeting_s_id = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, syndicId);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                if (resultSet.next()) {
+                while (resultSet.next()) {
                     int meetingId = resultSet.getInt("meeting_id");
                     Date meetingDate = resultSet.getDate("meeting_date");
                     String meetingTime = resultSet.getString("meeting_time");
@@ -51,11 +54,23 @@ public class MeetingDAOImpl implements MeetingDAO {
                     String meetingType = resultSet.getString("meeting_type");
                     String meetingResidence = resultSet.getString("meeting_residence");
                     String meetingConclusion = resultSet.getString("meeting_conclusion");
-                    return new Meeting(meetingId, meetingDate, meetingTime, meetingTopic, meetingLocation,
+                    Meeting meeting = new Meeting(meetingId, meetingDate, meetingTime, meetingTopic, meetingLocation,
                             meetingType, meetingResidence, meetingConclusion, syndicId);
+                    meetings.add(meeting); // Ajouter la réunion à la liste
                 }
             }
         }
-        return null; // Retourne null si aucune réunion n'est trouvée avec cet identifiant de syndic.
+        return meetings; // Retourner la liste de réunions
     }
+
+    @Override
+    public void updateMeetingConclusion(int meetingId, String newConclusion) throws SQLException {
+        String query = "UPDATE meetings SET meeting_conclusion = ? WHERE meeting_id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, newConclusion);
+            preparedStatement.setInt(2, meetingId);
+            preparedStatement.executeUpdate();
+        }
+        }
+
 }

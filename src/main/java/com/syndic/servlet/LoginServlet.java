@@ -1,5 +1,6 @@
 package com.syndic.servlet;
 
+import com.syndic.beans.Meeting;
 import com.syndic.beans.Member;
 import com.syndic.beans.Syndic;
 import com.syndic.beans.User;
@@ -17,6 +18,8 @@ import com.syndic.dao.MemberProfileDAOImpl;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 
@@ -25,6 +28,9 @@ public class LoginServlet extends HttpServlet {
     private UserDAO userDAO;
     private MemberProfileDAO memberDAO;
     private SyndicProfileDAO syndicDAO;
+
+    private MeetingDAO meetingDAO;
+
 
     public LoginServlet() {
         super();
@@ -63,6 +69,12 @@ public class LoginServlet extends HttpServlet {
                             syndicDAO = new SyndicProfileDAOImpl(connection);
                             Syndic syndic = syndicDAO.getSyndicByUserId(userId);
                             session.setAttribute("syndic", syndic);
+
+                            int syndicId = syndic.getId();
+                            List<Meeting> list_Meetings = new ArrayList<>();
+                            meetingDAO = new MeetingDAOImpl(connection);
+                            list_Meetings = meetingDAO.getMeetingBySyndicId(syndicId);
+                            session.setAttribute("list_Meetings", list_Meetings);
                             return;
                         }  else  {
 

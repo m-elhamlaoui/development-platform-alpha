@@ -1,4 +1,6 @@
 <%@ page import="com.syndic.beans.Syndic" %>
+<%@ page import="com.syndic.beans.Meeting" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,6 +35,7 @@
             <!-- Learn More: https://formbold.com -->
             <div class="mx-auto w-full max-w-[550px]">
                 <form action="meeting" method="POST">
+                    <input type="hidden" name="action" value="addMeeting">
                     <div class="-mx-3 flex flex-wrap">
                         <div class="w-full px-3 sm:w-1/2">
                             <div class="mb-5">
@@ -309,205 +312,173 @@
             </label>
         </div>
 
-        <!-- component -->
-        <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
-            <div class="align-middle rounded-tl-lg rounded-tr-lg inline-block w-full py-4 overflow-hidden bg-white shadow-lg px-12">
-                <div class="flex justify-between">
-                    <div class="inline-flex border rounded w-7/12 px-2 lg:px-6 h-12 bg-transparent">
-                        <div class="flex flex-wrap items-stretch w-full h-full mb-6 relative">
-                            <div class="flex">
-                                    <span class="flex items-center leading-normal bg-transparent rounded rounded-r-none border border-r-0 border-none lg:px-3 py-2 whitespace-no-wrap text-grey-dark text-sm">
-                                        <svg width="18" height="18" class="w-4 lg:w-auto" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M8.11086 15.2217C12.0381 15.2217 15.2217 12.0381 15.2217 8.11086C15.2217 4.18364 12.0381 1 8.11086 1C4.18364 1 1 4.18364 1 8.11086C1 12.0381 4.18364 15.2217 8.11086 15.2217Z" stroke="#455A64" stroke-linecap="round" stroke-linejoin="round" />
-                                            <path d="M16.9993 16.9993L13.1328 13.1328" stroke="#455A64" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                    </span>
-                            </div>
-                            <input type="text" class="flex-shrink flex-grow flex-auto leading-normal tracking-wide w-px flex-1 border border-none border-l-0 rounded rounded-l-none px-3 relative focus:outline-none text-xxs lg:text-xs lg:text-base text-gray-500 font-thin" placeholder="Search">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
-                <table class="min-w-full">
-                    <thead>
-                    <tr>
-                        <th class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">ID</th>
-                        <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Fullname</th>
-                        <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Email</th>
-                        <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Phone</th>
-                        <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Status</th>
-                        <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Created At</th>
-                        <th class="px-6 py-3 border-b-2 border-gray-300"></th>
-                    </tr>
-                    </thead>
-                    <tbody class="bg-white">
-                    <tr>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                            <div class="flex items-center">
-                                <div>
-                                    <div class="text-sm leading-5 text-gray-800">#1</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                            <div class="text-sm leading-5 text-blue-900">Damilare Anjorin</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">damilareanjorin1@gmail.com</td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">+2348106420637</td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">
-                                        <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                        <span aria-hidden class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                                        <span class="relative text-xs">active</span>
-                                    </span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-blue-900 text-sm leading-5">September 12</td>
-                        <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-500 text-sm leading-5">
-                            <button class="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">View Details</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                            <div class="flex items-center">
-                                <div>
-                                    <div class="text-sm leading-5 text-gray-800">#1</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                            <div class="text-sm leading-5 text-blue-900">Damilare Anjorin</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">damilareanjorin1@gmail.com</td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">+2348106420637</td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">
-                                        <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                        <span aria-hidden class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                                        <span class="relative text-xs">active</span>
-                                    </span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-blue-900 text-sm leading-5">September 12</td>
-                        <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-500 text-sm leading-5">
-                            <button class="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">View Details</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                            <div class="flex items-center">
-                                <div>
-                                    <div class="text-sm leading-5 text-gray-800">#1</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                            <div class="text-sm leading-5 text-blue-900">Damilare Anjorin</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">damilareanjorin1@gmail.com</td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">+2348106420637</td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">
-                                        <span class="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
-                                        <span aria-hidden class="absolute inset-0 bg-red-200 opacity-50 rounded-full"></span>
-                                        <span class="relative text-xs">not active</span>
-                                    </span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-blue-900 text-sm leading-5">September 12</td>
-                        <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-500 text-sm leading-5">
-                            <button class="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">View Details</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                            <div class="flex items-center">
-                                <div>
-                                    <div class="text-sm leading-5 text-gray-800">#1</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                            <div class="text-sm leading-5 text-blue-900">Damilare Anjorin</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">damilareanjorin1@gmail.com</td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">+2348106420637</td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">
-                                        <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                        <span aria-hidden class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                                        <span class="relative text-xs">active</span>
-                                    </span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-blue-900 text-sm leading-5">September 12</td>
-                        <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-500 text-sm leading-5">
-                            <button class="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">View Details</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                            <div class="flex items-center">
-                                <div>
-                                    <div class="text-sm leading-5 text-gray-800">#1</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                            <div class="text-sm leading-5 text-blue-900">Damilare Anjorin</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">damilareanjorin1@gmail.com</td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">+2348106420637</td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">
-                                        <span class="relative inline-block px-3 py-1 font-semibold text-orange-900 leading-tight">
-                                        <span aria-hidden class="absolute inset-0 bg-orange-200 opacity-50 rounded-full"></span>
-                                        <span class="relative text-xs">disabled</span>
-                                    </span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-blue-900 text-sm leading-5">September 12</td>
-                        <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-500 text-sm leading-5">
-                            <button class="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">View Details</button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-                <div class="sm:flex-1 sm:flex sm:items-center sm:justify-between mt-4 work-sans">
-                    <div>
-                        <p class="text-sm leading-5 text-blue-700">
-                            Showing
-                            <span class="font-medium">1</span>
-                            to
-                            <span class="font-medium">200</span>
-                            of
-                            <span class="font-medium">2000</span>
-                            results
-                        </p>
-                    </div>
-                    <div>
-                        <nav class="relative z-0 inline-flex shadow-sm">
-                            <div	>
-                                <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-400 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150" aria-label="Previous" v-on:click.prevent="changePage(pagination.current_page - 1)">
-                                    <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                    </svg>
-                                </a>
-                            </div>
-                            <div>
-                                <a href="#" class="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-blue-700 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-tertiary active:text-gray-700 transition ease-in-out duration-150 hover:bg-tertiary">
-                                    1
-                                </a>
-                                <a href="#" class="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-blue-600 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-tertiary active:text-gray-700 transition ease-in-out duration-150 hover:bg-tertiary">
-                                    2
-                                </a>
-                                <a href="#" class="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-blue-600 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-tertiary active:text-gray-700 transition ease-in-out duration-150 hover:bg-tertiary">
-                                    3
-                                </a>
-                            </div>
-                            <div v-if="pagination.current_page < pagination.last_page">
-                                <a href="#" class="-ml-px relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-400 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150" aria-label="Next">
-                                    <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
+
+        <!--
+  Heads up! 👋
+
+  This component comes with some `rtl` classes. Please remove them if they are not needed in your project.
+-->
+
+        <div class="overflow-x-auto">
+            <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+                <thead class="ltr:text-left rtl:text-right">
+                <tr>
+                    <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Name</th>
+                    <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Date of Birth</th>
+                    <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Role</th>
+                    <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Salary</th>
+                    <th class="px-4 py-2"></th>
+                </tr>
+                </thead>
+
+                <tbody class="divide-y divide-gray-200">
+                <tr>
+                    <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">John Doe</td>
+                    <td class="whitespace-nowrap px-4 py-2 text-gray-700">24/05/1995</td>
+                    <td class="whitespace-nowrap px-4 py-2 text-gray-700">Web Developer</td>
+                    <td class="whitespace-nowrap px-4 py-2 text-gray-700">$120,000</td>
+                    <td class="whitespace-nowrap px-4 py-2">
+                        <a
+                                href="#"
+                                class="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
+                        >
+                            View
+                        </a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Jane Doe</td>
+                    <td class="whitespace-nowrap px-4 py-2 text-gray-700">04/11/1980</td>
+                    <td class="whitespace-nowrap px-4 py-2 text-gray-700">Web Designer</td>
+                    <td class="whitespace-nowrap px-4 py-2 text-gray-700">$100,000</td>
+                    <td class="whitespace-nowrap px-4 py-2">
+                        <a
+                                href="#"
+                                class="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
+                        >
+                            View
+                        </a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Gary Barlow</td>
+                    <td class="whitespace-nowrap px-4 py-2 text-gray-700">24/05/1995</td>
+                    <td class="whitespace-nowrap px-4 py-2 text-gray-700">Singer</td>
+                    <td class="whitespace-nowrap px-4 py-2 text-gray-700">$20,000</td>
+                    <td class="whitespace-nowrap px-4 py-2">
+                        <a
+                                href="#"
+                                class="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
+                        >
+                            View
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+
+        <h1 class="text-3xl font-bold mb-4">List of Meetings</h1>
+        <div class="mb-4 relative">
+            <input type="text" id="filter" class="form-input border-gray-300 rounded-md shadow-sm pl-10 pr-4 py-2 w-full" placeholder="Filter Residence Meeting" onkeyup="filterMeetings()">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M6 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm8 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm3-6a7 7 0 1 1-14 0 7 7 0 0 1 14 0z" clip-rule="evenodd" />
+                </svg>
             </div>
         </div>
+
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2">
+                <%
+                    List<Meeting> listMeetings = (List<Meeting>) session.getAttribute("list_Meetings");
+                    if (listMeetings != null) {
+                        for (Meeting meeting : listMeetings) {
+                %>
+                <div class="bg-white overflow-hidden shadow-sm rounded-lg">
+                    <div class="p-6">
+                        <h2 class="flex items-center justify-between text-xl font-semibold mb-4 cursor-pointer" onclick="toggleDetails(this)">
+                            <span><%= meeting.getMeetingTopic() %></span>
+                            <svg class="h-6 w-6 fill-current text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                <path d="M10 15l-5-5h10z"/>
+                            </svg>
+
+                        </h2>
+                        <div class="hidden bg-gray-100 shadow-md rounded-lg p-4 mb-4">
+                            <div class="flex flex-wrap -mx-2">
+                                <div class="w-full md:w-1/2 px-2 mb-4 md:mb-0">
+                                    <p class="text-gray-800"><strong>Meeting ID:</strong> <%= meeting.getMeetingId() %></p>
+                                    <p class="text-gray-800"><strong>Date:</strong> <%= meeting.getMeetingDate() %></p>
+
+                                </div>
+                                <div class="w-full md:w-1/2 px-2">
+                                    <p class="text-gray-800"><strong>Location:</strong> <%= meeting.getMeetingLocation() %></p>
+                                    <p class="text-gray-800"><strong>Time:</strong> <%= meeting.getMeetingTime() %></p>
+                                </div>
+                            </div>
+                            <div class="w-full px-2 mt-4">
+                                <strong class="text-gray-800 block mb-2">Residence:</strong>
+                                <div class="bg-white rounded-lg shadow-md p-4">
+                                    <%= meeting.getMeetingResidence() %>
+                                </div>
+                            </div>
+
+                            <div class="w-full px-2 mt-4">
+                                <strong class="text-gray-800 block mb-2">Type:</strong>
+                                <div class="bg-white rounded-lg shadow-md p-4">
+                                    <%= meeting.getMeetingType() %>
+                                </div>
+                            </div>
+                            <div class="w-full px-2 mt-4">
+                                <strong class="text-gray-800 block mb-2">Topic:</strong>
+                                <div class="bg-white rounded-lg shadow-md p-4">
+                                    <%= meeting.getMeetingTopic() %>
+                                </div>
+                            </div>
+                            <div class="w-full px-2 mt-4">
+                                <strong class="text-gray-800 block mb-2">Conclusion:</strong>
+                                <div class="bg-white rounded-lg shadow-md p-4">
+                                    <%= meeting.getMeetingConclusion() %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Bouton "Modifier" pour chaque réunion -->
+                    <button onclick="toggleEditForm(<%= meeting.getMeetingId() %>)" class="m-4 px-4 py-2 text-lg font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:bg-indigo-700">Edit</button>
+
+                    <!-- Bouton "Imprimer" -->
+                    <a onclick="printMeetingDetails(<%=meeting.getMeetingId() %>)" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none" href="#">
+                        <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+                        Print
+                    </a>
+
+
+
+                    <!-- Formulaire de modification de la conclusion -->
+                    <form id="editForm_<%= meeting.getMeetingId() %>" class="edit-form hidden" action="meeting" method="post">
+                        <input type="hidden" name="action" value="editConclusion">
+                        <input type="hidden" name="meetingId" value="<%= meeting.getMeetingId() %>">
+                        <label for="newConclusion_<%= meeting.getMeetingId() %>" class="block mb-2 text-base font-medium text-gray-700">Meeting Conclusion:</label>
+                        <div class="relative">
+                            <textarea id="newConclusion_<%= meeting.getMeetingId() %>" name="newConclusion" rows="4" class="w-full px-3 py-2 text-base text-gray-700 placeholder-gray-600 border rounded-md focus:outline-none focus:border-indigo-500 focus:shadow-outline-indigo resize-none"></textarea>
+                        </div>
+                        <div class="flex justify-end mt-4">
+                            <button type="submit" class="ml-auto px-6 py-2 text-lg font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:bg-indigo-700">Save</button>
+                        </div>
+                    </form>
+                </div>
+
+                <%
+                        }
+                    }
+                %>
+        </div>
+
+
+
 
 
 
@@ -556,6 +527,53 @@
 <script>
     document.getElementById("meeting").classList.add("active");
 </script>
+<script>
+    function filterMeetings() {
+        var input, filter, meetings, meeting, txtValue, i;
+        input = document.getElementById("filter");
+        filter = input.value.toUpperCase();
+        meetings = document.querySelectorAll(".grid > div");
+        for (i = 0; i < meetings.length; i++) {
+            meeting = meetings[i].querySelector("h2");
+            txtValue = meeting.textContent || meeting.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                meetings[i].style.display = "";
+            } else {
+                meetings[i].style.display = "none";
+            }
+        }
+    }
+
+    function toggleDetails(element) {
+        var details = element.nextElementSibling;
+        details.classList.toggle("hidden");
+    }
+
+    <!-- JavaScript pour afficher/cacher les formulaires de modification -->
+        function toggleEditForm(meetingId) {
+        var editForm = document.getElementById("editForm_" + meetingId);
+        if (editForm.classList.contains("hidden")) {
+        editForm.classList.remove("hidden");
+    } else {
+        editForm.classList.add("hidden");
+    }
+    }
+
+    function printMeetingDetails(meetingId) {
+
+        window.open("meetingPrint.jsp?meetingId=" + meetingId, "_blank");
+    }
+
+
+
+
+
+
+
+</script>
+
+
+
 </body>
 
 <script src="javascript/main.js"></script>

@@ -35,35 +35,62 @@ public class MeetingServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        // Récupération des paramètres de la requête
-        Date meetingDate = Date.valueOf(request.getParameter("meeting_date"));
-        String meetingTime = request.getParameter("meeting_time");
-        String meetingTopic = request.getParameter("meeting_topic");
-        String meetingLocation = request.getParameter("meeting_location");
-        String meetingType = request.getParameter("meeting_type");
-        String meetingResidence = request.getParameter("meeting_residence");
-        String meetingConclusion = request.getParameter("meeting_conclusion");
+        String action = request.getParameter("action");
 
-        try {
+            if (action != null && action.equals("addMeeting")) {
+                // Récupération des paramètres de la requête
+                Date meetingDate = Date.valueOf(request.getParameter("meeting_date"));
+                String meetingTime = request.getParameter("meeting_time");
+                String meetingTopic = request.getParameter("meeting_topic");
+                String meetingLocation = request.getParameter("meeting_location");
+                String meetingType = request.getParameter("meeting_type");
+                String meetingResidence = request.getParameter("meeting_residence");
+                String meetingConclusion = request.getParameter("meeting_conclusion");
 
-        Connection connection = Syndic_con.getConnection();
+                try {
 
-        HttpSession session = request.getSession();
-        Syndic syndic = (Syndic) session.getAttribute("syndic");
-        int syndicId = syndic.getId();
+                    Connection connection = Syndic_con.getConnection();
 
-        Meeting newMeeting = new Meeting(meetingDate, meetingTime, meetingTopic, meetingLocation, meetingType, meetingResidence, meetingConclusion, syndicId);
+                    HttpSession session = request.getSession();
+                    Syndic syndic = (Syndic) session.getAttribute("syndic");
 
-        MeetingDAO meetingDAO = new MeetingDAOImpl(connection);
-        meetingDAO.addMeeting(newMeeting);
-        // Définir un attribut de session pour le message
-                session.setAttribute("successMessage", "Le Meet a été ajouté avec succès !");
+                    int syndicId = syndic.getId();
+
+                    Meeting newMeeting = new Meeting(meetingDate, meetingTime, meetingTopic, meetingLocation, meetingType, meetingResidence, meetingConclusion, syndicId);
+
+                    MeetingDAO meetingDAO = new MeetingDAOImpl(connection);
+                    meetingDAO.addMeeting(newMeeting);
+                    // Définir un attribut de session pour le message
+                    session.setAttribute("successMessage", "Le Meet a été ajouté avec succès !");
+                    // Rediriger vers la même page
+                    response.sendRedirect(request.getRequestURI());
+
+
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+
+                }
+
+        } else if (action != null && action.equals("editConclusion")) {
+
+            // Récupérer les paramètres de modification de la conclusion
+            int meetingId = Integer.parseInt(request.getParameter("meetingId"));
+            String newConclusion = request.getParameter("newConclusion");
+            try {
+                Connection connection = Syndic_con.getConnection();
+                MeetingDAO meetingDAO = new MeetingDAOImpl(connection);
+
+                // Appeler la méthode pour mettre à jour la conclusion
+                meetingDAO.updateMeetingConclusion(meetingId, newConclusion);
+
+                HttpSession session = request.getSession();
+                session.setAttribute("successMessage", "La conclusion de la réunion a été modifiée avec succès !");
                 // Rediriger vers la même page
                 response.sendRedirect(request.getRequestURI());
 
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+            } catch (SQLException e) {
+                throw new ServletException("Erreur lors de la modification de la conclusion de la réunion", e);
+            }
 
         }
     }
