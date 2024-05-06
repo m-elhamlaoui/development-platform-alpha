@@ -95,3 +95,14 @@ CREATE TABLE Payments (
     payment_member_id INT,
     payment_status VARCHAR(50)
 );
+
+
+========================================================================================================================
+pour target Syndic.war
+C:\Users\amine\Desktop\amine\S4\DevOps\development-platform-alpha-deploy> mvn clean package
+
+C:\Users\amine\Desktop\amine\S4\DevOps\development-platform-alpha-deploy> docker build -t syndic .
+
+C:\Users\amine\Desktop\amine\S4\DevOps\development-platform-alpha-deploy> docker run -d -p 8080:8080 syndic
+
+========================================================================================================================
