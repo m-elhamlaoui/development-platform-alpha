@@ -31,8 +31,6 @@ public class AddPaymentServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (connection == null) {
-            // Gestion de la connexion nulle
-            // Vous pouvez rediriger vers une page d'erreur ou afficher un message d'erreur ici
             return;
         }
 

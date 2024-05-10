@@ -46,7 +46,7 @@
                     <a href="addpayment" id="addpayment" class="sub-item">
                         <i class='fas fa-money-bill-wave'></i><h6>Members Payment</h6>
                     </a>
-                    <a href="#" class="sub-item">
+                    <a href="addsupplier" id="addsupplier" class="sub-item">
                         <i class='bx bxs-group'></i>
                         <h3>Suppliers</h3>
                     </a>

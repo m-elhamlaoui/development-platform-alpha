@@ -87,8 +87,8 @@ public class Payment {
                 ", date='" + date + '\'' +
                 ", amount=" + amount +
                 ", method='" + method + '\'' +
-                ", type='" + type + '\'' +
-                ", account_id=" + account_id +
+                ", type='" + type + '\'' + "," +
+                " account_id=" + account_id +
                 ", member_id=" + member_id +
                 ", status='" + status + '\'' +
                 '}';

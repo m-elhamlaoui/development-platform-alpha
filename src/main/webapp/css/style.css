@@ -416,7 +416,9 @@ main .recent-order a{
 
 /* --------RECENT UPDATES----------*/
 .right{
-    margin-top: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 .right .top{
     display: flex;

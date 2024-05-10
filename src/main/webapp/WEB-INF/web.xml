@@ -19,6 +19,7 @@
     <welcome-file>paiement.jsp</welcome-file>
     <welcome-file>addmember.jsp</welcome-file>
     <welcome-file>addpayment.jsp</welcome-file>
+    <welcome-file>addsupplier.jsp</welcome-file>
   </welcome-file-list>
 
   <servlet>
@@ -94,4 +95,12 @@
     <url-pattern>/meeting</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>AddSupplierServlet</servlet-name>
+    <servlet-class>com.syndic.servlet.AddSupplierServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddSupplierServlet</servlet-name>
+    <url-pattern>/addsupplier</url-pattern>
+  </servlet-mapping>
 </web-app>

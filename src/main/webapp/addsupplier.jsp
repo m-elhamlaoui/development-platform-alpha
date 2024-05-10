@@ -1,6 +1,5 @@
 <%@ page import="java.util.List" %>
-<%@ page import="com.syndic.beans.Payment" %>
-<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="com.syndic.beans.Supplier" %>
 
 
 <!DOCTYPE html>
@@ -22,10 +21,8 @@
 <div class="container">
     <jsp:include page="templates/admin_sidenav.jsp" />
 
-
     <!------------MIDDLE ------------>
     <main>
-        <!---------RIGHT--------->
         <div class="right">
 
             <!--------TOP-->
@@ -66,13 +63,13 @@
             <div class="items-start justify-between md:flex">
                 <div class="max-w-lg">
                     <h3 class="text-light-800 text-xl font-bold sm:text-2xl">
-                        Members Payment
+                        Suppliers
                     </h3>
                 </div>
                 <div class="mt-3 md:mt-0">
-                    <button id="addPaymentBtn"
+                    <button id="addSupplierBtn"
                             class="inline-block px-4 py-2 text-white duration-150 font-medium bg-indigo-600 rounded-lg hover:bg-indigo-500 active:bg-indigo-700 md:text-sm btn">
-                        Add Payment
+                        Add Supplier
                     </button>
                 </div>
             </div>
@@ -81,39 +78,37 @@
                     <!-- Table headers -->
                     <thead class="bg-gray-50 text-gray-600 font-medium border-b">
                     <tr>
-                        <th class="py-3 px-6">code</th>
-                        <th class="py-3 px-6">date</th>
-                        <th class="py-3 px-6">amount</th>
-                        <th class="py-3 px-6">method</th>
-                        <th class="py-3 px-6">type</th>
-                        <th class="py-3 px-6">account_id</th>
-                        <th class="py-3 px-6">member_id</th>
-                        <th class="py-3 px-6">status</th>
+                        <th class="py-3 px-6">Name</th>
+                        <th class="py-3 px-6">Email</th>
+                        <th class="py-3 px-6">Phone</th>
+                        <th class="py-3 px-6">Type</th>
+                        <th class="py-3 px-6">Active</th>
+                        <th class="py-3 px-6">Rating</th>
+                        <th class="py-3 px-6">Supplier_S_ID</th>
                         <th class="py-3 px-6">All Action</th>
                     </tr>
                     </thead>
                     <!-- Table body -->
                     <tbody class="text-gray-600 divide-y">
                     <!-- Use Java forEach loop to iterate over the list of payments -->
-                    <% List<Payment> payments = (List<Payment>) request.getAttribute("payments"); %>
-                    <% if (payments != null && !payments.isEmpty()) { %>
-                    <% for (Payment payment : payments) { %>
+                    <% List<Supplier> suppliers = (List<Supplier>) request.getAttribute("suppliers"); %>
+                    <% if (suppliers != null && !suppliers.isEmpty()) { %>
+                    <% for (Supplier supplier : suppliers) { %>
                     <tr>
-                        <td class="px-6 py-4 whitespace-nowrap"><%= payment.getCode() %>
+                        <td class="px-6 py-4 whitespace-nowrap"><%= supplier.getSupplier_name() %>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap"><%= payment.getDate() %>
+                        <td class="px-6 py-4 whitespace-nowrap"><%= supplier.getSupplier_email() %>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap"><%= payment.getAmount() %>
+                        <td class="px-6 py-4 whitespace-nowrap"><%= supplier.getSupplier_phone() %>
                         </td>
-                        <td class="text-right px-6 whitespace-nowrap"><%= payment.getMethod() %>
+                        <td class="text-right px-6 whitespace-nowrap"><%= supplier.getSupplier_type() %>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap"><%= payment.getType() %>
+                        <td class="px-6 py-4 whitespace-nowrap"><%= supplier.isSupplier_active() %>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap"><%= payment.getAccount_id() %>
+                        <td class="px-6 py-4 whitespace-nowrap"><%= supplier.getSupplier_rating()%>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap"><%= payment.getMember_id() %>
+                        <td class="px-6 py-4 whitespace-nowrap"><%= supplier.getSupplier_s_id()%>
                         </td>
-                        <td class="py-3 px-6 whitespace-nowrap"><%= payment.getStatus() %>
                         </td>
                         <td class="text-right px-4 whitespace-nowrap">
                             <button class="editPaymentBtn py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg">
@@ -135,46 +130,51 @@
             </div>
 
             <!-- Formulaire d'ajout -->
-            <div id="PaymentForm" class="form hidden">
-                <form id="transactionFormElement" class="grid grid-cols-2 gap-6" action="addpayment" method="post">
-                    <div class="col-span-2 sm:col-span-1">
-                        <label for="code" class="block text-sm font-medium text-light-700">Code:</label>
-                        <input type="number" id="code" name="code" required
-                               class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                    </div>
-                    <div class="col-span-2 sm:col-span-1">
-                        <label for="date" class="block text-sm font-medium text-light-700">Date:</label>
-                        <input type="date" id="date" name="date" value="<%=java.time.LocalDate.now()%>"
-                               class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-light-300 rounded-md">
-                    </div>
-                    <div class="col-span-2 sm:col-span-1">
-                        <label for="amount" class="block text-sm font-medium text-light-700">Amount:</label>
-                        <input type="number" id="amount" name="amount" required
-                               class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                    </div>
-                    <div class="col-span-2 sm:col-span-1">
-                        <label for="method" class="block text-sm font-medium text-light-700">Method:</label>
-                        <input type="text" id="method" name="method" required
+            <div id="SupplierForm" class="form hidden">
+                <form id="supplierFormElement" class="grid grid-cols-2 gap-6" action="addsupplier" method="post">
+                    <div class="col-span-2">
+                        <label for="supplier_name" class="block text-sm font-medium text-light-700">Name:</label>
+                        <input type="text" id="supplier_name" name="supplier_name" required
                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                     </div>
                     <div class="col-span-2">
-                        <label for="type" class="block text-sm font-medium text-light-700">Type:</label>
-                        <input type="text" id="type" name="type" required
-                               class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                    </div>
-                    <div class="col-span-2 sm:col-span-1">
-                        <label for="account_id" class="block text-sm font-medium text-light-700">Account ID:</label>
-                        <input type="number" id="account_id" name="account_id" required
-                               class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                    </div>
-                    <div class="col-span-2 sm:col-span-1">
-                        <label for="member_id" class="block text-sm font-medium text-light-700">Member ID:</label>
-                        <input type="number" id="member_id" name="member_id" required
+                        <label for="supplier_email" class="block text-sm font-medium text-light-700">Email:</label>
+                        <input type="email" id="supplier_email" name="supplier_email" required
                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                     </div>
                     <div class="col-span-2">
-                        <label for="status" class="block text-sm font-medium text-light-700">Status:</label>
-                        <input type="text" id="status" name="status" required
+                        <label for="supplier_phone" class="block text-sm font-medium text-light-700">Phone:</label>
+                        <input type="String" id="supplier_phone" name="supplier_phone" required
+                               class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                    </div>
+                    <div class="col-span-2">
+                        <label for="supplier_type" class="block text-sm font-medium text-light-700">Type:</label>
+                        <select id="supplier_type" name="supplier_type" required
+                                class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <option value="service">Service</option>
+                        </select>
+                    </div>
+                    <div class="col-span-2">
+                        <label for="supplier_active" class="block text-sm font-medium text-light-700">Active:</label>
+                        <select id="supplier_active" name="supplier_active" required
+                                class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <option value="true" selected>Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                    <div class="col-span-2">
+                        <label for="supplier_rating" class="block text-sm font-medium text-light-700">Rating:</label>
+                        <select id="supplier_rating" name="supplier_rating" required
+                                class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <option value="excellent">Excellent</option>
+                            <option value="good">Good</option>
+                            <option value="average">Average</option>
+                            <option value="poor">Poor</option>
+                        </select>
+                    </div>
+                    <div class="col-span-2">
+                        <label for="supplier_s_id" class="block text-sm font-medium text-light-700">Supplier_S ID:</label>
+                        <input type="number" id="supplier_s_id" name="supplier_s_id"
                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                     </div>
                     <div class="col-span-2 flex justify-end">
@@ -187,25 +187,22 @@
             </div>
         </div>
     </main>
-    <!-------------END OF MIDDLE --------->
-
 
 
 </div>
 </body>
 <script src="javascript/main.js"></script>
 <script>
-    // Récupération des éléments boutons et formulaires
-    var addPaymentBtn = document.getElementById('addPaymentBtn');
-    var editPaymentBtn = document.getElementById('editPaymentBtn');
-    var deletePaymentBtn = document.getElementById('deletePaymentBtn');
-    var PaymentForm = document.getElementById('PaymentForm');
+
+    var addSupplierBtn = document.getElementById('addSupplierBtn');
+    var SupplierForm = document.getElementById('SupplierForm');
     var tablehiden = document.getElementById('tablehiden');
 
-    // Gestionnaires d'événements pour les clics sur les boutons
-    addPaymentBtn.addEventListener('click', function () {
-        PaymentForm.classList.remove('hidden');
+
+    addSupplierBtn.addEventListener('click', function () {
+        SupplierForm.classList.remove('hidden');
         tablehiden.classList.add('hidden');
     });
+
 </script>
 </html>
