@@ -9,11 +9,7 @@ import java.sql.SQLException;
 public interface SyndicProfileDAO {
 
     void addSyndic(Syndic syndic) throws SQLException ;
-;
-
-
-    //a redefinir
-    User getProfileUserById(int userId) throws SQLException;
+    void updateSyndic(Member member) throws SQLException;
 
     Syndic getSyndicByUserId(int userId) throws SQLException;
 }

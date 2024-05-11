@@ -28,26 +28,13 @@ public class SyndicProfileDAOImpl implements SyndicProfileDAO {
         }
     }
 
-
-    //a redefinir
     @Override
-    public User getProfileUserById(int userId) throws SQLException {
-        User profileUser = null;
-        String query = "SELECT * FROM users WHERE id = ?";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setInt(1, userId);
-            try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                if (resultSet.next()) {
-                    profileUser = new User();
-                    profileUser.setName(resultSet.getString("u_name"));
-                    profileUser.setEmail(resultSet.getString("u_email"));
-                    profileUser.setApartmentNumber(resultSet.getString("u_apartment_number"));
-                    profileUser.setBuildingNumber(resultSet.getString("u_building_number"));
-                }
-            }
-        }
-        return profileUser;
+    public void updateSyndic(Member member) throws SQLException {
+        String query = "UPDATE syndics SET s_firstname = ?,   s_lastname = ?,    s_codepostal = ?,    s_phonenumber = ?,    s_fulladdress  = ?,   s_mail  = ? WHERE  s_iduser = ? ";
     }
+
+
+
 
     @Override
     public Syndic getSyndicByUserId(int userId) throws SQLException {

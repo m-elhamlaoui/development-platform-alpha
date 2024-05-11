@@ -48,6 +48,13 @@ public class User {
         this.isAdmin = isAdmin;
     }
 
+    public User(String name, String email, String password, int isAdmin) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.isAdmin = isAdmin;
+    }
+
     // Getters et setters
     public int getIdUser() {
         return id_user;

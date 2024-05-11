@@ -43,9 +43,18 @@
     background-color: var(--color-primary-variant);
     }
   </style>
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<h1>Informations du Membre</h1>
+
+<div class="container">
+    <jsp:include page="templates/member_sidenav.jsp" />
+
+    <!------------MIDDLE ------------>
+    <main>
+
+        <div class="recent-updates">
 
 <h1>Welcome <%= ((Member) session.getAttribute("member")).getFirstName() %>!</h1>
 <form action="memberprofile" method="post">
@@ -69,5 +78,12 @@
 
     <input type="submit" value="Enregistrer">
 </form>
+        </div>
+    </main>
+    <!-------------END OF MIDDLE --------->
+</div>
+<script>
+    document.getElementById("memberprofile").classList.add("active");
+</script>
 </body>
 </html>

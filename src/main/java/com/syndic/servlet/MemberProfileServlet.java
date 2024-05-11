@@ -42,7 +42,6 @@ public class  MemberProfileServlet extends HttpServlet {
 
         try {
             Connection connection = Syndic_con.getConnection();
-            // connection = Syndic_con.getConnection();
             System.out.println("post");
             HttpSession session = request.getSession();
             User user = (User) session.getAttribute("user");
