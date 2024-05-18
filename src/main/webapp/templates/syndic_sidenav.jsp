@@ -61,7 +61,7 @@
             <h3>Documents</h3>
         </a>
 
-        <a href="#">
+        <a href="incident" id="incident">
             <i class='bx bxs-crown'></i>
             <h3>Incidents</h3>
         </a>
@@ -77,13 +77,13 @@
         </a>
 
 
-        <a href="#">
+        <a  href="#" >
             <i class='bx bx-cog bx-flashing' ></i>
             <h3>Settings</h3>
         </a>
 
 
-        <a href="#">
+        <a href="login" id="logout-link">
             <i class='bx bx-log-out-circle'></i>
             <h3>Log Out</h3>
         </a>

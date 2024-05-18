@@ -1,9 +1,6 @@
 package com.syndic.servlet;
 
-import com.syndic.beans.Meeting;
-import com.syndic.beans.Member;
-import com.syndic.beans.Syndic;
-import com.syndic.beans.User;
+import com.syndic.beans.*;
 import com.syndic.dao.*;
 import com.syndic.connection.Syndic_con;
 import jakarta.servlet.ServletException;
@@ -30,6 +27,7 @@ public class LoginServlet extends HttpServlet {
     private SyndicProfileDAO syndicDAO;
 
     private MeetingDAO meetingDAO;
+    private IncidentDAO incidentDAO;
 
 
     public LoginServlet() {
@@ -38,6 +36,12 @@ public class LoginServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Fermer la session si elle existe
+        HttpSession session = request.getSession(false); // Ne pas créer de nouvelle session si elle n'existe pas
+        if (session != null) {
+            session.invalidate(); // Fermer la session existante
+        }
+
         // Rediriger vers la page login.jsp
         RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
         dispatcher.forward(request, response);
@@ -75,6 +79,11 @@ public class LoginServlet extends HttpServlet {
                             meetingDAO = new MeetingDAOImpl(connection);
                             list_Meetings = meetingDAO.getMeetingBySyndicId(syndicId);
                             session.setAttribute("list_Meetings", list_Meetings);
+
+                            List<Incident> list_Incidents = new ArrayList<>();
+                            incidentDAO = new IncidentDAOImpl(connection);
+                            list_Incidents = incidentDAO.getIncidentBySyndicId(syndicId);
+                            session.setAttribute("list_Incidents", list_Incidents);
                             return;
                         }  else  {
 
@@ -83,6 +92,13 @@ public class LoginServlet extends HttpServlet {
                             memberDAO = new MemberProfileDAOImpl(connection);
                             Member member = memberDAO.getMemberByUserId(userId);
                             session.setAttribute("member", member);
+
+                            int syndicId = member.getMemberSId();
+                            List<Incident> list_Incidents = new ArrayList<>();
+                            incidentDAO = new IncidentDAOImpl(connection);
+                            list_Incidents = incidentDAO.getIncidentBySyndicId(syndicId);
+                            session.setAttribute("list_Incidents", list_Incidents);
+
                             return;
                         }
                     } else {

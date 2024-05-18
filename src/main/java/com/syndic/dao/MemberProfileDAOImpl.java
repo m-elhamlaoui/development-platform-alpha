@@ -18,10 +18,11 @@ public class MemberProfileDAOImpl implements MemberProfileDAO {
     @Override
     public void addMember(Member member) throws SQLException {
 
-        String query = "INSERT INTO members (m_fulladdress, m_iduser) VALUES (?, ?)";
+        String query = "INSERT INTO members (m_fulladdress, m_iduser, member_s_id ) VALUES (?, ?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, member.getFulladdress());
             preparedStatement.setInt(2, member.getUserId());
+            preparedStatement.setInt(3, member.getMemberSId());
             preparedStatement.executeUpdate();
         }
     }
@@ -40,7 +41,8 @@ public class MemberProfileDAOImpl implements MemberProfileDAO {
                     String codepostal = resultSet.getString("m_codepostal");
                     String phoneNumber = resultSet.getString("m_phonenumber");
                     String mail = resultSet.getString("m_mail");
-                    return new Member(id, firstName, lastName, fulladdress, codepostal, phoneNumber, mail, userId);
+                    int memberSId = resultSet.getInt("member_s_id");
+                    return new Member(id, firstName, lastName, fulladdress, codepostal, phoneNumber, mail, userId, memberSId);
                 }
             }
         }

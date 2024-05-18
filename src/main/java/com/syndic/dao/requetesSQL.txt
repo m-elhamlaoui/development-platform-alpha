@@ -108,6 +108,21 @@ CREATE TABLE Suppliers (
 );
 
 
+CREATE TABLE syndic_db.Incidents (
+    incident_id INT PRIMARY KEY AUTO_INCREMENT,
+    incident_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    incident_type VARCHAR(50) NOT NULL,
+    incident_description TEXT,
+    incident_status VARCHAR(20) NOT NULL,
+    incident_resolution_date DATE,
+    incident_s_id INT NOT NULL,
+    FOREIGN KEY (incident_s_id) REFERENCES Syndics(s_id)
+);
+
+ALTER TABLE syndic_db.members
+ADD COLUMN member_s_id INT,
+ADD CONSTRAINT FOREIGN KEY (member_s_id) REFERENCES Syndics(s_id);
+
 ========================================================================================================================
 pour target Syndic.war
 C:\Users\amine\Desktop\amine\S4\DevOps\development-platform-alpha-deploy> mvn clean package

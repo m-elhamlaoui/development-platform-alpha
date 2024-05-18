@@ -56,7 +56,7 @@
             <h3>Meetings</h3>
         </a>
 
-        <a href="#">
+        <a href="incident" id="incident">
             <i class='bx bxs-crown'></i>
             <h3>Reports Incident</h3>
         </a>
@@ -71,7 +71,7 @@
             <h3>Add Product</h3>
         </a>
 
-        <a href="#">
+        <a href="login" id="logout-link">
             <i class='bx bx-log-out-circle'></i>
             <h3>Log Out</h3>
         </a>

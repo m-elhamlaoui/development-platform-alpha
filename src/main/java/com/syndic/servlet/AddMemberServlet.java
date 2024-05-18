@@ -32,7 +32,7 @@ public class AddMemberServlet extends HttpServlet {
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Récupérer les données du formulaire
-        String residence = request.getParameter("residence");
+        int residence = Integer.parseInt(request.getParameter("residence"));
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -55,6 +55,8 @@ public class AddMemberServlet extends HttpServlet {
                     // Créer un nouveau membre
                     Member newMember = new Member();
                     newMember.setUserId(userId);
+                    newMember.setMemberSId(residence);
+
                     MemberProfileDAO memberDAO = new MemberProfileDAOImpl(connection);
                     memberDAO.addMember(newMember);
 

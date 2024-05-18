@@ -37,7 +37,7 @@
         <input type="password" id="password" name="password" required><br>
 
         <label for="residence">Residence:</label>
-        <input type="text" id="residence" name="residence" required><br>
+        <input type="number" id="residence" name="residence" required><br>
 
         <input type="submit" value="Ajouter">
       </form>
