@@ -60,7 +60,7 @@
                 <h3>Reports</h3></a></div>
             <div class="item"><a href="#" id="settings"><i class='bx bx-cog bx-flashing'></i>
                 <h3>Settings</h3></a></div>
-            <div class="item"><a href="#"><i class='bx bx-log-out-circle'></i>
+            <div class="item"><a href="login" id="logout-link"><i class='bx bx-log-out-circle'></i>
                 <h3>Log Out</h3></a></div>
         </div>
     </div>

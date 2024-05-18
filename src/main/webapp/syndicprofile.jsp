@@ -76,6 +76,37 @@
         <label for="mail">E-mail:</label><br>
         <input type="text" id="mail" name="mail" value="${syndic.mail}"><br>
 
+        <!-- Nouveaux champs pour les informations de la résidence -->
+        <label for="residenceName">Nom de la Résidence:</label><br>
+        <input type="text" id="residenceName" name="residenceName" value="${syndic.residenceName}"><br>
+
+        <label for="residenceAddress">Adresse de la Résidence:</label><br>
+        <input type="text" id="residenceAddress" name="residenceAddress" value="${syndic.residenceAddress}"><br>
+
+        <label for="residenceType">Type de Résidence:</label><br>
+        <input type="text" id="residenceType" name="residenceType" value="${syndic.residenceType}"><br>
+
+        <label for="residenceSize">Taille de la Résidence (m²):</label><br>
+        <input type="number" id="residenceSize" name="residenceSize" value="${syndic.residenceSize}"><br>
+
+        <label for="apartmentCount">Nombre d'Appartements:</label><br>
+        <input type="number" id="apartmentCount" name="apartmentCount" value="${syndic.apartmentCount}"><br>
+
+        <label for="villaCount">Nombre de Villas:</label><br>
+        <input type="number" id="villaCount" name="villaCount" value="${syndic.villaCount}"><br>
+
+        <label for="gardenCount">Nombre de Jardins:</label><br>
+        <input type="number" id="gardenCount" name="gardenCount" value="${syndic.gardenCount}"><br>
+
+        <label for="poolCount">Nombre de Piscines:</label><br>
+        <input type="number" id="poolCount" name="poolCount" value="${syndic.poolCount}"><br>
+
+        <label for="parkingCount">Nombre de Parkings:</label><br>
+        <input type="number" id="parkingCount" name="parkingCount" value="${syndic.parkingCount}"><br>
+
+        <label for="elevatorsCount">Nombre d'Ascenseurs:</label><br>
+        <input type="number" id="elevatorsCount" name="elevatorsCount" value="${syndic.elevatorsCount}"><br>
+
         <input type="submit" value="Enregistrer">
       </form>
     </div>

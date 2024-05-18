@@ -132,3 +132,15 @@ C:\Users\amine\Desktop\amine\S4\DevOps\development-platform-alpha-deploy> docker
 C:\Users\amine\Desktop\amine\S4\DevOps\development-platform-alpha-deploy> docker run -d -p 8080:8080 syndic
 
 ========================================================================================================================
+ALTER TABLE syndics
+ADD COLUMN residence_name VARCHAR(50) UNIQUE,
+ADD COLUMN residence_address VARCHAR(100),
+ADD COLUMN residence_type VARCHAR(50),
+ADD COLUMN residence_size INT,
+ADD COLUMN apartment_count INT,
+ADD COLUMN villa_count INT,
+ADD COLUMN garden_count INT,
+ADD COLUMN pool_count INT,
+ADD COLUMN parking_count INT,
+ADD COLUMN elevators_count INT,
+ADD COLUMN security_system BOOLEAN;

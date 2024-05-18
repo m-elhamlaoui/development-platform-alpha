@@ -18,10 +18,11 @@ public class SyndicProfileDAOImpl implements SyndicProfileDAO {
     @Override
     public void addSyndic(Syndic syndic) throws SQLException {
 
-        String query = "INSERT INTO syndics (s_fulladdress, s_iduser) VALUES (?, ?)";
+        String query = "INSERT INTO syndics (s_fulladdress, s_iduser , residence_name) VALUES (?, ?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, syndic.getFulladdress());
             preparedStatement.setInt(2, syndic.getUserId());
+            preparedStatement.setString(3, syndic.getResidenceName());
             preparedStatement.executeUpdate();
         }
     }
@@ -41,8 +42,31 @@ public class SyndicProfileDAOImpl implements SyndicProfileDAO {
         }
     }
 
-
-
+        @Override
+        public void updateSyndic2(Syndic syndic) throws SQLException {
+            String query = "UPDATE syndics SET s_firstname = ?, s_lastname = ?, s_codepostal = ?, s_phonenumber = ?, s_fulladdress = ?, s_mail = ?, residence_name = ?, residence_address = ?, residence_type = ?, residence_size = ?, apartment_count = ?, villa_count = ?, garden_count = ?, pool_count = ?, parking_count = ?, elevators_count = ?, security_system = ? WHERE s_iduser = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                preparedStatement.setString(1, syndic.getFirstName());
+                preparedStatement.setString(2, syndic.getLastName());
+                preparedStatement.setString(3, syndic.getCodepostal());
+                preparedStatement.setString(4, syndic.getPhoneNumber());
+                preparedStatement.setString(5, syndic.getFulladdress());
+                preparedStatement.setString(6, syndic.getMail());
+                preparedStatement.setString(7, syndic.getResidenceName());
+                preparedStatement.setString(8, syndic.getResidenceAddress());
+                preparedStatement.setString(9, syndic.getResidenceType());
+                preparedStatement.setInt(10, syndic.getResidenceSize());
+                preparedStatement.setInt(11, syndic.getApartmentCount());
+                preparedStatement.setInt(12, syndic.getVillaCount());
+                preparedStatement.setInt(13, syndic.getGardenCount());
+                preparedStatement.setInt(14, syndic.getPoolCount());
+                preparedStatement.setInt(15, syndic.getParkingCount());
+                preparedStatement.setInt(16, syndic.getElevatorsCount());
+                preparedStatement.setBoolean(17, syndic.isSecuritySystem());
+                preparedStatement.setInt(18, syndic.getUserId());
+                preparedStatement.executeUpdate();
+            }
+    }
 
     @Override
     public Syndic getSyndicByUserId(int userId) throws SQLException {

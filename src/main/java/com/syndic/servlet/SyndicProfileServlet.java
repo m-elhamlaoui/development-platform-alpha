@@ -38,6 +38,20 @@ public class SyndicProfileServlet extends HttpServlet {
         String fulladdress = request.getParameter("fulladdress");
         String mail = request.getParameter("mail");
 
+        // Nouvelles informations
+        String residenceName = request.getParameter("residenceName");
+        String residenceAddress = request.getParameter("residenceAddress");
+        String residenceType = request.getParameter("residenceType");
+        int residenceSize = Integer.parseInt(request.getParameter("residenceSize"));
+        int apartmentCount = Integer.parseInt(request.getParameter("apartmentCount"));
+        int villaCount = Integer.parseInt(request.getParameter("villaCount"));
+        int gardenCount = Integer.parseInt(request.getParameter("gardenCount"));
+        int poolCount = Integer.parseInt(request.getParameter("poolCount"));
+        int parkingCount = Integer.parseInt(request.getParameter("parkingCount"));
+        int elevatorsCount = Integer.parseInt(request.getParameter("elevatorsCount"));
+        boolean securitySystem = Boolean.parseBoolean(request.getParameter("securitySystem"));
+
+
         try {
             Connection connection = Syndic_con.getConnection();
             HttpSession session = request.getSession();
@@ -55,8 +69,20 @@ public class SyndicProfileServlet extends HttpServlet {
             syndic.setMail(mail);
             syndic.setUserId(userId);
 
+            // Mettre à jour les nouvelles informations
+            syndic.setResidenceName(residenceName);
+            syndic.setResidenceAddress(residenceAddress);
+            syndic.setResidenceType(residenceType);
+            syndic.setResidenceSize(residenceSize);
+            syndic.setApartmentCount(apartmentCount);
+            syndic.setVillaCount(villaCount);
+            syndic.setGardenCount(gardenCount);
+            syndic.setPoolCount(poolCount);
+            syndic.setParkingCount(parkingCount);
+            syndic.setElevatorsCount(elevatorsCount);
+            syndic.setSecuritySystem(securitySystem);
 
-            syndicDAO.updateSyndic(syndic);
+            syndicDAO.updateSyndic2(syndic);
             session.setAttribute("syndic", syndic);
             System.out.println("succès " + firstname);
             RequestDispatcher dispatcher = request.getRequestDispatcher("syndicprofile.jsp");
@@ -65,7 +91,7 @@ public class SyndicProfileServlet extends HttpServlet {
             System.out.println("echec " + firstname);
             e.printStackTrace();
             System.out.println(e);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("memberprofile.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("syndicprofile.jsp");
             dispatcher.forward(request, response);
         }
 

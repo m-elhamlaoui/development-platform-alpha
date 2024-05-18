@@ -55,9 +55,10 @@ public class AddSyndicServlet extends HttpServlet {
 
                     // Récupérer l'ID de l'utilisateur nouvellement créé
                     int userId = userDAO.getUserIdByEmail(email);
-                    // Créer un nouveau membre
+                    // Créer un nouveau syndic
                     Syndic newSyndic = new Syndic();
                     newSyndic.setUserId(userId);
+                    newSyndic.setResidenceName(residence);
                     SyndicProfileDAO syndicDAO = new SyndicProfileDAOImpl(connection);
                     syndicDAO.addSyndic(newSyndic);
 
