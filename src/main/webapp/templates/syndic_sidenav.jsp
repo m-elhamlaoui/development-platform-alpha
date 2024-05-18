@@ -31,7 +31,7 @@
             <h3>Dashboard</h3>
         </a>
 
-        <a href="profile">
+        <a href="syndicprofile">
             <i class='bx bx-user' ></i>
             <h3>Profile</h3>
         </a>

@@ -20,6 +20,7 @@
     <welcome-file>addmember.jsp</welcome-file>
     <welcome-file>addpayment.jsp</welcome-file>
     <welcome-file>addsupplier.jsp</welcome-file>
+    <welcome-file>syndicprofile.jsp</welcome-file>
   </welcome-file-list>
 
   <servlet>
@@ -85,6 +86,16 @@
     <servlet-name>MemberProfileServlet</servlet-name>
     <url-pattern>/memberprofile</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>SyndicProfileServlet</servlet-name>
+    <servlet-class>com.syndic.servlet.SyndicProfileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SyndicProfileServlet</servlet-name>
+    <url-pattern>/syndicprofile</url-pattern>
+  </servlet-mapping>
+
 
   <servlet>
     <servlet-name>MeetingServlet</servlet-name>

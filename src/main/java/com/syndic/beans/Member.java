@@ -99,7 +99,8 @@ public class Member {
     }
 
     public void setMail(String mail) {
-        mail = mail;
+        this.mail = mail;
     }
+
 }
 
