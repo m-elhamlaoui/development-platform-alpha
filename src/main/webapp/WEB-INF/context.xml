@@ -1,0 +1,12 @@
+<Context>
+    <Resource name="jdbc/syndicdb"
+              auth="Container"
+              type="javax.sql.DataSource"
+              maxTotal="100"
+              maxIdle="30"
+              maxWaitMillis="10000"
+              username="syndicuser"
+              password="syndicpassword"
+              driverClassName="com.mysql.cj.jdbc.Driver"
+              url="jdbc:mysql://mysql:3306/syndicdb"/>
+</Context>

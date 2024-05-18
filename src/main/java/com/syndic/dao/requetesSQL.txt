@@ -8,26 +8,6 @@ ADD COLUMN checkadmin TINYINT(1) NOT NULL;
 ALTER TABLE syndic_db.users
 MODIFY COLUMN checkadmin int;
 
-UPDATE users
-SET checkadmin = 1
-WHERE id = 1;
-select * from reclamations;
-CREATE TABLE reclamations (
-    id_reclamation INT AUTO_INCREMENT PRIMARY KEY,
-    sujet VARCHAR(255),
-    description TEXT,
-    date_soumission TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    id_user INT,
-    FOREIGN KEY (id_user) REFERENCES users(id)
-);
-
-CREATE TABLE paiement (
-    id_paiement INT AUTO_INCREMENT PRIMARY KEY,
-    mois VARCHAR(20) NOT NULL,
-    paye BOOLEAN NOT NULL,
-    id_user INT,
-    FOREIGN KEY (id_user) REFERENCES users(id)
-);
 
 
 DROP TABLE IF EXISTS users;
