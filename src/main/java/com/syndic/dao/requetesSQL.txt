@@ -17,7 +17,7 @@ CREATE TABLE users (
     u_pwd VARCHAR(255),
     u_email VARCHAR(50),
     u_mobile VARCHAR(20),
-    checkadmin TINYINT(1) NOT NULL,
+    checkadmin INT NOT NULL,
     PRIMARY KEY (id)
 );
 
@@ -110,6 +110,17 @@ C:\Users\amine\Desktop\amine\S4\DevOps\development-platform-alpha-deploy> mvn cl
 C:\Users\amine\Desktop\amine\S4\DevOps\development-platform-alpha-deploy> docker build -t syndic .
 
 C:\Users\amine\Desktop\amine\S4\DevOps\development-platform-alpha-deploy> docker run -d -p 8080:8080 syndic
+
+docker-compose up
+docker-compose down
+
+ docker exec -it development-platform-alpha-mysql-1 mysql -usyndicuser -psyndicpassword syndicdb
+
+ docker volume ls
+ docker volume rm development-platform-alpha_mysql-data
+
+mvn clean install
+
 
 ========================================================================================================================
 ALTER TABLE syndics

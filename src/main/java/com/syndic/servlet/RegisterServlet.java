@@ -47,10 +47,10 @@ public class RegisterServlet extends HttpServlet {
                 if (connection != null) {
                     userDAO = new UserDAOImpl(connection);
                     // Cr�er un nouvel utilisateur
-                    User newUser = new User(0, name, email, hashedPassword,2);
+                    User newUser = new User(0, name, email, hashedPassword,1);
 
                     // Appeler la m�thode pour ajouter l'utilisateur � la base de donn�es
-                    userDAO.createSyndic(newUser);
+                    userDAO.createUser(newUser);
 
                     // Rediriger vers la liste des utilisateurs apr�s l'ajout
                     response.sendRedirect("login");
