@@ -28,6 +28,7 @@ public class LoginServlet extends HttpServlet {
 
     private MeetingDAO meetingDAO;
     private IncidentDAO incidentDAO;
+    private NewsDAO newsDAO;
 
 
     public LoginServlet() {
@@ -84,6 +85,12 @@ public class LoginServlet extends HttpServlet {
                             incidentDAO = new IncidentDAOImpl(connection);
                             list_Incidents = incidentDAO.getIncidentBySyndicId(syndicId);
                             session.setAttribute("list_Incidents", list_Incidents);
+
+                            List<News> list_News = new ArrayList<>();
+                            newsDAO = new NewsDAOImpl(connection);
+                            list_News = newsDAO.getNewsBySyndicId(syndicId);
+                            session.setAttribute("list_News", list_News);
+
                             return;
                         }  else  {
 

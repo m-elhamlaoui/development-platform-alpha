@@ -48,6 +48,89 @@
             </div>
         </div>
 
+        <!-- component -->
+        <div class="flex items-center justify-center">
+            <button onclick="showAddIncidentForm()" id="addNewsBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold text-lg py-3 px-6 rounded-lg mt-4">Add Incident</button>
+        </div>
+
+        <div class="flex items-center justify-center p-12">
+
+            <!-- Author: FormBold Team -->
+            <!-- Learn More: https://formbold.com -->
+            <div class="mx-auto w-full max-w-[550px]  hidden " id="addIncidentForm">
+                <form action="incident" method="POST">
+                    <input type="hidden" name="action" value="addIncident">
+                    <div class="-mx-3 flex flex-wrap">
+                        <div class="w-full px-3 sm:w-1/2">
+                            <div class="mb-5">
+                                <label
+                                        for="incident_type"
+                                        class="mb-2 block text-base font-medium "
+                                >
+                                    Incident Type
+                                </label>
+                                <input
+                                        type="text"
+                                        name="incident_type"
+                                        id="incident_type"
+                                        placeholder="Incident Type"
+                                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                                />
+                            </div>
+                        </div>
+                        <div class="w-full px-3 sm:w-1/2">
+                            <div class="mb-5">
+                                <label
+                                        for="incident_status"
+                                        class="mb-3 block text-base font-medium "
+                                >
+                                    Incident Status
+                                </label>
+                                <input
+                                        type="text"
+                                        name="incident_status"
+                                        id="incident_status"
+                                        placeholder="Type"
+                                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-5">
+                        <label
+                                for="incident_description"
+                                class="mb-3 block text-base font-medium "
+                        >
+                            Incident Description
+                        </label>
+                        <input
+                                type="text"
+                                name="incident_description"
+                                id="incident_description"
+                                placeholder="Description of incident the incident "
+                                class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                        />
+                    </div>
+                    <div class="flex justify-end">
+                        <button
+                                class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none"
+                        >
+                            Submit
+                        </button>
+                    </div>
+                    <div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+        <% String successMessage = (String) request.getSession().getAttribute("successMessage"); %>
+        <% if (successMessage != null) {  %>
+        <script> alert('<%= successMessage %>');</script>
+        <% request.getSession().removeAttribute("successMessage");} %>
+
+
+
 
 
         <h1 class="text-3xl font-bold mb-4">List of Incidents</h1>
@@ -130,83 +213,6 @@
                 %>
         </div>
 
-        <!-- component -->
-        <div class="flex items-center justify-center p-12">
-            <h2 class="text-xl font-semibold mb-2">Incident Form</h2>
-            <!-- Author: FormBold Team -->
-            <!-- Learn More: https://formbold.com -->
-            <div class="mx-auto w-full max-w-[550px]">
-                <form action="incident" method="POST">
-                    <input type="hidden" name="action" value="addIncident">
-                    <div class="-mx-3 flex flex-wrap">
-                        <div class="w-full px-3 sm:w-1/2">
-                            <div class="mb-5">
-                                <label
-                                        for="incident_type"
-                                        class="mb-2 block text-base font-medium "
-                                >
-                                    Incident Type
-                                </label>
-                                <input
-                                        type="text"
-                                        name="incident_type"
-                                        id="incident_type"
-                                        placeholder="Incident Type"
-                                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                                />
-                            </div>
-                        </div>
-                        <div class="w-full px-3 sm:w-1/2">
-                            <div class="mb-5">
-                                <label
-                                        for="incident_status"
-                                        class="mb-3 block text-base font-medium "
-                                >
-                                    Incident Status
-                                </label>
-                                <input
-                                        type="text"
-                                        name="incident_status"
-                                        id="incident_status"
-                                        placeholder="Type"
-                                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-5">
-                        <label
-                                for="incident_description"
-                                class="mb-3 block text-base font-medium "
-                        >
-                            Incident Description
-                        </label>
-                        <input
-                                type="text"
-                                name="incident_description"
-                                id="incident_description"
-                                placeholder="Description of incident the incident "
-                                class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                        />
-                    </div>
-                    <div class="flex justify-end">
-                        <button
-                                class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none"
-                        >
-                            Submit
-                        </button>
-                    </div>
-                    <div>
-
-                    </div>
-                </form>
-            </div>
-        </div>
-        <% String successMessage = (String) request.getSession().getAttribute("successMessage"); %>
-        <% if (successMessage != null) {  %>
-        <script> alert('<%= successMessage %>');</script>
-        <% request.getSession().removeAttribute("successMessage");} %>
-
 
 
 
@@ -272,6 +278,12 @@
                 meetings[i].style.display = "none";
             }
         }
+    }
+
+
+    function showAddIncidentForm() {
+        var form = document.getElementById("addIncidentForm");
+        form.classList.toggle("hidden");
     }
 
     function toggleDetails(element) {

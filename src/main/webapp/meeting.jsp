@@ -28,8 +28,139 @@
             <input type="date">
         </div>
 
+        <div class="flex items-center justify-center">
+            <button onclick="showAddMeetingForm()" id="addNewsBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold text-lg py-3 px-6 rounded-lg mt-4">Add Meeting</button>
+        </div>
+
+        <!-- component -->
+        <div class="flex items-center justify-center p-12 hidden" id="addMeetingForm">
+            <!-- Author: FormBold Team -->
+            <!-- Learn More: https://formbold.com -->
+            <div class="mx-auto w-full max-w-[550px]">
+                <form action="meeting" method="POST">
+                    <input type="hidden" name="action" value="addMeeting">
+                    <div class="-mx-3 flex flex-wrap">
+                        <div class="w-full px-3 sm:w-1/2">
+                            <div class="mb-5">
+                                <label
+                                        for="meeting_residence"
+                                        class="mb-2 block text-base font-medium "
+                                >
+                                    Residence
+                                </label>
+                                <input
+                                        type="text"
+                                        name="meeting_residence"
+                                        id="meeting_residence"
+                                        placeholder="Residence"
+                                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                                />
+                            </div>
+                        </div>
+                        <div class="w-full px-3 sm:w-1/2">
+                            <div class="mb-5">
+                                <label
+                                        for="meeting_type"
+                                        class="mb-3 block text-base font-medium "
+                                >
+                                    Type
+                                </label>
+                                <input
+                                        type="text"
+                                        name="meeting_type"
+                                        id="meeting_type"
+                                        placeholder="Type"
+                                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-5">
+                        <label
+                                for="meeting_topic"
+                                class="mb-3 block text-base font-medium "
+                        >
+                            Topic
+                        </label>
+                        <input
+                                type="text"
+                                name="meeting_topic"
+                                id="meeting_topic"
+                                placeholder="What the meet is about"
+                                class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                        />
+                    </div>
+
+                    <div class="-mx-3 flex flex-wrap">
+                        <div class="w-full px-3 sm:w-1/2">
+                            <div class="mb-5">
+                                <label
+                                        for="meeting_date"
+                                        class="mb-3 block text-base font-medium "
+                                >
+                                    Date
+                                </label>
+                                <input
+                                        type="date"
+                                        name="meeting_date"
+                                        id="meeting_date"
+                                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                                />
+                            </div>
+                        </div>
+                        <div class="w-full px-3 sm:w-1/2">
+                            <div class="mb-5">
+                                <label
+                                        for="meeting_time"
+                                        class="mb-3 block text-base font-medium "
+                                >
+                                    Time
+                                </label>
+                                <input
+                                        type="time"
+                                        name="meeting_time"
+                                        id="meeting_time"
+                                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-5">
+                        <label
+                                for="meeting_location"
+                                class="mb-3 block text-base font-medium "
+                        >
+                            Location
+                        </label>
+                        <input
+                                type="text"
+                                name="meeting_location"
+                                id="meeting_location"
+                                placeholder="Where will the meet take place  "
+                                class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                        />
+                    </div>
+                    <div class="flex justify-end">
+                        <button
+                                class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none"
+                        >
+                            Submit
+                        </button>
+                    </div>
+                    <div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+        <% String successMessage = (String) request.getSession().getAttribute("successMessage"); %>
+        <% if (successMessage != null) {  %>
+        <script> alert('<%= successMessage %>');</script>
+        <% request.getSession().removeAttribute("successMessage");} %>
+
         <div class="flex justify-between">
-            <div class=" w-1/2 bg-white rounded-lg overflow-hidden shadow-lg p-6 m-4">
+            <div class=" w-1/2 bg-white rounded-lg overflow-hidden shadow-lg p-6 m-6">
                 <div class="px-6 py-4 text-center">
                     <h2 class="text-xl font-semibold mb-2">Law No. 18-00 concerning the status of condominiums in built-up areas.<br><br></h2>
                     <h3 class="text-left text-xl font-semibold mb-4">Rules of the General Meeting of Condominium Owners<br></h3>
@@ -179,133 +310,7 @@
 
         </div>
 
-        <!-- component -->
-        <div class="flex items-center justify-center p-12">
-            <h2 class="text-xl font-semibold mb-2">Add Meeting </h2>
-            <!-- Author: FormBold Team -->
-            <!-- Learn More: https://formbold.com -->
-            <div class="mx-auto w-full max-w-[550px]">
-                <form action="meeting" method="POST">
-                    <input type="hidden" name="action" value="addMeeting">
-                    <div class="-mx-3 flex flex-wrap">
-                        <div class="w-full px-3 sm:w-1/2">
-                            <div class="mb-5">
-                                <label
-                                        for="meeting_residence"
-                                        class="mb-2 block text-base font-medium "
-                                >
-                                    Residence
-                                </label>
-                                <input
-                                        type="text"
-                                        name="meeting_residence"
-                                        id="meeting_residence"
-                                        placeholder="Residence"
-                                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                                />
-                            </div>
-                        </div>
-                        <div class="w-full px-3 sm:w-1/2">
-                            <div class="mb-5">
-                                <label
-                                        for="meeting_type"
-                                        class="mb-3 block text-base font-medium "
-                                >
-                                    Type
-                                </label>
-                                <input
-                                        type="text"
-                                        name="meeting_type"
-                                        id="meeting_type"
-                                        placeholder="Type"
-                                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-5">
-                        <label
-                                for="meeting_topic"
-                                class="mb-3 block text-base font-medium "
-                        >
-                            Topic
-                        </label>
-                        <input
-                                type="text"
-                                name="meeting_topic"
-                                id="meeting_topic"
-                                placeholder="What the meet is about"
-                                class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                        />
-                    </div>
 
-                    <div class="-mx-3 flex flex-wrap">
-                        <div class="w-full px-3 sm:w-1/2">
-                            <div class="mb-5">
-                                <label
-                                        for="meeting_date"
-                                        class="mb-3 block text-base font-medium "
-                                >
-                                    Date
-                                </label>
-                                <input
-                                        type="date"
-                                        name="meeting_date"
-                                        id="meeting_date"
-                                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                                />
-                            </div>
-                        </div>
-                        <div class="w-full px-3 sm:w-1/2">
-                            <div class="mb-5">
-                                <label
-                                        for="meeting_time"
-                                        class="mb-3 block text-base font-medium "
-                                >
-                                    Time
-                                </label>
-                                <input
-                                        type="time"
-                                        name="meeting_time"
-                                        id="meeting_time"
-                                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                                />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mb-5">
-                        <label
-                                for="meeting_location"
-                                class="mb-3 block text-base font-medium "
-                        >
-                            Location
-                        </label>
-                        <input
-                                type="text"
-                                name="meeting_location"
-                                id="meeting_location"
-                                placeholder="Where will the meet take place  "
-                                class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                        />
-                    </div>
-                    <div class="flex justify-end">
-                        <button
-                                class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none"
-                        >
-                            Submit
-                        </button>
-                    </div>
-                    <div>
-
-                    </div>
-                </form>
-            </div>
-        </div>
-        <% String successMessage = (String) request.getSession().getAttribute("successMessage"); %>
-        <% if (successMessage != null) {  %>
-        <script> alert('<%= successMessage %>');</script>
-        <% request.getSession().removeAttribute("successMessage");} %>
 
         <!---------INSIGHTS------->
 
@@ -478,6 +483,11 @@
     function toggleDetails(element) {
         var details = element.nextElementSibling;
         details.classList.toggle("hidden");
+    }
+
+    function showAddMeetingForm() {
+        var form = document.getElementById("addMeetingForm");
+        form.classList.toggle("hidden");
     }
 
     <!-- JavaScript pour afficher/cacher les formulaires de modification -->

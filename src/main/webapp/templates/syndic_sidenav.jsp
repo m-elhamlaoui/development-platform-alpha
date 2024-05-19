@@ -77,9 +77,9 @@
         </a>
 
 
-        <a  href="#" >
+        <a  href="news" id="news" >
             <i class='bx bx-cog bx-flashing' ></i>
-            <h3>Settings</h3>
+            <h3>News-comm</h3>
         </a>
 
 
