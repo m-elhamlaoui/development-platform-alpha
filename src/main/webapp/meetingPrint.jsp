@@ -17,35 +17,20 @@
 </head>
 
 <body>
-<h1>Meeting Details</h1>
-<div >
-    <%
-        // Récupérer l'ID de la réunion depuis les paramètres de la requête
-        String meetingId = request.getParameter("meetingId");
-        // Récupérer la liste de réunions depuis la session
-        List<Meeting> listMeetings = (List<Meeting>) session.getAttribute("list_Meetings");
-        // Parcourir la liste de réunions pour trouver celle avec l'ID correspondant
-        if (listMeetings != null) {
-            for (Meeting meeting : listMeetings) {
-                // Convertir l'ID de réunion en entier
-                int id = Integer.parseInt(meetingId);
-                // Comparer l'ID de la réunion avec celui de la boucle
-                if (meeting.getMeetingId() == id) {
-    %>
-    <div>
-        <p><strong>Meeting ID:</strong> <%= meeting.getMeetingId() %></p>
-        <p><strong>Date:</strong> <%= meeting.getMeetingDate() %></p>
-        <p><strong>Location:</strong> <%= meeting.getMeetingLocation() %></p>
-        <p><strong>Time:</strong> <%= meeting.getMeetingTime() %></p>
-        <!-- Ajoutez d'autres détails de réunion ici selon vos besoins -->
-    </div>
-    <%
-                }
-            }
-        }
-    %>
-</div>
 
+<%
+    // Récupérer l'ID de la réunion depuis les paramètres de la requête
+    String meetingId = request.getParameter("meetingId");
+    // Récupérer la liste de réunions depuis la session
+    List<Meeting> listMeetings = (List<Meeting>) session.getAttribute("list_Meetings");
+    // Parcourir la liste de réunions pour trouver celle avec l'ID correspondant
+    if (listMeetings != null) {
+        for (Meeting meeting : listMeetings) {
+            // Convertir l'ID de réunion en entier
+            int id = Integer.parseInt(meetingId);
+            // Comparer l'ID de la réunion avec celui de la boucle
+            if (meeting.getMeetingId() == id) {
+%>
 <!-- Invoice -->
 <div class="max-w-[85rem] px-4 sm:px-6 lg:px-8 mx-auto my-4 sm:my-10">
     <div class="sm:w-11/12 lg:w-3/4 mx-auto">
@@ -66,7 +51,7 @@
                 <!-- Col -->
 
                 <div class="text-end">
-                    <h2 class="text-2xl md:text-3xl font-semibold text-gray-800 dark:text-neutral-200">Invoice #</h2>
+                    <h2 class="text-2xl md:text-3xl font-semibold text-gray-800 dark:text-neutral-200">PV-Meeting N° <%= meeting.getMeetingId() %></h2>
                     <span class="mt-1 block text-gray-500 dark:text-neutral-500">3682303</span>
 
                     <address class="mt-4 not-italic text-gray-800 dark:text-neutral-200">
@@ -91,18 +76,20 @@
                         United States<br>
                     </address>
                 </div>
+
+
                 <!-- Col -->
 
                 <div class="sm:text-end space-y-2">
                     <!-- Grid -->
                     <div class="grid grid-cols-2 sm:grid-cols-1 gap-3 sm:gap-2">
                         <dl class="grid sm:grid-cols-5 gap-x-3">
-                            <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">Invoice date:</dt>
-                            <dd class="col-span-2 text-gray-500 dark:text-neutral-500">03/10/2018</dd>
+                            <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">Meeting date:</dt>
+                            <dd class="col-span-2 text-gray-500 dark:text-neutral-500"><%= meeting.getMeetingDate() %></dd>
                         </dl>
                         <dl class="grid sm:grid-cols-5 gap-x-3">
-                            <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">Due date:</dt>
-                            <dd class="col-span-2 text-gray-500 dark:text-neutral-500">03/11/2018</dd>
+                            <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">Meeting time:</dt>
+                            <dd class="col-span-2 text-gray-500 dark:text-neutral-500"><%= meeting.getMeetingTime() %></dd>
                         </dl>
                     </div>
                     <!-- End Grid -->
@@ -111,116 +98,55 @@
             </div>
             <!-- End Grid -->
 
-            <!-- Table -->
-            <div class="mt-6">
-                <div class="border border-gray-200 p-4 rounded-lg space-y-4 dark:border-neutral-700">
-                    <div class="hidden sm:grid sm:grid-cols-5">
-                        <div class="sm:col-span-2 text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Item</div>
-                        <div class="text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Qty</div>
-                        <div class="text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Rate</div>
-                        <div class="text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Amount</div>
-                    </div>
+            <div  >
 
-                    <div class="hidden sm:block border-b border-gray-200 dark:border-neutral-700"></div>
+                <div class="max-w-2xl mx-auto bg-white p-4 rounded-lg shadow-md border border-gray-300">
+                    <div class="text-lg leading-relaxed space-y-4">
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full bg-white border border-gray-200">
+                                <tbody class="divide-y divide-gray-200">
+                                <tr class="border-t">
+                                    <td class="px-4 py-2 whitespace-nowrap text-sm font-semibold text-gray-700">Meeting ID</td>
+                                    <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-500"><%= meeting.getMeetingId() %></td>
+                                </tr>
+                                <tr class="border-t">
+                                    <td class="px-4 py-2 whitespace-nowrap text-sm font-semibold text-gray-700">Location</td>
+                                    <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-500"><%= meeting.getMeetingLocation() %></td>
+                                </tr>
+                                <tr class="border-t">
+                                    <td class="px-4 py-2 whitespace-nowrap text-sm font-semibold text-gray-700">Time</td>
+                                    <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-500"><%= meeting.getMeetingTime() %></td>
+                                </tr>
+                                <tr class="border-t">
+                                    <td class="px-4 py-2 whitespace-nowrap text-sm font-semibold text-gray-700">Topic</td>
+                                    <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-500"><%= meeting.getMeetingTopic() %></td>
+                                </tr>
+                                <tr class="border-t">
+                                    <td class="px-4 py-2 whitespace-nowrap text-sm font-semibold text-gray-700">Residence</td>
+                                    <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-500"><%= meeting.getMeetingResidence() %></td>
+                                </tr>
+                                <tr class="border-t">
+                                    <td class="px-4 py-2 whitespace-nowrap text-sm font-semibold text-gray-700">Type</td>
+                                    <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-500"><%= meeting.getMeetingType() %></td>
+                                </tr>
 
-                    <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">
-                        <div class="col-span-full sm:col-span-2">
-                            <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Item</h5>
-                            <p class="font-medium text-gray-800 dark:text-neutral-200">Design UX and UI</p>
+                                </tbody>
+                            </table>
                         </div>
                         <div>
-                            <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Qty</h5>
-                            <p class="text-gray-800 dark:text-neutral-200">1</p>
-                        </div>
-                        <div>
-                            <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Rate</h5>
-                            <p class="text-gray-800 dark:text-neutral-200">5</p>
-                        </div>
-                        <div>
-                            <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Amount</h5>
-                            <p class="sm:text-end text-gray-800 dark:text-neutral-200">$500</p>
-                        </div>
-                    </div>
-
-                    <div class="sm:hidden border-b border-gray-200 dark:border-neutral-700"></div>
-
-                    <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">
-                        <div class="col-span-full sm:col-span-2">
-                            <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Item</h5>
-                            <p class="font-medium text-gray-800 dark:text-neutral-200">Web project</p>
-                        </div>
-                        <div>
-                            <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Qty</h5>
-                            <p class="text-gray-800 dark:text-neutral-200">1</p>
-                        </div>
-                        <div>
-                            <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Rate</h5>
-                            <p class="text-gray-800 dark:text-neutral-200">24</p>
-                        </div>
-                        <div>
-                            <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Amount</h5>
-                            <p class="sm:text-end text-gray-800 dark:text-neutral-200">$1250</p>
+                            <span class="font-semibold block mb-2 text-center">Conclusion</span>
+                            <div class="bg-gray-50 p-4 border rounded-md">
+                                <%= meeting.getMeetingConclusion() %>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="sm:hidden border-b border-gray-200 dark:border-neutral-700"></div>
-
-                    <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">
-                        <div class="col-span-full sm:col-span-2">
-                            <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Item</h5>
-                            <p class="font-medium text-gray-800 dark:text-neutral-200">SEO</p>
-                        </div>
-                        <div>
-                            <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Qty</h5>
-                            <p class="text-gray-800 dark:text-neutral-200">1</p>
-                        </div>
-                        <div>
-                            <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Rate</h5>
-                            <p class="text-gray-800 dark:text-neutral-200">6</p>
-                        </div>
-                        <div>
-                            <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Amount</h5>
-                            <p class="sm:text-end text-gray-800 dark:text-neutral-200">$2000</p>
-                        </div>
-                    </div>
+                    <footer class="mt-8 text-center text-sm text-gray-600">
+                        Generated on <%= new java.util.Date() %>
+                    </footer>
                 </div>
+
             </div>
-            <!-- End Table -->
 
-            <!-- Flex -->
-            <div class="mt-8 flex sm:justify-end">
-                <div class="w-full max-w-2xl sm:text-end space-y-2">
-                    <!-- Grid -->
-                    <div class="grid grid-cols-2 sm:grid-cols-1 gap-3 sm:gap-2">
-                        <dl class="grid sm:grid-cols-5 gap-x-3">
-                            <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">Subtotal:</dt>
-                            <dd class="col-span-2 text-gray-500 dark:text-neutral-500">$2750.00</dd>
-                        </dl>
-
-                        <dl class="grid sm:grid-cols-5 gap-x-3">
-                            <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">Total:</dt>
-                            <dd class="col-span-2 text-gray-500 dark:text-neutral-500">$2750.00</dd>
-                        </dl>
-
-                        <dl class="grid sm:grid-cols-5 gap-x-3">
-                            <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">Tax:</dt>
-                            <dd class="col-span-2 text-gray-500 dark:text-neutral-500">$39.00</dd>
-                        </dl>
-
-                        <dl class="grid sm:grid-cols-5 gap-x-3">
-                            <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">Amount paid:</dt>
-                            <dd class="col-span-2 text-gray-500 dark:text-neutral-500">$2789.00</dd>
-                        </dl>
-
-                        <dl class="grid sm:grid-cols-5 gap-x-3">
-                            <dt class="col-span-3 font-semibold text-gray-800 dark:text-neutral-200">Due balance:</dt>
-                            <dd class="col-span-2 text-gray-500 dark:text-neutral-500">$0.00</dd>
-                        </dl>
-                    </div>
-                    <!-- End Grid -->
-                </div>
-            </div>
-            <!-- End Flex -->
 
             <div class="mt-8 sm:mt-12">
                 <h4 class="text-lg font-semibold text-gray-800 dark:text-neutral-200">Thank you!</h4>
@@ -235,6 +161,7 @@
         </div>
         <!-- End Card -->
         </div>
+
 
         <!-- Buttons -->
         <!--<div class="mt-6 flex justify-end gap-x-3">
@@ -251,6 +178,12 @@
     </div>
 </div>
 <!-- End Invoice -->
+
+<%
+            }
+        }
+    }
+%>
 <script>
     window.print();
 </script>

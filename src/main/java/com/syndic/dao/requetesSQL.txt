@@ -146,3 +146,56 @@ CREATE TABLE syndic_db.News_communication (
     news_attachment VARCHAR(255),
     news_s_id INT NOT NULL,
     FOREIGN KEY (news_s_id) REFERENCES Syndics(s_id));
+
+
+CREATE TABLE syndic_db.Charges (
+    charges_id INT AUTO_INCREMENT PRIMARY KEY,
+    charge_name VARCHAR(50),
+    charge_description TEXT,
+    charge_amount DECIMAL(10, 2),
+    charge_frequency VARCHAR(50),
+    charge_category VARCHAR(50),
+    charge_due_date VARCHAR(50),
+    charge_s_id INT NOT NULL,
+    FOREIGN KEY (charge_s_id) REFERENCES Syndics(s_id));
+
+
+CREATE TABLE syndic_db.Charges (
+    charges_id INT AUTO_INCREMENT PRIMARY KEY,
+    charge_code VARCHAR(50)
+    charge_name VARCHAR(50),
+    charge_description TEXT,
+    charge_amount DECIMAL(10, 2),
+    charge_frequency VARCHAR(50),
+    charge_category VARCHAR(50),
+    charge_due_month VARCHAR(50)
+ );
+
+INSERT INTO syndic_db.Charges (charge_code, charge_name, charge_description, charge_amount, charge_frequency, charge_category, charge_due_month)
+VALUES
+('MNT-001', 'Entretien des espaces verts', 'Entretien des jardins et espaces verts', 800.00, 'Mensuelle', 'Entretien', '01'),
+('RPR-001', 'Réparation des équipements', 'Réparation des équipements communs', 1200.00, 'Trimestrielle', 'Réparation', '01'),
+('ELE-001', 'Électricité des parties communes', 'Éclairage et électricité des espaces communs', 1000.00, 'Mensuelle', 'Électricité', '01'),
+('DCH-001', 'Gestion des déchets', 'Service de collecte et gestion des déchets', 700.00, 'Mensuelle', 'Déchets', '01'),
+('ASS-001', 'Assurance bâtiment', 'Assurance pour les parties communes du bâtiment', 2000.00, 'Annuelle', 'Assurance', '31'),
+('GST-001', 'Frais de gestion', 'Frais pour la gestion administrative de la résidence', 1500.00, 'Mensuelle', 'Gestion', '01'),
+('NTL-001', 'Nettoyage des piscines', 'Service de nettoyage et entretien des piscines', 600.00, 'Mensuelle', 'Nettoyage', '01'),
+('MNT-002', 'Maintenance des équipements de gym', 'Entretien des équipements de la salle de sport', 900.00, 'Trimestrielle', 'Maintenance', '01'),
+('SEC-001', 'Sécurité incendie', 'Installation et maintenance des équipements de sécurité incendie', 3000.00, 'Annuelle', 'Sécurité', '31'),
+('SEC-002', 'Système de surveillance', 'Maintenance du système de surveillance CCTV', 1500.00, 'Trimestrielle', 'Sécurité', '01');
+
+
+
+
+CREATE TABLE syndic_db.expenses (
+    expense_id INT AUTO_INCREMENT PRIMARY KEY,
+    expense_code VARCHAR(50),
+    expense_supplier_id INT,
+    expense_amount DECIMAL(10, 2),
+    expense_category VARCHAR(100),
+    expense_payment_date DATE,
+    expense_task_or_charge INT,
+    expense_task_id INT,
+    expense_charge_id INT,
+    FOREIGN KEY (expense_charge_id) REFERENCES charges(charges_id)
+);

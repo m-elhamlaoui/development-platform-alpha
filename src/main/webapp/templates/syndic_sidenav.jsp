@@ -82,6 +82,11 @@
             <h3>News-comm</h3>
         </a>
 
+        <a  href="charge" id="charge" >
+            <i class='bx bx-cog bx-flashing' ></i>
+            <h3>Charges</h3>
+        </a>
+
 
         <a href="login" id="logout-link">
             <i class='bx bx-log-out-circle'></i>
