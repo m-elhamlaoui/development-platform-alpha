@@ -12,5 +12,5 @@ public interface SupplierDAO {
 
     boolean updateSupplier(Supplier supplier);
 
-    boolean deleteSupplier(String  supplier_id);
+    boolean deleteSupplier(int supplier_id);
 }

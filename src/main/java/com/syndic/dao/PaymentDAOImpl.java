@@ -68,14 +68,41 @@ public class PaymentDAOImpl implements PaymentDAO {
     }
 
     @Override
-    public boolean deletePayment(String code) {
-        return false;
-    }
+    public boolean updatePayment(Payment payment) {
+        String query = "UPDATE Payments SET payment_date = ?, payment_amount = ?, payment_method = ?, payment_type = ?, payment_account_id = ?, payment_member_id = ?, payment_status = ? WHERE payment_code = ?";
 
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, payment.getDate());
+            statement.setDouble(2, payment.getAmount());
+            statement.setString(3, payment.getMethod());
+            statement.setString(4, payment.getType());
+            statement.setInt(5, payment.getAccount_id());
+            statement.setInt(6, payment.getMember_id());
+            statement.setString(7, payment.getStatus());
+            statement.setInt(8, payment.getCode());
+
+            int rowsUpdated = statement.executeUpdate();
+            return rowsUpdated > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
     @Override
-    public boolean updatePayment(Payment payment) {
-        return false;
+    public boolean deletePayment(int code) {
+        String query = "DELETE FROM Payments WHERE payment_code = ?";
+
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, code);
+
+            int rowsDeleted = statement.executeUpdate();
+            return rowsDeleted > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
+
 }
 

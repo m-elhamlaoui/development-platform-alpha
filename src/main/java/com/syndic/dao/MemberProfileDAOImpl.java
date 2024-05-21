@@ -46,9 +46,8 @@ public class MemberProfileDAOImpl implements MemberProfileDAO {
                 }
             }
         }
-        return null; // Retourne null si aucun membre n'est trouvé avec cet identifiant utilisateur.
+        return null;
     }
-
 
     @Override
     public void updateMember(Member member) throws SQLException {

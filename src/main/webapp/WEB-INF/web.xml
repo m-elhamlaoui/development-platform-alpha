@@ -141,4 +141,14 @@
     <servlet-name>AddSupplierServlet</servlet-name>
     <url-pattern>/addsupplier</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>AddTaskServlet</servlet-name>
+    <servlet-class>com.syndic.servlet.AddTaskServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddTaskServlet</servlet-name>
+    <url-pattern>/addtask</url-pattern>
+  </servlet-mapping>
+
 </web-app>

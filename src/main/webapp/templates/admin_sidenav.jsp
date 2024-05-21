@@ -37,25 +37,12 @@
                 <h3>Analytics</h3></a></div>
             <div class="item"><a href="#" id="messages"><i class='bx bx-paper-plane bx-tada'></i>
                 <h3>Messages</h3><span class="message-count">24</span></a></div>
-            <div class="item">
-                <a href="#" id="accounting" class="sub-btn">
-                    <i class='bx bxs-crown'></i>
-                    <h3>Accounting<span id="toggleArrow" class="fas fa-angle-right dropdown"></span></h3>
-                </a>
-                <div class="sub-menu">
-                    <a href="addpayment" id="addpayment" class="sub-item">
-                        <i class='fas fa-money-bill-wave'></i><h6>Members Payment</h6>
-                    </a>
-                    <a href="addsupplier" id="addsupplier" class="sub-item">
-                        <i class='bx bxs-group'></i>
-                        <h3>Suppliers</h3>
-                    </a>
-                    <a href="#" class="sub-item">
-                        <i class='fas fa-file-contract'></i>
-                        <h3>Contracts</h3>
-                    </a>
-                </div>
-            </div>
+            <div class="item"><a href="addpayment" id="addpayment"><i class='fas fa-money-bill-wave'></i>
+                <h3>Payment</h3></a></div>
+            <div class="item"><a href="addsupplier" id="addsupplier"><i class='bx bxs-group'></i>
+                <h3>Suppliers</h3></a></div>
+            <div class="item"><a href="addtask" id="addtask"><i class='bx bx-task'></i>
+                <h3>Tasks</h3></a></div>
             <div class="item"><a href="#" id="reports"><i class='bx bxs-crown'></i>
                 <h3>Reports</h3></a></div>
             <div class="item"><a href="#" id="settings"><i class='bx bx-cog bx-flashing'></i>
@@ -69,13 +56,5 @@
 <!---------END OF ASIDE--------->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('.sub-btn').click(function () {
-            $(this).next('.sub-menu').slideToggle();
-            $(this).find('.dropdown').toggleClass('rotate');
-        });
-    });
-</script>
 </body>
 </html>

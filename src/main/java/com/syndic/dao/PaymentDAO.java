@@ -11,5 +11,5 @@ public interface PaymentDAO {
 
     boolean updatePayment(Payment payment);
 
-    boolean deletePayment(String code);
+    boolean deletePayment(int code);
 }

@@ -17,7 +17,6 @@ public class SupplierDAOImpl implements SupplierDAO {
         this.connection = connection;
     }
 
-
     @Override
     public List<Supplier> getAllSuppliers() {
         List<Supplier> suppliers = new ArrayList<>();
@@ -46,9 +45,6 @@ public class SupplierDAOImpl implements SupplierDAO {
         return suppliers;
     }
 
-
-
-
     @Override
     public boolean insertSupplier(Supplier supplier) {
         String query = "INSERT INTO Suppliers (supplier_name, supplier_email, supplier_phone, supplier_type, supplier_active, supplier_rating, supplier_s_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -70,16 +66,41 @@ public class SupplierDAOImpl implements SupplierDAO {
         }
     }
 
-
-
-
     @Override
     public boolean updateSupplier(Supplier supplier) {
-        return false;
+        String query = "UPDATE Suppliers SET supplier_name = ?, supplier_email = ?, supplier_phone = ?, supplier_type = ?, supplier_active = ?, supplier_rating = ? WHERE supplier_s_id = ?";
+
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, supplier.getSupplier_name());
+            statement.setString(2, supplier.getSupplier_email());
+            statement.setString(3, supplier.getSupplier_phone());
+            statement.setString(4, supplier.getSupplier_type());
+            statement.setBoolean(5, supplier.isSupplier_active());
+            statement.setString(6, supplier.getSupplier_rating());
+            statement.setInt(7, supplier.getSupplier_s_id());
+
+            int rowsUpdated = statement.executeUpdate();
+            return rowsUpdated > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
+
+
     @Override
-    public boolean deleteSupplier(String supplier_id) {
-        return false;
+    public boolean deleteSupplier(int supplier_s_id) {
+        String query = "DELETE FROM Suppliers WHERE supplier_s_id = ?";
+
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, supplier_s_id);
+
+            int rowsDeleted = statement.executeUpdate();
+            return rowsDeleted > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
