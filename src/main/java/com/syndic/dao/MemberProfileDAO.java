@@ -11,6 +11,8 @@ public interface MemberProfileDAO {
     void addMember(Member member) throws SQLException ;
 
     Member getMemberByUserId(int userId) throws SQLException;
+
     void updateMember(Member member) throws SQLException;
 
 }
+

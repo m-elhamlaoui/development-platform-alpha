@@ -209,3 +209,9 @@ CREATE TABLE syndic_db.Tasks (
     task_s_id INT,
     task_created DATE
 );
+ALTER TABLE members
+ADD COLUMN property_code INT UNIQUE,
+ADD COLUMN property_address VARCHAR(250),
+ADD COLUMN property_type VARCHAR(50),
+ADD COLUMN property_size INT,
+ADD COLUMN `co-ownership_fee` INT;

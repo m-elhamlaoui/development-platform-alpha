@@ -76,6 +76,21 @@
     <label for="mail">E-mail:</label><br>
     <input type="text" id="mail" name="mail" value="${member.mail}"><br>
 
+    <label for="property_code">Code Propriété:</label><br>
+    <input type="text" id="property_code" name="property_code" value="${member.propertyCode}"><br>
+
+    <label for="property_address">Adresse Propriété:</label><br>
+    <input type="text" id="property_address" name="property_address" value="${member.propertyAddress}"><br>
+
+    <label for="property_type">Type Propriété:</label><br>
+    <input type="text" id="property_type" name="property_type" value="${member.propertyType}"><br>
+
+    <label for="property_size">Taille Propriété:</label><br>
+    <input type="text" id="property_size" name="property_size" value="${member.propertySize}"><br>
+
+    <label for="co_ownership_fee">Frais Copropriété:</label><br>
+    <input type="text" id="co_ownership_fee" name="co_ownership_fee" value="${member.coOwnershipFee}"><br>
+
     <input type="submit" value="Enregistrer">
 </form>
         </div>

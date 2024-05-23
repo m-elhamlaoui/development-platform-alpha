@@ -38,11 +38,21 @@ public class  MemberProfileServlet extends HttpServlet {
         String phonenumber = request.getParameter("phonenumber");
         String fulladdress = request.getParameter("fulladdress");
         String mail = request.getParameter("mail");
-        System.out.println("test" + firstname);
+
+        String propertyCodeStr = request.getParameter("property_code");
+        String propertyAddress = request.getParameter("property_address");
+        String propertyType = request.getParameter("property_type");
+        String propertySizeStr = request.getParameter("property_size");
+        String coOwnershipFeeStr = request.getParameter("co_ownership_fee");
+
+        int propertyCode = (propertyCodeStr != null && !propertyCodeStr.isEmpty()) ? Integer.parseInt(propertyCodeStr) : 0;
+        int propertySize = (propertySizeStr != null && !propertySizeStr.isEmpty()) ? Integer.parseInt(propertySizeStr) : 0;
+        int coOwnershipFee = (coOwnershipFeeStr != null && !coOwnershipFeeStr.isEmpty()) ? Integer.parseInt(coOwnershipFeeStr) : 0;
+
+
 
         try {
             Connection connection = Syndic_con.getConnection();
-            System.out.println("post");
             HttpSession session = request.getSession();
             User user = (User) session.getAttribute("user");
             int userId = user.getIdUser();
@@ -51,7 +61,6 @@ public class  MemberProfileServlet extends HttpServlet {
             Member member = memberDAO.getMemberByUserId(userId);
 
             member.setFirstName(firstname);
-            System.out.println("upup" + firstname);
             member.setLastName(lastname);
             member.setCodepostal(codepostal);
             member.setPhoneNumber(phonenumber);
@@ -59,13 +68,17 @@ public class  MemberProfileServlet extends HttpServlet {
             member.setMail(mail);
             member.setUserId(userId);
 
+            member.setPropertyCode(propertyCode);
+            member.setPropertyAddress(propertyAddress);
+            member.setPropertyType(propertyType);
+            member.setPropertySize(propertySize);
+            member.setCoOwnershipFee(coOwnershipFee);
+
             memberDAO.updateMember(member);
             session.setAttribute("member", member);
-            System.out.println("succès " + firstname);
             RequestDispatcher dispatcher = request.getRequestDispatcher("memberprofile.jsp");
             dispatcher.forward(request, response);
         } catch (SQLException e) {
-            System.out.println("echec " + firstname);
             e.printStackTrace();
             System.out.println(e);
             RequestDispatcher dispatcher = request.getRequestDispatcher("memberprofile.jsp");

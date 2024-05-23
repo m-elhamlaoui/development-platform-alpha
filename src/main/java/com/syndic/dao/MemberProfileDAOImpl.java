@@ -27,6 +27,8 @@ public class MemberProfileDAOImpl implements MemberProfileDAO {
         }
     }
 
+
+
     @Override
     public Member getMemberByUserId(int userId) throws SQLException {
         String query = "SELECT * FROM members WHERE m_iduser = ?";
@@ -42,7 +44,13 @@ public class MemberProfileDAOImpl implements MemberProfileDAO {
                     String phoneNumber = resultSet.getString("m_phonenumber");
                     String mail = resultSet.getString("m_mail");
                     int memberSId = resultSet.getInt("member_s_id");
-                    return new Member(id, firstName, lastName, fulladdress, codepostal, phoneNumber, mail, userId, memberSId);
+                    int propertyCode = resultSet.getInt("property_code");
+                    String propertyAddress = resultSet.getString("property_address");
+                    String propertyType = resultSet.getString("property_type");
+                    int propertySize = resultSet.getInt("property_size");
+                    int coOwnershipFee = resultSet.getInt("coOwnershipFee");
+
+                    return new Member(id, firstName, lastName, fulladdress, codepostal, phoneNumber, mail, userId, memberSId, propertyCode, propertyAddress, propertyType, propertySize, coOwnershipFee);
                 }
             }
         }
@@ -51,7 +59,7 @@ public class MemberProfileDAOImpl implements MemberProfileDAO {
 
     @Override
     public void updateMember(Member member) throws SQLException {
-        String query = "UPDATE members SET m_firstname = ?, m_lastname = ?, m_codepostal = ?, m_phonenumber = ?, m_fulladdress = ?, m_mail = ? WHERE m_iduser = ?";
+        String query = "UPDATE members SET m_firstname = ?, m_lastname = ?, m_codepostal = ?, m_phonenumber = ?, m_fulladdress = ?, m_mail = ?, property_code = ?, property_address = ?, property_type = ?, property_size = ?, coOwnershipFee = ? WHERE m_iduser = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, member.getFirstName());
             preparedStatement.setString(2, member.getLastName());
@@ -59,7 +67,12 @@ public class MemberProfileDAOImpl implements MemberProfileDAO {
             preparedStatement.setString(4, member.getPhoneNumber());
             preparedStatement.setString(5, member.getFulladdress());
             preparedStatement.setString(6, member.getMail());
-            preparedStatement.setInt(7, member.getUserId());
+            preparedStatement.setInt(7, member.getPropertyCode());
+            preparedStatement.setString(8, member.getPropertyAddress());
+            preparedStatement.setString(9, member.getPropertyType());
+            preparedStatement.setInt(10, member.getPropertySize());
+            preparedStatement.setInt(11, member.getCoOwnershipFee());
+            preparedStatement.setInt(12, member.getUserId());
             preparedStatement.executeUpdate();
         }
     }
