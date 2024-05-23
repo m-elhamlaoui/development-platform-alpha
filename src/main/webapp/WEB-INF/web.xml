@@ -151,12 +151,11 @@
     <url-pattern>/addtask</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>ShowAccountsServlet</servlet-name>
-    <servlet-class>com.syndic.servlet.ShowAccountsServlet</servlet-class>
+    <servlet-name>DisplayAccountsServlet</servlet-name>
+    <servlet-class>com.syndic.servlet.DisplayAccountsServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ShowAccountsServlet</servlet-name>
-    <url-pattern>/show-accounts</url-pattern>
+    <servlet-name>DisplayAccountsServlet</servlet-name>
+    <url-pattern>/displayaccounts</url-pattern>
   </servlet-mapping>
-
 </web-app>

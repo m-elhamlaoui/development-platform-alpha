@@ -11,6 +11,7 @@ public interface AccountDAO {
     void createAccount(Account account) throws SQLException;
 
     int getLastAccountNumber() throws SQLException;
+    List<Account> getAllAccounts() throws SQLException ;
 
 
 }

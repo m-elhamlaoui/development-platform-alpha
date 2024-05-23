@@ -34,6 +34,7 @@ public class LoginServlet extends HttpServlet {
     private ChargeDAO chargeDAO;
 
     private PaymentDAO paymentDAO;
+    private AccountDAO accountsDAO;
 
 
     public LoginServlet() {
@@ -84,6 +85,12 @@ public class LoginServlet extends HttpServlet {
                             syndicDAO = new SyndicProfileDAOImpl(connection);
                             List_syndics = syndicDAO.getSyndic();
                             session.setAttribute("List_syndics", List_syndics);
+
+                            List<Account> accounts;
+                            accountsDAO = new AccountDAOImpl (connection);
+                            accounts = accountsDAO.getAllAccounts();
+                            session.setAttribute("accounts", accounts);
+
                             return;
                         } else if (user.getAdmin() == 2){
                             response.sendRedirect("syndic.jsp");

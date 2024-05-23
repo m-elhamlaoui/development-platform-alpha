@@ -43,6 +43,23 @@ public class AccountDAOImpl implements AccountDAO {
         }
     }
 
-
+    public List<Account> getAllAccounts() throws SQLException {
+        String sql = "SELECT * FROM accounts";
+        List<Account> accounts = new ArrayList<>();
+        try (PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery()) {
+            while (resultSet.next()) {
+                Account account = new Account();
+                account.setAccountId(resultSet.getInt("account_id"));
+                account.setAccountNumber(resultSet.getInt("account_number"));
+                account.setAccountType(resultSet.getString("account_type"));
+                account.setAccountBalance(resultSet.getBigDecimal("account_balance"));
+                account.setAccountCreatedAt(resultSet.getDate("account_created_at"));
+                account.setAccountSyndicId(resultSet.getInt("account_syndic_id"));
+                accounts.add(account);
+            }
+        }
+        return accounts;
+    }
 
 }

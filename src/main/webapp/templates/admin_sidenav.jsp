@@ -43,12 +43,12 @@
 
         <a href="syndics.jsp">
             <i class='bx bx-file'></i>
-            <h3>Syndics</h3>
+            <h3>Syndic</h3>
         </a>
 
-        <a href="#">
+        <a href="displayaccounts" id="displayaccounts">
             <i class='bx bx-line-chart-down'></i>
-            <h3>Members</h3>
+            <h3>displayaccounts</h3>
         </a>
 
         <a href="#">
