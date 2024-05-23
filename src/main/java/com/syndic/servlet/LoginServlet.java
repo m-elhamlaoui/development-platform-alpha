@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.RequestDispatcher;
 import com.syndic.dao.MemberProfileDAO;
 import com.syndic.dao.MemberProfileDAOImpl;
+import org.bouncycastle.crypto.util.Pack;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -31,6 +32,8 @@ public class LoginServlet extends HttpServlet {
     private NewsDAO newsDAO;
 
     private ChargeDAO chargeDAO;
+
+    private PaymentDAO paymentDAO;
 
 
     public LoginServlet() {
@@ -67,8 +70,15 @@ public class LoginServlet extends HttpServlet {
                     if (user != null) {
                         HttpSession session = request.getSession();
                         session.setAttribute("user", user);
+
+
                         if (user.getAdmin() == 1  ) {
                             response.sendRedirect("admin.jsp");
+
+                            List<Payment> payments;
+                            paymentDAO = new PaymentDAOImpl(connection);
+                            payments = paymentDAO.getAllPayments();
+                            session.setAttribute("payments", payments);
                             return;
                         } else if (user.getAdmin() == 2){
                             response.sendRedirect("syndic.jsp");

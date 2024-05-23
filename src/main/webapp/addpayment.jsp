@@ -41,16 +41,24 @@
 
             <div class="recent-updates"></div>
         </div>
-         <br><br><br><br><br><br>
+        <br><br><br><br><br><br>
         <div class="max-w-screen-xl mx-auto px-4 md:px-6">
             <div class="items-start justify-between md:flex">
                 <div class="max-w-lg">
                     <h3 class="text-light-800 text-xl font-bold sm:text-2xl">Members Payment</h3>
                 </div>
-                <div class="mt-3 md:mt-0">
+                <div class="mt-3 md:mt-0 flex gap-4">
                     <button id="addPaymentBtn"
                             class="inline-block px-4 py-2 text-white duration-150 font-medium bg-indigo-600 rounded-lg hover:bg-indigo-500 active:bg-indigo-700 md:text-sm btn">
                         Add Payment
+                    </button>
+                    <input type="number" id="filterAccountId" placeholder="Filter by Account ID" class="px-4 py-2 border rounded-md">
+                    <input type="number" id="filterMemberId" placeholder="Filter by Member ID" class="px-4 py-2 border rounded-md">
+                    <button id="filterPaymentsBtn" class="inline-block px-4 py-2 text-white duration-150 font-medium bg-blue-600 rounded-lg hover:bg-blue-500 active:bg-blue-700 md:text-sm btn">
+                        Filter Payments
+                    </button>
+                    <button id="printInvoiceBtn" class="inline-block px-4 py-2 text-white duration-150 font-medium bg-green-600 rounded-lg hover:bg-green-500 active:bg-green-700 md:text-sm btn">
+                        Print Invoice
                     </button>
                 </div>
             </div>
@@ -69,7 +77,7 @@
                         <th class="py-3 px-6">Actions</th>
                     </tr>
                     </thead>
-                    <tbody class="text-gray-600 divide-y">
+                    <tbody class="text-gray-600 divide-y" id="paymentTableBody">
                     <% List<Payment> payments = (List<Payment>) request.getAttribute("payments"); %>
                     <% if (payments != null && !payments.isEmpty()) { %>
                     <% for (Payment payment : payments) { %>
@@ -128,7 +136,7 @@
                     </div>
                     <div class="col-span-1">
                         <label for="amount" class="block text-sm font-medium text-light-700">Amount:</label>
-                        <input type="number" id="amount" name="amount"  class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        <input type="number" id="amount" name="amount" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                     </div>
                     <div class="col-span-1">
                         <label for="method" class="block text-sm font-medium text-light-700">Method:</label>
@@ -197,6 +205,42 @@
             document.getElementById('status').value = button.getAttribute('data-status');
         });
     });
+
+    // Event listener for Filter Payments button
+    document.getElementById('filterPaymentsBtn').addEventListener('click', function () {
+        var accountId = document.getElementById('filterAccountId').value;
+        var memberId = document.getElementById('filterMemberId').value;
+
+        // Fetch all rows in the table
+        var rows = document.querySelectorAll('#paymentTable tbody tr');
+        rows.forEach(function (row) {
+            var accountIdCell = row.querySelector('td:nth-child(6)').textContent;
+            var memberIdCell = row.querySelector('td:nth-child(7)').textContent;
+
+            // Check if the row matches the filter criteria
+            if ((accountId === '' || accountIdCell === accountId) &&
+                (memberId === '' || memberIdCell === memberId)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+
+    // Event listener for Print Invoice button
+    document.getElementById('printInvoiceBtn').addEventListener('click', function () {
+        // Récupérer les valeurs des filtres
+        var accountId = document.getElementById('filterAccountId').value;
+        var memberId = document.getElementById('filterMemberId').value;
+
+        // Construire l'URL avec les paramètres de filtrage
+        var url = "paymentPrint.jsp?accountId=" + accountId + "&memberId=" + memberId;
+
+        // Ouvrir la page dans une nouvelle fenêtre
+        window.open(url, '_blank');
+    });
+
+
 </script>
 </body>
 </html>
