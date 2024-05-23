@@ -79,6 +79,11 @@ public class LoginServlet extends HttpServlet {
                             paymentDAO = new PaymentDAOImpl(connection);
                             payments = paymentDAO.getAllPayments();
                             session.setAttribute("payments", payments);
+
+                            List<Syndic> List_syndics;
+                            syndicDAO = new SyndicProfileDAOImpl(connection);
+                            List_syndics = syndicDAO.getSyndic();
+                            session.setAttribute("List_syndics", List_syndics);
                             return;
                         } else if (user.getAdmin() == 2){
                             response.sendRedirect("syndic.jsp");
@@ -123,6 +128,10 @@ public class LoginServlet extends HttpServlet {
                             incidentDAO = new IncidentDAOImpl(connection);
                             list_Incidents = incidentDAO.getIncidentBySyndicId(syndicId);
                             session.setAttribute("list_Incidents", list_Incidents);
+
+                            syndicDAO = new SyndicProfileDAOImpl(connection);
+                            Syndic syndic = syndicDAO.getSyndicById(syndicId);
+                            session.setAttribute("syndic", syndic);
 
                             return;
                         }

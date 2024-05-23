@@ -26,12 +26,12 @@
 
     <!----------SIDEBAR---------->
     <div class="sidebar">
-        <a href="#" class="active">
+        <a href="s_dashboard" id="s_dashboard">
             <i class='bx bxs-dashboard' ></i>
             <h3>Dashboard</h3>
         </a>
 
-        <a href="syndicprofile">
+        <a href="syndicprofile" id = "syndicprofile">
             <i class='bx bx-user' ></i>
             <h3>Profile</h3>
         </a>

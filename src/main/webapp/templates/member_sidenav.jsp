@@ -26,7 +26,7 @@
 
     <!----------SIDEBAR---------->
     <div class="sidebar">
-        <a href="#" class="active">
+        <a href="#" >
             <i class='bx bxs-dashboard' ></i>
             <h3>Dashboard</h3>
         </a>
@@ -36,9 +36,9 @@
             <h3>Profile</h3>
         </a>
 
-        <a href="reclamer">
+        <a href="property" id="property">
             <i class='bx bx-file'></i>
-            <h3>Proprety</h3>
+            <h3>Property</h3>
         </a>
 
         <a href="paiement">

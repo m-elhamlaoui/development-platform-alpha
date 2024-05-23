@@ -372,7 +372,9 @@
         }
     }
 </script>
-
+<script>
+    document.getElementById("s_dashboard").classList.add("active");
+</script>
 
 </body>
 

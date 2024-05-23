@@ -51,13 +51,13 @@
   </servlet-mapping>
 
   <servlet>
-    <servlet-name>ReclamerServlet</servlet-name>
-    <servlet-class>com.syndic.servlet.ReclamerServlet</servlet-class>
+    <servlet-name>PropertyServlet</servlet-name>
+    <servlet-class>com.syndic.servlet.PropertyServlet</servlet-class>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>ReclamerServlet</servlet-name>
-    <url-pattern>/reclamer</url-pattern>
+    <servlet-name>PropertyServlet</servlet-name>
+    <url-pattern>/property</url-pattern>
   </servlet-mapping>
 
 

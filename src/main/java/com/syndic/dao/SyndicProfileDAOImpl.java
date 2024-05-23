@@ -1,5 +1,6 @@
 package com.syndic.dao;
 
+import com.syndic.beans.Payment;
 import com.syndic.beans.Syndic;
 import com.syndic.beans.User;
 
@@ -7,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SyndicProfileDAOImpl implements SyndicProfileDAO {
     private final Connection connection;
@@ -119,6 +122,81 @@ public class SyndicProfileDAOImpl implements SyndicProfileDAO {
             }
         }
         return null; // Retourne null si aucun synd n'est trouvé avec cet identifiant utilisateur.
+    }
+
+    public Syndic getSyndicById(int id) throws SQLException {
+        String query = "SELECT * FROM syndics WHERE s_id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, id);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    Syndic syndic = new Syndic();
+
+                    syndic.setId(resultSet.getInt("s_id"));
+                    syndic.setFirstName(resultSet.getString("s_firstname"));
+                    syndic.setLastName(resultSet.getString("s_lastname"));
+                    syndic.setFulladdress(resultSet.getString("s_fulladdress"));
+                    syndic.setCodepostal(resultSet.getString("s_codepostal"));
+                    syndic.setPhoneNumber(resultSet.getString("s_phonenumber"));
+                    syndic.setMail(resultSet.getString("s_mail"));
+                    syndic.setUserId(resultSet.getInt("s_iduser"));
+
+                    syndic.setResidenceName(resultSet.getString("residence_Name"));
+                    syndic.setResidenceAddress(resultSet.getString("residence_Address"));
+                    syndic.setResidenceType(resultSet.getString("residence_Type"));
+                    syndic.setResidenceSize(resultSet.getInt("residence_Size"));
+                    syndic.setApartmentCount(resultSet.getInt("apartment_Count"));
+                    syndic.setVillaCount(resultSet.getInt("villa_Count"));
+                    syndic.setGardenCount(resultSet.getInt("garden_Count"));
+                    syndic.setPoolCount(resultSet.getInt("pool_Count"));
+                    syndic.setParkingCount(resultSet.getInt("parking_Count"));
+                    syndic.setElevatorsCount(resultSet.getInt("elevators_Count"));
+                    syndic.setSecuritySystem(resultSet.getBoolean("security_System"));
+
+                    return syndic;
+                }
+            }
+        }
+        return null; // Returns null if no syndic is found with the given ID.
+    }
+
+
+    public List<Syndic> getSyndic() throws SQLException {
+        List<Syndic> syndics = new ArrayList<>();
+        String query = "SELECT * FROM syndics";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Syndic syndic = new Syndic();
+
+                    syndic.setId(resultSet.getInt("s_id"));
+                    syndic.setFirstName(resultSet.getString("s_firstname"));
+                    syndic.setLastName(resultSet.getString("s_lastname"));
+                    syndic.setFulladdress(resultSet.getString("s_fulladdress"));
+                    syndic.setCodepostal(resultSet.getString("s_codepostal"));
+                    syndic.setPhoneNumber(resultSet.getString("s_phonenumber"));
+                    syndic.setMail(resultSet.getString("s_mail"));
+                    syndic.setUserId(resultSet.getInt("s_iduser"));
+
+                    syndic.setResidenceName(resultSet.getString("residence_Name"));
+                    syndic.setResidenceAddress(resultSet.getString("residence_Address"));
+                    syndic.setResidenceType(resultSet.getString("residence_Type"));
+                    syndic.setResidenceSize(resultSet.getInt("residence_Size"));
+                    syndic.setApartmentCount(resultSet.getInt("apartment_Count"));
+                    syndic.setVillaCount(resultSet.getInt("villa_Count"));
+                    syndic.setGardenCount(resultSet.getInt("garden_Count"));
+                    syndic.setPoolCount(resultSet.getInt("pool_Count"));
+                    syndic.setParkingCount(resultSet.getInt("parking_Count"));
+                    syndic.setElevatorsCount(resultSet.getInt("elevators_Count"));
+                    syndic.setSecuritySystem(resultSet.getBoolean("security_System"));
+
+                    syndics.add(syndic);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return syndics;
     }
 
 }

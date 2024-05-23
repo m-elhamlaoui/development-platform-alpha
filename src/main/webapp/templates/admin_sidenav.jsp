@@ -41,7 +41,7 @@
             <h3>Add Members</h3>
         </a>
 
-        <a href="#">
+        <a href="syndics.jsp">
             <i class='bx bx-file'></i>
             <h3>Syndics</h3>
         </a>
