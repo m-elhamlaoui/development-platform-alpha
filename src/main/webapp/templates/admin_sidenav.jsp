@@ -26,7 +26,7 @@
 
     <!----------SIDEBAR---------->
     <div class="sidebar">
-        <a href="#" id ="dashboard">
+        <a href="#">
             <i class='bx bxs-dashboard' ></i>
             <h3>Dashboard</h3>
         </a>
@@ -41,7 +41,7 @@
             <h3>Add Members</h3>
         </a>
 
-        <a href="syndics.jsp">
+        <a href="">
             <i class='bx bx-file'></i>
             <h3>Syndic</h3>
         </a>
@@ -51,7 +51,7 @@
             <h3>displayaccounts</h3>
         </a>
 
-        <a href="#">
+        <a href="syndic.jsp" >
             <i class='bx bx-paper-plane bx-tada' ></i>
             <h3>Messages</h3><span class="message-count">24</span>
         </a>

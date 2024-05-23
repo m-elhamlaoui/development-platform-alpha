@@ -15,4 +15,5 @@ public interface UserDAO {
     void updateUser(User user);
     void deleteUser(int userId);
     int getUserIdByEmail(String email) throws SQLException;
+    int getUserCount() throws SQLException;
 }

@@ -2,6 +2,7 @@ package com.syndic.dao;
 
 import com.syndic.beans.Task;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface TaskDAO {
@@ -9,4 +10,5 @@ public interface TaskDAO {
     boolean insertTask(Task task);
     boolean updateTask(Task task);
     boolean deleteTask(int taskId);
+    int getTaskCount() throws SQLException;
 }

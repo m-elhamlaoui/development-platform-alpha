@@ -5,8 +5,8 @@
               maxTotal="100"
               maxIdle="30"
               maxWaitMillis="10000"
-              username="amine"
-              password="1999"
+              username="root"
+              password="emmanuel2000"
               driverClassName="com.mysql.cj.jdbc.Driver"
               url="jdbc:mysql://mysql:3306/syndic_db"/>
 </Context>

@@ -21,6 +21,8 @@ public class UserDAOImpl extends AbstractDAOA implements UserDAO {
     private static final String DELETE_USER = "DELETE FROM users WHERE id=?";
     private static final String LOGIN_USER = "SELECT * FROM users WHERE u_email=? ";
 
+    private static final String COUNT_USERS = "SELECT COUNT(*) FROM users";
+
     private final Connection connection;
 
     public UserDAOImpl(Connection connection) {
@@ -172,6 +174,14 @@ public class UserDAOImpl extends AbstractDAOA implements UserDAO {
     }
 
 
-
+    public int getUserCount() throws SQLException {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(COUNT_USERS);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+            if (resultSet.next()) {
+                return resultSet.getInt(1);
+            }
+            return 0;
+        }
+    }
 
 }

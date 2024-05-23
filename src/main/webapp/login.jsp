@@ -54,17 +54,17 @@
 
         <div>
             <label for="residence" class="text-sm font-medium text-gray-600">Residence</label>
-            <input type="text" id="" name="Residence" class="mt-1 p-2 w-full border-2 border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" required>
+            <input type="text" id="residence" name="Residence" class="mt-1 p-2 w-full border-2 border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" required>
         </div>
 
         <div>
-            <label for="mail" class="text-sm font-medium text-gray-600">Email</label>
-            <input type="text" id="" name="email" class="mt-1 p-2 w-full border-2 border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" required>
+            <label for="email" class="text-sm font-medium text-gray-600">Email</label>
+            <input type="text" id="email" name="email" class="mt-1 p-2 w-full border-2 border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" required>
         </div>
 
         <div>
             <label for="password" class="text-sm font-medium text-gray-600">Password</label>
-            <input type="password" id="" name="password" class="mt-1 p-2 w-full border-2 border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" required>
+            <input type="password" id="password" name="password" class="mt-1 p-2 w-full border-2 border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" required>
         </div>
 
         <button type="submit" class="mx-auto block w-48 h-12 bg-gradient-to-r from-blue-200 to-blue-200 text-black p-4 rounded-md hover:opacity-90 focus:outline-none focus:ring focus:border-indigo-500">login</button>

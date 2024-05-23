@@ -1,3 +1,27 @@
+<%@ page import="com.syndic.dao.UserDAO" %>
+<%@ page import="com.syndic.dao.UserDAOImpl" %>
+<%@ page import="com.syndic.connection.Syndic_con" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="com.syndic.dao.TaskDAO" %>
+<%@ page import="com.syndic.dao.TaskDAOImpl" %>
+
+<%
+    int userCount = 0;
+    int taskCount=0;
+    Connection connection = null;
+
+    try {
+        connection = Syndic_con.getConnection();
+        UserDAO userDao = new UserDAOImpl(connection);
+        userCount = userDao.getUserCount();
+        TaskDAO taskDAO = new TaskDAOImpl(connection);
+        taskCount=taskDAO.getTaskCount();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,7 +86,7 @@
                                 </div>
                                 <div class="flex-1 text-right md:text-center">
                                     <h2 class="font-bold uppercase text-gray-600">Total Users</h2>
-                                    <p class="font-bold text-3xl">249 <span class="text-pink-500"><i class="fas fa-exchange-alt"></i></span></p>
+                                    <p class="font-bold text-3xl"><%= userCount %> <span class="text-pink-500"><i class="fas fa-exchange-alt"></i></span></p>
                                 </div>
                             </div>
                         </div>
@@ -76,7 +100,7 @@
                                     <div class="rounded-full p-5 bg-yellow-600"><i class="fas fa-user-plus fa-2x fa-inverse"></i></div>
                                 </div>
                                 <div class="flex-1 text-right md:text-center">
-                                    <h2 class="font-bold uppercase text-gray-600">New Users</h2>
+                                    <h2 class="font-bold uppercase text-gray-600">Total Users</h2>
                                     <p class="font-bold text-3xl">2 <span class="text-yellow-600"><i class="fas fa-caret-up"></i></span></p>
                                 </div>
                             </div>
@@ -107,7 +131,7 @@
                                 </div>
                                 <div class="flex-1 text-right md:text-center">
                                     <h2 class="font-bold uppercase text-gray-600">To Do List</h2>
-                                    <p class="font-bold text-3xl">7 tasks</p>
+                                    <p class="font-bold text-3xl"><%= taskCount %> tasks</p>
                                 </div>
                             </div>
                         </div>
@@ -336,7 +360,9 @@
 </div>
 
 
-
+<script>
+    document.getElementById("dashboard").classList.add("active");
+</script>
 
 
 <script>

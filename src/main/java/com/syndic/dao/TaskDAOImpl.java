@@ -12,6 +12,9 @@ import java.util.List;
 public class TaskDAOImpl implements TaskDAO {
     private final Connection connection;
 
+    private static final String COUNT_TASKS = "SELECT COUNT(*) FROM tasks";
+
+
     public TaskDAOImpl(Connection connection) {
         this.connection = connection;
     }
@@ -94,6 +97,16 @@ public class TaskDAOImpl implements TaskDAO {
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }
+    }
+
+    public int getTaskCount() throws SQLException {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(COUNT_TASKS);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+            if (resultSet.next()) {
+                return resultSet.getInt(1);
+            }
+            return 0;
         }
     }
 }
