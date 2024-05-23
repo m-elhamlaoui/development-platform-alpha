@@ -42,6 +42,7 @@
   form input[type="submit"]:hover {
     background-color: var(--color-primary-variant);
   }
+
   </style>
 
   <link rel="stylesheet" href="css/style.css">
@@ -59,7 +60,8 @@
       <h1>Welcome <%= ((Syndic) session.getAttribute("syndic")).getFirstName() %>!</h1>
       <form action="syndicprofile" method="post">
         <label for="firstname">Prénom:</label><br>
-        <input type="text" id="firstname" name="firstname" value="${syndic.firstName}"><br>
+
+        <input type="text" id="firstname" name="firstname" value="${syndic.firstName}" , placeholder="Full Name"><br>
 
         <label for="lastname">Nom:</label><br>
         <input type="text" id="lastname" name="lastname" value="${syndic.lastName}"><br>

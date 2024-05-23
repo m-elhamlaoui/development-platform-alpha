@@ -215,3 +215,14 @@ ADD COLUMN property_address VARCHAR(250),
 ADD COLUMN property_type VARCHAR(50),
 ADD COLUMN property_size INT,
 ADD COLUMN `co-ownership_fee` INT;
+ALTER TABLE members CHANGE COLUMN `co-ownership_fee` `coOwnershipFee` INT;
+
+CREATE TABLE accounts (
+    account_id INT AUTO_INCREMENT PRIMARY KEY,
+    account_number INT,
+    account_type VARCHAR(50),
+    account_balance DECIMAL(10,2),
+    account_created_at DATE,
+    account_syndic_id INT,
+    FOREIGN KEY (account_syndic_id) REFERENCES syndics(s_id)
+);

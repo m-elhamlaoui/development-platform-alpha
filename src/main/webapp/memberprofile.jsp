@@ -4,97 +4,136 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Profil Utilisateur</title>
-
-  <link rel="stylesheet" href="css/style.css">
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
-    <style>/* FORMULAIRE */
-    form {
-    margin-top: 2rem;
-    }
-
-    form label {
-    font-weight: 500;
-    }
-
-    form input[type="text"],
-    form input[type="email"] {
-    width: 100%;
-    padding: 1rem;
-    margin-top: 0.5rem;
-    border: 1px solid var(--color-dark-variant);
-    border-radius: var(--border-radius-1);
-    }
-
-    form input[type="submit"] {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    border: none;
-    padding: 1rem 2rem;
-    border-radius: var(--border-radius-1);
-    cursor: pointer;
-    margin-top: 1rem;
-    transition: background-color 0.3s ease;
-    }
-
-    form input[type="submit"]:hover {
-    background-color: var(--color-primary-variant);
-    }
-  </style>
-
+    <meta charset="UTF-8">
+    <title>Profil Utilisateur</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <style>
+        .container {
+            display: flex;
+        }
+
+        .sidenav {
+            flex: 0 0 200px;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .form-section {
+            flex: 1;
+            margin-right: 2rem;
+        }
+
+        .form-section:last-child {
+            margin-right: 0;
+        }
+
+        form {
+            width: 100%;
+        }
+
+        form label {
+            font-weight: 500;
+        }
+
+        form input[type="text"],
+        form input[type="email"] {
+            width: 100%;
+            padding: 1rem;
+            margin-top: 0.5rem;
+            border: 1px solid var(--color-dark-variant);
+            border-radius: var(--border-radius-1);
+        }
+
+        form input[type="submit"] {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius-1);
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: var(--color-primary-variant);
+        }
+    </style>
 </head>
 <body>
-
 <div class="container">
-    <jsp:include page="templates/member_sidenav.jsp" />
+    <div class="sidenav">
+        <jsp:include page="templates/member_sidenav.jsp"/>
+    </div>
 
     <!------------MIDDLE ------------>
-    <main>
-
+    <div class="main-content">
         <div class="recent-updates">
+            <h1>Welcome <%= ((Member) session.getAttribute("member")).getFirstName() %>!</h1>
+            <div class="form-container">
+                <!-- Member Information Form -->
+                <div class="form-section">
+                    <h2>Informations Membre</h2>
+                    <form action="memberprofile" method="post">
+                        <label for="firstname">Prénom:</label><br>
+                        <input type="text" id="firstname" name="firstname" value="${member.firstName}"><br>
 
-<h1>Welcome <%= ((Member) session.getAttribute("member")).getFirstName() %>!</h1>
-<form action="memberprofile" method="post">
-    <label for="firstname">Prénom:</label><br>
-    <input type="text" id="firstname" name="firstname" value="${member.firstName}"><br>
+                        <label for="lastname">Nom:</label><br>
+                        <input type="text" id="lastname" name="lastname" value="${member.lastName}"><br>
 
-    <label for="lastname">Nom:</label><br>
-    <input type="text" id="lastname" name="lastname" value="${member.lastName}"><br>
+                        <label for="codepostal">Code Postal:</label><br>
+                        <input type="text" id="codepostal" name="codepostal" value="${member.codepostal}"><br>
 
-    <label for="codepostal">Code Postal:</label><br>
-    <input type="text" id="codepostal" name="codepostal" value="${member.codepostal}"><br>
+                        <label for="phonenumber">Numéro de Téléphone:</label><br>
+                        <input type="text" id="phonenumber" name="phonenumber" value="${member.phoneNumber}"><br>
 
-    <label for="phonenumber">Numéro de Téléphone:</label><br>
-    <input type="text" id="phonenumber" name="phonenumber" value="${member.phoneNumber}"><br>
+                        <label for="fulladdress">Adresse Complète:</label><br>
+                        <input type="text" id="fulladdress" name="fulladdress" value="${member.fulladdress}"><br>
 
-    <label for="fulladdress">Adresse Complète:</label><br>
-    <input type="text" id="fulladdress" name="fulladdress" value="${member.fulladdress}"><br>
+                        <label for="mail">E-mail:</label><br>
+                        <input type="text" id="mail" name="mail" value="${member.mail}"><br>
 
-    <label for="mail">E-mail:</label><br>
-    <input type="text" id="mail" name="mail" value="${member.mail}"><br>
+                        <input type="submit" value="Enregistrer">
+                    </form>
+                </div>
 
-    <label for="property_code">Code Propriété:</label><br>
-    <input type="text" id="property_code" name="property_code" value="${member.propertyCode}"><br>
+                <!-- Residence Information Form -->
+                <div class="form-section">
+                    <h2>Informations Résidence</h2>
+                    <form action="memberprofile" method="post">
+                        <label for="property_code">Code Propriété:</label><br>
+                        <input type="text" id="property_code" name="property_code" value="${member.propertyCode}"><br>
 
-    <label for="property_address">Adresse Propriété:</label><br>
-    <input type="text" id="property_address" name="property_address" value="${member.propertyAddress}"><br>
+                        <label for="property_address">Adresse Propriété:</label><br>
+                        <input type="text" id="property_address" name="property_address" value="${member.propertyAddress}"><br>
 
-    <label for="property_type">Type Propriété:</label><br>
-    <input type="text" id="property_type" name="property_type" value="${member.propertyType}"><br>
+                        <label for="property_type">Type Propriété:</label><br>
+                        <input type="text" id="property_type" name="property_type" value="${member.propertyType}"><br>
 
-    <label for="property_size">Taille Propriété:</label><br>
-    <input type="text" id="property_size" name="property_size" value="${member.propertySize}"><br>
+                        <label for="property_size">Taille Propriété:</label><br>
+                        <input type="text" id="property_size" name="property_size" value="${member.propertySize}"><br>
 
-    <label for="co_ownership_fee">Frais Copropriété:</label><br>
-    <input type="text" id="co_ownership_fee" name="co_ownership_fee" value="${member.coOwnershipFee}"><br>
+                        <label for="co_ownership_fee">Frais Copropriété:</label><br>
+                        <input type="text" id="co_ownership_fee" name="co_ownership_fee" value="${member.coOwnershipFee}"><br>
 
-    <input type="submit" value="Enregistrer">
-</form>
+                        <input type="submit" value="Update your property informations ">
+                    </form>
+                </div>
+            </div>
         </div>
-    </main>
+    </div>
     <!-------------END OF MIDDLE --------->
 </div>
 <script>
@@ -102,3 +141,4 @@
 </script>
 </body>
 </html>
+
