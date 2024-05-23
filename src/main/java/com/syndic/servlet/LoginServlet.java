@@ -99,6 +99,9 @@ public class LoginServlet extends HttpServlet {
                             Syndic syndic = syndicDAO.getSyndicByUserId(userId);
                             session.setAttribute("syndic", syndic);
 
+                            Syndic syndic2 = syndicDAO.getSyndicById(syndic.getId());
+                            session.setAttribute("syndic2", syndic2);
+
                             int syndicId = syndic.getId();
                             List<Meeting> list_Meetings = new ArrayList<>();
                             meetingDAO = new MeetingDAOImpl(connection);

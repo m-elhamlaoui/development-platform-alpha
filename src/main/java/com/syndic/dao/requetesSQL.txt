@@ -114,7 +114,7 @@ C:\Users\amine\Desktop\amine\S4\DevOps\development-platform-alpha-deploy> docker
 docker-compose up
 docker-compose down
 
- docker exec -it development-platform-alpha-mysql-1 mysql -usyndicuser -psyndicpassword syndicdb
+ docker exec -it development-platform-alpha-mysql-1 mysql -uamine -p1999 syndic_db
 
  docker volume ls
  docker volume rm development-platform-alpha_mysql-data
