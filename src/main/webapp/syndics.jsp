@@ -209,7 +209,7 @@
     document.getElementById("totalSyndics").innerHTML = "Nombre total de syndics : " + totalSyndics;
 </script>
 <script>
-    document.getElementById("addsyndic").classList.add("active");
+    document.getElementById("syndics").classList.add("active");
 </script>
 </body>
 

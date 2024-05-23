@@ -41,9 +41,9 @@
             <h3>Add Members</h3>
         </a>
 
-        <a href="syndics.jsp">
+        <a href="syndics.jsp" id="syndics">
             <i class='bx bx-file'></i>
-            <h3>Syndic</h3>
+            <h3>Syndics</h3>
         </a>
 
         <a href="displayaccounts" id="displayaccounts">
