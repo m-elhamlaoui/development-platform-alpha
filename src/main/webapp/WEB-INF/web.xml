@@ -150,5 +150,13 @@
     <servlet-name>AddTaskServlet</servlet-name>
     <url-pattern>/addtask</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>ShowAccountsServlet</servlet-name>
+    <servlet-class>com.syndic.servlet.ShowAccountsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowAccountsServlet</servlet-name>
+    <url-pattern>/show-accounts</url-pattern>
+  </servlet-mapping>
 
 </web-app>

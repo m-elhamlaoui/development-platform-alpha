@@ -88,7 +88,20 @@ public class SyndicProfileDAOImpl implements SyndicProfileDAO {
         }
         return null; // Retourne null si aucun synd n'est trouvé avec cet identifiant utilisateur.
     }
-
+    @Override
+    public int getSyndicIdByUserId(int userId) throws SQLException {
+        String sql = "SELECT s_id FROM syndics WHERE s_iduser = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, userId);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getInt("s_id");
+                } else {
+                    throw new SQLException("Syndic not found for user id: " + userId);
+                }
+            }
+        }
+    }
 }
 
 

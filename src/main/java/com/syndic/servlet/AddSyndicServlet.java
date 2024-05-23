@@ -2,6 +2,7 @@ package com.syndic.servlet;
 
 import com.syndic.beans.Syndic;
 import com.syndic.beans.User;
+import com.syndic.beans.Account;
 import com.syndic.dao.*;
 import com.syndic.connection.Syndic_con;
 import jakarta.servlet.ServletException;
@@ -10,10 +11,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.RequestDispatcher;
-
+import java.math.BigDecimal;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Date;
 
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -61,6 +63,28 @@ public class AddSyndicServlet extends HttpServlet {
                     newSyndic.setResidenceName(residence);
                     SyndicProfileDAO syndicDAO = new SyndicProfileDAOImpl(connection);
                     syndicDAO.addSyndic(newSyndic);
+                    int syndicId = syndicDAO.getSyndicIdByUserId(userId);
+                    // Create two accounts for the syndic
+                    AccountDAO accountDAO = new AccountDAOImpl(connection);
+
+                    int lastAccountNumber = accountDAO.getLastAccountNumber();
+
+                    Account primaryAccount = new Account();
+                    primaryAccount.setAccountNumber(lastAccountNumber + 1);
+                    primaryAccount.setAccountType("Principal");
+                    primaryAccount.setAccountBalance(BigDecimal.ZERO);
+                    primaryAccount.setAccountCreatedAt(new Date());
+                    primaryAccount.setAccountSyndicId(syndicId);
+                    accountDAO.createAccount(primaryAccount);
+
+                    Account secondaryAccount = new Account();
+                    secondaryAccount.setAccountNumber(lastAccountNumber + 2);
+                    secondaryAccount.setAccountType("Secondaire");
+                    secondaryAccount.setAccountBalance(BigDecimal.ZERO);
+                    secondaryAccount.setAccountCreatedAt(new Date());
+                    secondaryAccount.setAccountSyndicId(syndicId);
+                    accountDAO.createAccount(secondaryAccount);
+
 
                     // Définir un attribut de session pour le message
                     HttpSession session = request.getSession();
@@ -81,4 +105,5 @@ public class AddSyndicServlet extends HttpServlet {
 
         } while (true);
     }
+
 }

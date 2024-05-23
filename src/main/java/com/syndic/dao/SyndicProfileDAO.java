@@ -14,4 +14,5 @@ public interface SyndicProfileDAO {
     void updateSyndic2(Syndic syndic) throws SQLException;
 
     Syndic getSyndicByUserId(int userId) throws SQLException;
+    int getSyndicIdByUserId(int userId) throws SQLException;
 }
