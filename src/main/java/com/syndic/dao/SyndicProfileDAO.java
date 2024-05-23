@@ -15,4 +15,6 @@ public interface SyndicProfileDAO {
 
     Syndic getSyndicByUserId(int userId) throws SQLException;
     int getSyndicIdByUserId(int userId) throws SQLException;
+
+    Syndic getSyndicByresidence(String residence) throws SQLException;
 }

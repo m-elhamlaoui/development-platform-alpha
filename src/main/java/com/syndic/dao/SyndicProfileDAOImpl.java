@@ -102,6 +102,25 @@ public class SyndicProfileDAOImpl implements SyndicProfileDAO {
             }
         }
     }
+
+    @Override
+    public Syndic getSyndicByresidence(String residence) throws SQLException {
+        String query = "SELECT s_id FROM syndics WHERE residence_name = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, residence);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    int id = resultSet.getInt("s_id");
+
+                    Syndic syndic = new Syndic();
+                    syndic.setId(id);
+                    return  syndic ;
+                }
+            }
+        }
+        return null; // Retourne null si aucun synd n'est trouvé avec cet identifiant utilisateur.
+    }
+
 }
 
 

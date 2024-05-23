@@ -23,27 +23,6 @@
     <main>
         <div class="right">
             <!--------TOP-->
-            <div class="top">
-                <!---MENU ICON-->
-                <button id="menu-btn">
-                    <i class='bx bx-menu'></i>
-                </button>
-
-                <!------LIGHT AND DARK THEME BUTTONS-->
-                <div class="theme-toggle">
-                    <i class='bx bx-sun active'></i>
-                    <i class='bx bx-moon'></i>
-                </div>
-                <div class="profile">
-                    <div class="info">
-                        <p>Hey, <b>Ayo</b></p>
-                        <small class="text-muted">Admin</small>
-                    </div>
-                    <div class="profile-photo">
-                        <img src="./Assets/images/profile-1.jpg" alt="Oluwadare Taye Ayo">
-                    </div>
-                </div>
-            </div>
             <!-------END OF TOP------>
 
             <!---------RECENT UPDATES------>
@@ -175,7 +154,28 @@
 
         </div>
     </main>
+    <div class="right">
+        <div class="top">
+            <button id="menu-btn">
+                <i class='bx bx-menu'></i>
+            </button>
+            <div class="theme-toggle">
+                <i class='bx bx-sun active'></i>
+                <i class='bx bx-moon'></i>
+            </div>
+            <div class="profile">
+                <div class="info">
+                    <p>Hey, <b>Ayo</b></p>
+                    <small class="text-muted">Admin</small>
+                </div>
+                <div class="profile-photo">
+                    <img src="./Assets/images/profile-1.jpg" alt="Oluwadare Taye Ayo">
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 </body>
 <script src="javascript/main.js"></script>
 <script>

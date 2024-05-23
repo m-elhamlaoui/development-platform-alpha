@@ -19,26 +19,8 @@
     <jsp:include page="templates/admin_sidenav.jsp" />
 
     <main>
-        <div class="right">
-            <div class="top">
-                <button id="menu-btn">
-                    <i class='bx bx-menu'></i>
-                </button>
-                <div class="theme-toggle">
-                    <i class='bx bx-sun active'></i>
-                    <i class='bx bx-moon'></i>
-                </div>
-                <div class="profile">
-                    <div class="info">
-                        <p>Hey, <b>Ayo</b></p>
-                        <small class="text-muted">Admin</small>
-                    </div>
-                    <div class="profile-photo">
-                        <img src="./Assets/images/profile-1.jpg" alt="Oluwadare Taye Ayo">
-                    </div>
-                </div>
-            </div>
 
+        <div>
             <div class="recent-updates"></div>
         </div>
         <br><br><br><br><br><br>
@@ -167,7 +149,27 @@
             </div>
 
         </div>
-    </main>
+</main>
+<div class="right">
+    <div class="top">
+        <button id="menu-btn">
+            <i class='bx bx-menu'></i>
+        </button>
+        <div class="theme-toggle">
+            <i class='bx bx-sun active'></i>
+            <i class='bx bx-moon'></i>
+        </div>
+        <div class="profile">
+            <div class="info">
+                <p>Hey, <b>Ayo</b></p>
+                <small class="text-muted">Admin</small>
+            </div>
+            <div class="profile-photo">
+                <img src="./Assets/images/profile-1.jpg" alt="Oluwadare Taye Ayo">
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 
 <script src="javascript/main.js"></script>

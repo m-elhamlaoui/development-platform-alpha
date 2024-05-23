@@ -5,47 +5,17 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Profil Utilisateur</title>
-
-  <link rel="stylesheet" href="css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DASHBOARD</title>
+  <link rel="shortcut icon" href="/Assets/images/logo.png" type="image/x-icon">
+  <!---BOX ICON CDN-->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-  <style>/* FORMULAIRE */
-  form {
-    margin-top: 2rem;
-  }
-
-  form label {
-    font-weight: 500;
-  }
-
-  form input[type="text"],
-  form input[type="email"] {
-    width: 100%;
-    padding: 1rem;
-    margin-top: 0.5rem;
-    border: 1px solid var(--color-dark-variant);
-    border-radius: var(--border-radius-1);
-  }
-
-  form input[type="submit"] {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    border: none;
-    padding: 1rem 2rem;
-    border-radius: var(--border-radius-1);
-    cursor: pointer;
-    margin-top: 1rem;
-    transition: background-color 0.3s ease;
-  }
-
-  form input[type="submit"]:hover {
-    background-color: var(--color-primary-variant);
-  }
-
-  </style>
-
+  <!----STYLESHEET---->
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
+  <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
 </head>
 <body>
 

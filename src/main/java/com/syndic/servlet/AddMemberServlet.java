@@ -4,10 +4,7 @@ package com.syndic.servlet;
 import com.syndic.beans.Member;
 import com.syndic.beans.User;
 import com.syndic.connection.Syndic_con;
-import com.syndic.dao.MemberProfileDAO;
-import com.syndic.dao.MemberProfileDAOImpl;
-import com.syndic.dao.UserDAO;
-import com.syndic.dao.UserDAOImpl;
+import com.syndic.dao.*;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -24,6 +21,7 @@ import org.mindrot.jbcrypt.BCrypt;
 
 public class AddMemberServlet extends HttpServlet {
     private UserDAO userDAO;
+    private SyndicProfileDAO syndicDAO;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
@@ -32,7 +30,7 @@ public class AddMemberServlet extends HttpServlet {
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Récupérer les données du formulaire
-        int residence = Integer.parseInt(request.getParameter("residence"));
+        String residence = request.getParameter("residence");
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -55,8 +53,10 @@ public class AddMemberServlet extends HttpServlet {
                     // Créer un nouveau membre
                     Member newMember = new Member();
                     newMember.setUserId(userId);
-                    newMember.setMemberSId(residence);
 
+                    syndicDAO = new SyndicProfileDAOImpl(connection);
+
+                    newMember.setMemberSId(syndicDAO.getSyndicByresidence(residence).getId());
                     MemberProfileDAO memberDAO = new MemberProfileDAOImpl(connection);
                     memberDAO.addMember(newMember);
 

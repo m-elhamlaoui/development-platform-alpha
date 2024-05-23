@@ -209,15 +209,17 @@ CREATE TABLE syndic_db.Tasks (
     task_s_id INT,
     task_created DATE
 );
-ALTER TABLE members
+
+ALTER TABLE syndic_db.members
 ADD COLUMN property_code INT UNIQUE,
 ADD COLUMN property_address VARCHAR(250),
 ADD COLUMN property_type VARCHAR(50),
 ADD COLUMN property_size INT,
 ADD COLUMN `co-ownership_fee` INT;
-ALTER TABLE members CHANGE COLUMN `co-ownership_fee` `coOwnershipFee` INT;
+ALTER TABLE syndic_db.members CHANGE COLUMN `co-ownership_fee` `coOwnershipFee` INT;
 
-CREATE TABLE accounts (
+
+CREATE TABLE syndic_db.accounts (
     account_id INT AUTO_INCREMENT PRIMARY KEY,
     account_number INT,
     account_type VARCHAR(50),
