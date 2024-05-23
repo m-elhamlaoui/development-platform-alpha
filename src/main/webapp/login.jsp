@@ -19,14 +19,14 @@
 
         body::before {
             content: "";
-            background: url("img/po5.jpeg") center center fixed; /* Ajouter le chemin correct à votre image */
+            background: url("image/background.jpg") center center fixed; /* Ajouter le chemin correct à votre image */
             background-size: cover;
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            opacity: 0.8; /* Ajuster l'opacité selon vos préférences */
+
             z-index: -1; /* Placez-le en arrière-plan */
         }
 
@@ -46,7 +46,7 @@
 <body class="flex items-center justify-center h-screen" >
 
 <div class="bg-white p-8 rounded-lg shadow-md w-96 flex flex-col items-center">
-    <img src="images/Paincare.jpeg" alt="Logo" class="mx-auto my-4 w-24">
+    <img src="image/logo.jpg" alt="Logo" class="mx-auto my-4 w-24">
     <h1 class="text-3xl font-extrabold text-gray-800 mb-6">Se Connecter</h1>
 
     <form action="login" method="post" class="space-y-4">

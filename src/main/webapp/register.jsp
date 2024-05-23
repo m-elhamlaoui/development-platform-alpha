@@ -13,7 +13,7 @@
 
         body::before {
             content: "";
-            background: url("") center center fixed; /* Ajouter le chemin correct à votre image */
+            background: url("image/background.jpg") center center fixed; /* Ajouter le chemin correct à votre image */
             background-size: cover;
             position: absolute;
             top: 0;
