@@ -228,3 +228,20 @@ CREATE TABLE syndic_db.accounts (
     account_syndic_id INT,
     FOREIGN KEY (account_syndic_id) REFERENCES syndics(s_id)
 );
+========================================================================================================================
+minikube ip
+
+kubectl get svc
+
+kubectl apply -f kubernetes/mysql-deployment.yaml
+
+kubectl apply -f kubernetes/tomcat-deployment.yaml
+
+kubectl get pods
+
+kubectl get svc
+
+kubectl get deployment
+
+
+========================================================================================================================
