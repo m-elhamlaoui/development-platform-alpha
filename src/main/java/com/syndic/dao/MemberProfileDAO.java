@@ -14,5 +14,6 @@ public interface MemberProfileDAO {
 
     void updateMember(Member member) throws SQLException;
 
+    List<Member> getMember();
 }
 

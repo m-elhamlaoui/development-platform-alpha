@@ -46,6 +46,11 @@
             <h3>Syndics</h3>
         </a>
 
+        <a href="members.jsp" id="members">
+            <i class='bx bx-file'></i>
+            <h3>Members</h3>
+        </a>
+
         <a href="displayaccounts" id="displayaccounts">
             <i class='bx bx-line-chart-down'></i>
             <h3>displayaccounts</h3>

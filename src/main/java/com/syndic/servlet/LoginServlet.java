@@ -86,6 +86,11 @@ public class LoginServlet extends HttpServlet {
                             List_syndics = syndicDAO.getSyndic();
                             session.setAttribute("List_syndics", List_syndics);
 
+                            List<Member> list_members;
+                            memberDAO = new MemberProfileDAOImpl(connection);
+                            list_members = memberDAO.getMember();
+                            session.setAttribute("list_members", list_members);
+
                             List<Account> accounts;
                             accountsDAO = new AccountDAOImpl (connection);
                             accounts = accountsDAO.getAllAccounts();
