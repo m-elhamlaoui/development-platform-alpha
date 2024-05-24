@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 public class IncidentDAOImpl implements IncidentDAO {
 
+
+    private static final String COUNT_INCIDENTS = "SELECT COUNT(*) FROM Incidents";
     private final Connection connection;
 
 
@@ -66,4 +68,13 @@ public class IncidentDAOImpl implements IncidentDAO {
         }
         }
 
+    public int getIncidentCount() throws SQLException {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(COUNT_INCIDENTS);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+            if (resultSet.next()) {
+                return resultSet.getInt(1);
+            }
+            return 0;
+        }
+    }
 }

@@ -9,6 +9,7 @@ import java.sql.SQLException;
 
 public class MemberProfileDAOImpl implements MemberProfileDAO {
     private final Connection connection;
+    private static final String COUNT_MEMBERS = "SELECT COUNT(*) FROM members";
 
 
     public MemberProfileDAOImpl(Connection connection) {
@@ -77,6 +78,13 @@ public class MemberProfileDAOImpl implements MemberProfileDAO {
         }
     }
 
-
-
+    public int getMemberCount() throws SQLException {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(COUNT_MEMBERS);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+            if (resultSet.next()) {
+                return resultSet.getInt(1);
+            }
+            return 0;
+        }
+    }
 }

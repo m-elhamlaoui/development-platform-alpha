@@ -26,7 +26,7 @@
 
     <!----------SIDEBAR---------->
     <div class="sidebar">
-        <a href="dashboard.jsp" id="dashboard">
+        <a href="dashboardSyndic.jsp" id="dashboardSyndic">
             <i class='bx bxs-dashboard' ></i>
             <h3>Dashboard</h3>
         </a>

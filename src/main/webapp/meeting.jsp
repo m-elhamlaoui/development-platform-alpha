@@ -23,9 +23,9 @@
     <!------------MIDDLE ------------>
     <main>
         <!----------TOP -------->
-        <h1>Dashboard</h1>
+        <h1>Meeting</h1>
         <div class="date">
-            <input type="date">
+            <%=java.time.LocalDate.now()%>
         </div>
 
         <div class="flex items-center justify-center">

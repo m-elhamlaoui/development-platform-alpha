@@ -26,7 +26,7 @@
 
     <!----------SIDEBAR---------->
     <div class="sidebar">
-        <a href="#" id ="dashboard">
+        <a href="admin.jsp" id ="dashboard">
             <i class='bx bxs-dashboard' ></i>
             <h3>Dashboard</h3>
         </a>
@@ -41,9 +41,9 @@
             <h3>Add Members</h3>
         </a>
 
-        <a href="syndics.jsp" id="syndics">
+        <a href="syndics.jsp">
             <i class='bx bx-file'></i>
-            <h3>Syndics</h3>
+            <h3>Syndic</h3>
         </a>
 
         <a href="displayaccounts" id="displayaccounts">

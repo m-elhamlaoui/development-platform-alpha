@@ -24,16 +24,14 @@
   <!------------MIDDLE ------------>
   <main>
     <!----------TOP -------->
-    <h1>Dashboard</h1>
+    <h1>Display Accounts</h1>
     <div class="date">
-      <input type="date">
+      <%=java.time.LocalDate.now()%>
     </div>
 
     <!---------INSIGHTS------->
-    <div class="insights">
-      <h1>ADMIN</h1>
-    </div>
 
+<br><br>
     <h1>All Accounts</h1>
     <div class="mt-12 shadow-sm border rounded-lg overflow-x-auto">
       <table class="w-full table-auto text-sm text-left" id="paymentTable">
@@ -45,6 +43,7 @@
           <th class="py-3 px-6">Method</th>
           <th class="py-3 px-6">Type</th>
           <th class="py-3 px-6">Account ID</th>
+
         </tr>
         </thead>
       </tr>

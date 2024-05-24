@@ -20,9 +20,9 @@
     <!------------MIDDLE ------------>
     <main>
         <!----------TOP -------->
-        <h1>Dashboard</h1>
+        <h1>Add Syndic</h1>
         <div class="date">
-            <input type="date">
+            <%=java.time.LocalDate.now()%>
         </div>
         <div class="recent-updates">
             <form action="addsyndic" method="post" class="user-form">

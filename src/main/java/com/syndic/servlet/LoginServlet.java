@@ -93,7 +93,7 @@ public class LoginServlet extends HttpServlet {
 
                             return;
                         } else if (user.getAdmin() == 2){
-                            response.sendRedirect("dashboard.jsp");
+                            response.sendRedirect("dashboardSyndic.jsp");
                             int userId = user.getIdUser();
                             syndicDAO = new SyndicProfileDAOImpl(connection);
                             Syndic syndic = syndicDAO.getSyndicByUserId(userId);

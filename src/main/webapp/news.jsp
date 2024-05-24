@@ -23,9 +23,9 @@
     <!------------MIDDLE ------------>
     <main>
         <!----------TOP -------->
-        <h1>Dashboard</h1>
+        <h1>News</h1>
         <div class="date">
-            <input type="date">
+            <%=java.time.LocalDate.now()%>
         </div>
 
         <!---------INSIGHTS------->

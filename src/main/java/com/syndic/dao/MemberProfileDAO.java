@@ -13,6 +13,6 @@ public interface MemberProfileDAO {
     Member getMemberByUserId(int userId) throws SQLException;
 
     void updateMember(Member member) throws SQLException;
-
+    int getMemberCount() throws SQLException;
 }
 

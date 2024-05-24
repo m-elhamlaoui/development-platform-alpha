@@ -2,6 +2,7 @@ package com.syndic.dao;
 
 import com.syndic.beans.Supplier;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface SupplierDAO {
@@ -13,4 +14,5 @@ public interface SupplierDAO {
     boolean updateSupplier(Supplier supplier);
 
     boolean deleteSupplier(int supplier_id);
+    int getSupplierCount() throws SQLException;
 }

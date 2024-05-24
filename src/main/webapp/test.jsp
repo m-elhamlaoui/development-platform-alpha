@@ -22,7 +22,7 @@
         <!----------TOP -------->
         <h1>Dashboard</h1>
         <div class="date">
-            <input type="date">
+            <%=java.time.LocalDate.now()%>
         </div>
 
         <!---------INSIGHTS------->

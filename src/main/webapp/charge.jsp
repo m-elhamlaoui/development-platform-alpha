@@ -24,9 +24,9 @@
     <!------------MIDDLE ------------>
     <main>
         <!----------TOP -------->
-        <h1>Dashboard</h1>
+        <h1>Charges</h1>
         <div class="date">
-            <input type="date">
+            <%=java.time.LocalDate.now()%>
         </div>
 
 
