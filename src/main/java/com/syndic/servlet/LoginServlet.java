@@ -98,11 +98,14 @@ public class LoginServlet extends HttpServlet {
 
                             return;
                         } else if (user.getAdmin() == 2){
-                            response.sendRedirect("dashboard.jsp");
+                            response.sendRedirect("dashboardSyndic.jsp");
                             int userId = user.getIdUser();
                             syndicDAO = new SyndicProfileDAOImpl(connection);
                             Syndic syndic = syndicDAO.getSyndicByUserId(userId);
                             session.setAttribute("syndic", syndic);
+
+                            Syndic syndic2 = syndicDAO.getSyndicById(syndic.getId());
+                            session.setAttribute("syndic2", syndic2);
 
                             int syndicId = syndic.getId();
                             List<Meeting> list_Meetings = new ArrayList<>();

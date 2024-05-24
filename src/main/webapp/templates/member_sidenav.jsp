@@ -41,17 +41,9 @@
             <h3>Property</h3>
         </a>
 
-        <a href="paiement">
-            <i class='bx bx-line-chart-down'></i>
-            <h3>My documents</h3>
-        </a>
 
-        <a href="reclamer">
-            <i class='bx bx-paper-plane bx-tada' ></i>
-            <h3>Messages</h3><span class="message-count">24</span>
-        </a>
 
-        <a href="#">
+        <a href="meeting" id ="meeting">
             <i class='bx bxs-crown'></i>
             <h3>Meetings</h3>
         </a>
@@ -59,16 +51,6 @@
         <a href="incident" id="incident">
             <i class='bx bxs-crown'></i>
             <h3>Reports Incident</h3>
-        </a>
-
-        <a href="#">
-            <i class='bx bx-cog bx-flashing' ></i>
-            <h3>Settings</h3>
-        </a>
-
-        <a href="#">
-            <i class='bx bx-add-to-queue'></i>
-            <h3>Add Product</h3>
         </a>
 
         <a href="login" id="logout-link">

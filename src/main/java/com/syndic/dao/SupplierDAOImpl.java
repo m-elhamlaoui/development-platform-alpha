@@ -13,6 +13,8 @@ public class SupplierDAOImpl implements SupplierDAO {
 
     private final Connection connection;
 
+    private static final String COUNT_SUPPLIERS = "SELECT COUNT(*) FROM Suppliers";
+    
     public SupplierDAOImpl(Connection connection) {
         this.connection = connection;
     }
@@ -101,6 +103,16 @@ public class SupplierDAOImpl implements SupplierDAO {
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }
+    }
+
+    public int getSupplierCount() throws SQLException {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(COUNT_SUPPLIERS);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+            if (resultSet.next()) {
+                return resultSet.getInt(1);
+            }
+            return 0;
         }
     }
 }

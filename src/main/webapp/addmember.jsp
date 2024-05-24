@@ -21,9 +21,9 @@
   <!------------MIDDLE ------------>
   <main>
     <!----------TOP -------->
-    <h1>Dashboard</h1>
+    <h1>Add Member</h1>
     <div class="date">
-      <input type="date">
+      <%=java.time.LocalDate.now()%>
     </div>
     <div class="recent-updates">
       <form action="addmember" method="post" class="user-form">

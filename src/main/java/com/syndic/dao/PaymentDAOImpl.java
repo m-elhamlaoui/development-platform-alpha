@@ -16,6 +16,8 @@ public class PaymentDAOImpl implements PaymentDAO {
         this.connection = connection;
     }
 
+    private static final String COUNT_PAYMENTS = "SELECT SUM(payment_amount) FROM  Payments ";
+
 
     public List<Payment> getAllPayments() {
         List<Payment> payments = new ArrayList<>();
@@ -104,5 +106,15 @@ public class PaymentDAOImpl implements PaymentDAO {
         }
     }
 
+
+    public float getPaymentSum() throws SQLException {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(COUNT_PAYMENTS);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+            if (resultSet.next()) {
+                return resultSet.getInt(1);
+            }
+            return 0;
+        }
+    }
 }
 

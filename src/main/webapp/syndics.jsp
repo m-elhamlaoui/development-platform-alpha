@@ -23,6 +23,7 @@
 
     <!------------MIDDLE ------------>
     <main>
+        <br><br><br><br>
         <div class="max-w-screen-xl mx-auto px-4 md:px-6">
             <h3 class="text-light-800 text-xl font-bold sm:text-2xl m-4">Liste des Syndics</h3>
 

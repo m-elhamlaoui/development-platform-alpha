@@ -5,10 +5,22 @@
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="com.syndic.dao.TaskDAO" %>
 <%@ page import="com.syndic.dao.TaskDAOImpl" %>
-
+<%@ page import="com.syndic.dao.IncidentDAO" %>
+<%@ page import="com.syndic.dao.IncidentDAOImpl" %>
+<%@ page import="com.syndic.dao.SupplierDAO" %>
+<%@ page import="com.syndic.dao.SupplierDAOImpl" %>
+<%@ page import="com.syndic.dao.PaymentDAO" %>
+<%@ page import="com.syndic.dao.PaymentDAOImpl" %>
+<%@ page import="com.syndic.dao.MemberProfileDAO" %>
+<%@ page import="com.syndic.dao.MemberProfileDAOImpl" %>
 <%
     int userCount = 0;
     int taskCount=0;
+    int incidentCount=0;
+    int supplierCount=0;
+    float sumpayment=0;
+    int memberCount = 0;
+
     Connection connection = null;
 
     try {
@@ -17,6 +29,15 @@
         userCount = userDao.getUserCount();
         TaskDAO taskDAO = new TaskDAOImpl(connection);
         taskCount=taskDAO.getTaskCount();
+        IncidentDAO incidentDAO = new IncidentDAOImpl(connection);
+        incidentCount=incidentDAO.getIncidentCount();
+        SupplierDAO supplierDAO = new SupplierDAOImpl(connection);
+        supplierCount=supplierDAO.getSupplierCount();
+        PaymentDAO paymentDAO = new PaymentDAOImpl(connection);
+        sumpayment=paymentDAO.getPaymentSum();
+        MemberProfileDAO memberProfileDAO = new MemberProfileDAOImpl(connection);
+        memberCount=memberProfileDAO.getMemberCount();
+
     } catch (SQLException e) {
         e.printStackTrace();
     }
@@ -58,7 +79,7 @@
 
                 <h1 class=" m-4">Dashboard</h1>
                 <div class="date m-4">
-                    <input type="date">
+                    <%=java.time.LocalDate.now()%>
                 </div>
 
                 <div class="flex flex-wrap">
@@ -71,7 +92,7 @@
                                 </div>
                                 <div class="flex-1 text-right md:text-center">
                                     <h2 class="font-bold uppercase text-gray-600">Total Revenue</h2>
-                                    <p class="font-bold text-3xl">$3249 <span class="text-green-500"><i class="fas fa-caret-up"></i></span></p>
+                                    <p class="font-bold text-3xl"><%=sumpayment%> <span class="text-green-500"><i class="fas fa-caret-up"></i></span></p>
                                 </div>
                             </div>
                         </div>
@@ -97,11 +118,11 @@
                         <div class="bg-gradient-to-b from-yellow-200 to-yellow-100 border-b-4 border-yellow-600 rounded-lg shadow-xl p-5">
                             <div class="flex flex-row items-center">
                                 <div class="flex-shrink pr-4">
-                                    <div class="rounded-full p-5 bg-yellow-600"><i class="fas fa-user-plus fa-2x fa-inverse"></i></div>
+                                    <div class="rounded-full p-5 bg-yellow-600"><i class="fas fa-exclamation-triangle fa-2x fa-inverse"></i></div>
                                 </div>
                                 <div class="flex-1 text-right md:text-center">
-                                    <h2 class="font-bold uppercase text-gray-600">Total Users</h2>
-                                    <p class="font-bold text-3xl">2 <span class="text-yellow-600"><i class="fas fa-caret-up"></i></span></p>
+                                    <h2 class="font-bold uppercase text-gray-600">Total Incidents</h2>
+                                    <p class="font-bold text-3xl"><%= incidentCount %> <span class="text-yellow-600"><i class="fas fa-caret-up"></i></span></p>
                                 </div>
                             </div>
                         </div>
@@ -109,14 +130,14 @@
                     </div>
                     <div class="w-full md:w-1/2 xl:w-1/3 p-6">
                         <!--Metric Card-->
-                        <div class="bg-gradient-to-b from-blue-200 to-blue-100 border-b-4 border-blue-500 rounded-lg shadow-xl p-5">
+                        <div class="bg-gradient-to-b from-blue-200 to-pink-100 border-b-4 border-blue-500 rounded-lg shadow-xl p-5">
                             <div class="flex flex-row items-center">
                                 <div class="flex-shrink pr-4">
-                                    <div class="rounded-full p-5 bg-blue-600"><i class="fas fa-server fa-2x fa-inverse"></i></div>
+                                    <div class="rounded-full p-5 bg-red-600"><i class="fas fa-users fa-2x fa-inverse"></i></div>
                                 </div>
                                 <div class="flex-1 text-right md:text-center">
-                                    <h2 class="font-bold uppercase text-gray-600">Server Uptime</h2>
-                                    <p class="font-bold text-3xl">152 days</p>
+                                    <h2 class="font-bold uppercase text-gray-600">Total Members</h2>
+                                    <p class="font-bold text-3xl"><%= memberCount %></p>
                                 </div>
                             </div>
                         </div>
@@ -139,14 +160,14 @@
                     </div>
                     <div class="w-full md:w-1/2 xl:w-1/3 p-6">
                         <!--Metric Card-->
-                        <div class="bg-gradient-to-b from-red-200 to-red-100 border-b-4 border-red-500 rounded-lg shadow-xl p-5">
+                        <div class="bg-gradient-to-b from-yellow-200 to-blue-100 border-b-4 border-blue-600 rounded-lg shadow-xl p-5">
                             <div class="flex flex-row items-center">
                                 <div class="flex-shrink pr-4">
-                                    <div class="rounded-full p-5 bg-red-600"><i class="fas fa-inbox fa-2x fa-inverse"></i></div>
+                                    <div class="rounded-full p-5 bg-blue-600"><i class="fas fa-user-plus fa-2x fa-inverse"></i></div>
                                 </div>
                                 <div class="flex-1 text-right md:text-center">
-                                    <h2 class="font-bold uppercase text-gray-600">Issues</h2>
-                                    <p class="font-bold text-3xl">3 <span class="text-red-500"><i class="fas fa-caret-up"></i></span></p>
+                                    <h2 class="font-bold uppercase text-gray-600">Total Suppliers</h2>
+                                    <p class="font-bold text-3xl"><%= supplierCount %> <span class="text-yellow-600"><i class="fas fa-caret-up"></i></span></p>
                                 </div>
                             </div>
                         </div>
@@ -266,90 +287,15 @@
                         <!--/Graph Card-->
                     </div>
 
-                    <div class="w-full md:w-1/2 xl:w-1/3 p-6">
-                        <!--Graph Card-->
-                        <div class="bg-white border-transparent rounded-lg shadow-xl">
-                            <div class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
-                                <h5 class="font-bold uppercase text-gray-600">Graph</h5>
-                            </div>
-                            <div class="p-5"><canvas id="chartjs-4" class="chartjs" width="undefined" height="undefined"></canvas>
-                                <script>
-                                    new Chart(document.getElementById("chartjs-4"), {
-                                        "type": "doughnut",
-                                        "data": {
-                                            "labels": ["P1", "P2", "P3"],
-                                            "datasets": [{
-                                                "label": "Issues",
-                                                "data": [300, 50, 100],
-                                                "backgroundColor": ["rgb(255, 99, 132)", "rgb(54, 162, 235)", "rgb(255, 205, 86)"]
-                                            }]
-                                        }
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                        <!--/Graph Card-->
-                    </div>
+
 
                     <div class="w-full md:w-1/2 xl:w-1/3 p-6">
                         <!--Table Card-->
                         <div class="bg-white border-transparent rounded-lg shadow-xl">
-                            <div class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
-                                <h2 class="font-bold uppercase text-gray-600">Graph</h2>
-                            </div>
-                            <div class="p-5">
-                                <table class="w-full p-5 text-gray-700">
-                                    <thead>
-                                    <tr>
-                                        <th class="text-left text-blue-900">Name</th>
-                                        <th class="text-left text-blue-900">Side</th>
-                                        <th class="text-left text-blue-900">Role</th>
-                                    </tr>
-                                    </thead>
 
-                                    <tbody>
-                                    <tr>
-                                        <td>Obi Wan Kenobi</td>
-                                        <td>Light</td>
-                                        <td>Jedi</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Greedo</td>
-                                        <td>South</td>
-                                        <td>Scumbag</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Darth Vader</td>
-                                        <td>Dark</td>
-                                        <td>Sith</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-
-                                <p class="py-2"><a href="#">See More issues...</a></p>
-
-                            </div>
                         </div>
                         <!--/table Card-->
                     </div>
-
-                    <div class="w-full md:w-1/2 xl:w-1/3 p-6">
-                        <!--Advert Card-->
-                        <div class="bg-white border-transparent rounded-lg shadow-xl">
-                            <div class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
-                                <h2 class="font-bold uppercase text-gray-600">Advert</h2>
-                            </div>
-                            <div class="p-5 text-center">
-
-
-                                <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CK7D52JJ&placement=wwwtailwindtoolboxcom" id="_carbonads_js"></script>
-
-
-                            </div>
-                        </div>
-                        <!--/Advert Card-->
-                    </div>
-
 
                 </div>
             </div>

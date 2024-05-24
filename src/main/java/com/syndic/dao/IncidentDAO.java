@@ -14,4 +14,5 @@ public interface IncidentDAO {
 
 
     void updateIncident(int incidentId, String incidentStatus, Date incidentResolutionDate) throws SQLException;
+    int getIncidentCount() throws SQLException;
 }
